@@ -43,7 +43,18 @@ app.get('*', (req, res) => {
 /**
  * Server Activation
  */
-const server = http.createServer(app);
-server.listen(port);
+if (NODE_ENV === 'production') {
+    app.use('/assets', express.static(path.join(__dirname, 'src', 'assets')));
+    app.use(express.static(path.join(__dirname, 'src', 'dist')));
+    // If we get to here and have not found what we're looking for then we must be at a client side route and need to serve the index.html.
+    app.get('*', (req, res) => {
+        console.log('Serve index');
+        res.sendFile(path.resolve(__dirname, 'src', 'dist', 'index.html'));
+    });
+}
 
-console.debug('Server listening on port ' + port);
+app.listen(port, () => {
+    console.log(`Server running at port ${port}`);
+});
+
+module.exports = { app };
