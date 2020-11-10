@@ -2,7 +2,7 @@
     "scripts": {
         "dev": "nodemon index.js",
         "start": "node index.js",
-        "build": "npm install"
+        "build": "pnpm install"
     },
     "dependencies": {
         "cors": "^2.8.5",
