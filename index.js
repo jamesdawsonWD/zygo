@@ -40,6 +40,10 @@ app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
 });
 
-app.listen(process.env.PORT || 3000);
+/**
+ * Server Activation
+ */
+const server = http.createServer(app);
+server.listen(port);
 
-module.exports = { app };
+console.debug('Server listening on port ' + port);
