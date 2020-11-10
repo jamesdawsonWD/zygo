@@ -43,7 +43,7 @@ app.get('*', (req, res) => {
 /**
  * Server Activation
  */
-if (NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
     app.use('/assets', express.static(path.join(__dirname, 'src', 'assets')));
     app.use(express.static(path.join(__dirname, 'src', 'dist')));
     // If we get to here and have not found what we're looking for then we must be at a client side route and need to serve the index.html.
