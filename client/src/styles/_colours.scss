@@ -1,0 +1,33 @@
+$main-white: #f7fff7;
+$offset-white: #ebebeb;
+$main-black: #141414;
+$main-dark-blue: #020c3d;
+$main-light-blue: #02dbf8;
+$darker-pink: #830d42;
+$dark-pink: #c51363;
+$main-pink: #F72585;
+$light-pink: #F9D3F3;
+$offset-white-pink: #fff8fe;
+$gray-pink: #f5f5f5;
+//gradients
+
+$pink-gradient: linear-gradient(0deg, rgba(247, 37, 133, 1) 0%, rgb(250, 45, 97) 100%);
+$blue-gradient: linear-gradient(0deg, $main-light-blue 0%, #02f8e4 100%);
+
+:root {
+    --main-white: #{$main-white};
+    --offset-white: #{$offset-white};
+    --main-black: #{$main-black};
+    --main-dark-blue: #{$main-dark-blue};
+    --main-light-blue: #{$main-light-blue};
+    --main-pink: #{$main-pink};
+    --light-pink: #{$light-pink};
+    --dark-pink: #{$dark-pink};
+    --darker-pink: #{$darker-pink};
+    --offset-white-pink: #{$offset-white-pink};
+    --gray-pink: #{$gray-pink};
+
+    // Gradients
+    --pink-gradient: #{$pink-gradient};
+    --blue-gradient: #{$blue-gradient};
+}

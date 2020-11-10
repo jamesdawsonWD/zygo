@@ -1,0 +1,115 @@
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-family: 'Ubuntu';
+
+    label {
+        font-size: #{$base-size * 5}pt;
+        color: var(--offset-white-pink);
+        margin: 40px 0 15px 0;
+        width: 100%;
+    }
+
+    input,
+    select,
+    textarea {
+        outline: none;
+        border: none;
+        width: 97%;
+        height: 75px;
+        margin-top: 8px;
+        background: var(--light-pink);
+        font-size: #{$base-size * 5}pt;
+        padding: 5px 0 5px 25px !important;
+        border-radius: 10px;
+        border-left: 15px solid transparent;
+        position: relative;
+
+        &:active,
+        &:focus {
+            border-left: 15px solid var(--main-light-blue);
+        }
+    }
+
+    input[type='submit'] {
+        margin-top: 75px;
+        width: 30%;
+        border-left: none;
+        background: var(--main-light-blue);
+        font-family: 'Ubuntu';
+        color: var(--offset-white-pink);
+        transition: 0.2s;
+
+        &:hover {
+            cursor: pointer;
+            transform: translateY(-10px);
+        }
+
+        &:active,
+        &:focus,
+        &:hover {
+            border-left: none;
+        }
+    }
+}
+
+.form-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    position: relative;
+
+    label {
+        width: auto;
+        position: relative;
+    }
+
+    h4 {
+        display: flex;
+        align-items: center;
+        margin: 40px 0 15px 20px;
+        color: var(--darker-pink);
+        font-size: 17pt;
+    }
+}
+
+.input-info {
+    padding: 5px 14px 5px 25px !important;
+    background: var(--gray-pink);
+    position: absolute;
+    top: 80px;
+    border-radius: 10px;
+    height: 100px;
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+
+    h3 {
+        text-align: center;
+        margin-top: 30px;
+        color: var(--main-dark-blue);
+    }
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--darker-pink);
+    opacity: 0.5;
+    /* Firefox */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: var(--darker-pink);
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: var(--darker-pink);
+}
