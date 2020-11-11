@@ -1,51 +1,53 @@
 <template>
-    <form class="alpha-signup-form" @submit.prevent="processForm" method="post">
-        <div v-if="!showSuccess" class="form-row">
-            <label for="name">What should we call you? *</label>
-            <h4 class="error">{{ errors.name }}</h4>
-        </div>
-        <div class="form-row">
-            <input
-                v-if="!showSuccess"
-                id="name"
-                placeholder="Vitalik"
-                v-model="name"
-                type="text"
-                name="name"
-            />
-        </div>
+    <div class="alpha-signup-form">
+        <form v-if="!showSuccess" @submit.prevent="processForm" method="post">
+            <div v-if="!showSuccess" class="form-row">
+                <label for="name">What should we call you? *</label>
+                <h4 class="error">{{ errors.name }}</h4>
+            </div>
+            <div v-if="!showSuccess" class="form-row">
+                <input
+                    v-if="!showSuccess"
+                    id="name"
+                    placeholder="Vitalik"
+                    v-model="name"
+                    type="text"
+                    name="name"
+                />
+            </div>
 
-        <div v-if="!showSuccess" class="form-row two-halfs">
-            <label for="email">What is your email? *</label>
-            <h4 class="error">{{ errors.email }}</h4>
-        </div>
-        <div class="form-row">
-            <input
-                v-if="!showSuccess"
-                id="email"
-                placeholder="vitalik@eth.com"
-                v-model="email"
-                type="email"
-                name="email"
-            />
-        </div>
+            <div v-if="!showSuccess" class="form-row two-halfs">
+                <label for="email">What is your email? *</label>
+                <h4 class="error">{{ errors.email }}</h4>
+            </div>
+            <div v-if="!showSuccess" class="form-row">
+                <input
+                    v-if="!showSuccess"
+                    id="email"
+                    placeholder="vitalik@eth.com"
+                    v-model="email"
+                    type="email"
+                    name="email"
+                />
+            </div>
 
-        <div v-if="!showSuccess" class="form-row">
-            <label for="address">Wallet Address</label>
-            <h4 class="error">{{ errors.address }}</h4>
-        </div>
-        <div v-if="!showSuccess" class="form-row input-info">
-            <h4>
-                We will be air-dropping many different tokens to our first early adopters. Where should we
-                deliver them?
-            </h4>
-            <input id="address" placeholder="0x..." v-model="address" type="address" name="address" />
-        </div>
-        <div class="form-row submit">
-            <input v-if="!showSuccess" type="submit" value="Submit" />
-        </div>
+            <div v-if="!showSuccess" class="form-row">
+                <label for="address">Wallet Address</label>
+                <h4 class="error">{{ errors.address }}</h4>
+            </div>
+            <div v-if="!showSuccess" class="form-row input-info">
+                <h4>
+                    We will be air-dropping many different tokens to our first early adopters. Where should we
+                    deliver them?
+                </h4>
+                <input id="address" placeholder="0x..." v-model="address" type="address" name="address" />
+            </div>
+            <div v-if="!showSuccess" class="form-row submit">
+                <input type="submit" value="Submit" />
+            </div>
+        </form>
         <div v-if="showSuccess" class="success">
-            <h2>Signup uccessful!</h2>
+            <h2>Signup successful!</h2>
             <lottie-animation
                 v-if="showSuccess"
                 path="lottie/success.json"
@@ -59,7 +61,7 @@
                 important information!
             </h4>
         </div>
-    </form>
+    </div>
 </template>
 <script>
 import { mapActions } from 'vuex';
@@ -133,6 +135,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .alpha-signup-form {
+    width: 100%;
+    height: 100%;
     .success {
         position: relative;
         display: flex;
