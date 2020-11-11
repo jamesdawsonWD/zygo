@@ -34,7 +34,6 @@ exports.send = async (req, res) => {
             return template(req.body);
         })
         .then((compiledTemplate) => {
-            res.status(201).send({ code: 201, status: 'success', message: 'Template successfully created' });
             transporter.sendMail({
                 from: '"SpaceDX" <official@space-dx.com>', // sender address
                 to, // list of receivers
@@ -42,6 +41,7 @@ exports.send = async (req, res) => {
                 text: '', //TODO: extract text only from html template
                 html: compiledTemplate,
             });
+            res.status(201).send({ code: 201, status: 'success', message: 'Template successfully created' });
         })
         // .then(() => createModel(req.body, Email))
         // .then(saveTemplate)
