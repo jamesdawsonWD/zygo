@@ -15,7 +15,6 @@ const createModel = (body, schema) => new schema(body);
  * Endpoints
  */
 exports.send = async (req, res) => {
-    console.log(req.body);
     const { to, subject, template, email, name, address } = req.body;
 
     const transporter = nodemailer.createTransport({
@@ -34,6 +33,12 @@ exports.send = async (req, res) => {
             return template(req.body);
         })
         .then((compiledTemplate) => {
+            console.log(
+                process.env.SMTP_PORT,
+                process.env.SMTP_SERVER,
+                process.env.SMTP_USERNAME,
+                process.env.SMTP_PASSWORD
+            );
             transporter.sendMail({
                 from: '"SpaceDX" <official@space-dx.com>', // sender address
                 to, // list of receivers
