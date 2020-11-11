@@ -15,6 +15,7 @@ const createModel = (body, schema) => new schema(body);
  * Endpoints
  */
 exports.send = async (req, res) => {
+    console.log(req.body);
     const { to, subject, template, email, name, address } = req.body;
 
     const transporter = nodemailer.createTransport({
