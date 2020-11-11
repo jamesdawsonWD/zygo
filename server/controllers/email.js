@@ -33,19 +33,18 @@ exports.send = async (req, res) => {
             const template = hbs.compile(file);
             return template(req.body);
         })
-        .then((compiledTemplate) =>
+        .then((compiledTemplate) => {
+            res.status(201).send({ code: 201, status: 'success', message: 'Template successfully created' });
             transporter.sendMail({
                 from: '"SpaceDX" <official@space-dx.com>', // sender address
                 to, // list of receivers
                 subject,
                 text: '', //TODO: extract text only from html template
                 html: compiledTemplate,
-            })
-        )
+            });
+        })
         // .then(() => createModel(req.body, Email))
         // .then(saveTemplate)
-        .then(() => {
-            res.status(201).send({ code: 201, status: 'success', message: 'Template successfully created' });
-        })
+        .then(() => {})
         .catch((err) => console.log(err));
 };
