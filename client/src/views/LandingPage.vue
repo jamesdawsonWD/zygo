@@ -4,16 +4,17 @@
             <Planet class="planet" />
             <Logo class="title" />
         </div>
-        <div class="signup">
-            <Button title="ALPHA SIGNUP" @clicked="flipModal" buttonStyle="primary"></Button>
-        </div>
         <div class="discover-more">
-            <a href="https://twitter.com/dx_space">
-                <Twitter />
-            </a>
-            <a href="https://twitter.com/dx_space">
-                <Discord />
-            </a>
+            <Button title="ALPHA SIGNUP" @clicked="flipModal" buttonStyle="primary"></Button>
+
+            <div class="social-media">
+                <a href="https://twitter.com/dx_space">
+                    <Twitter />
+                </a>
+                <a href="https://twitter.com/dx_space">
+                    <Discord />
+                </a>
+            </div>
         </div>
         <my-canvas style="width: 100vw; height: 100vh;">
             <stars
@@ -76,29 +77,45 @@ export default {
 
     .discover-more {
         position: absolute;
+
         bottom: 50px;
         z-index: 4;
         width: 100%;
         display: flex;
-        height: 80px;
         justify-content: center;
         align-items: center;
-        transition: 1s;
+        flex-direction: column;
 
-        h4 {
-            color: var(--light-pink);
-            margin-bottom: 10px;
-        }
-        a {
-            height: 100%;
-            svg {
+        .social-media {
+            width: 100%;
+            z-index: 4;
+            height: 50px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 1s;
+            h4 {
+                color: var(--light-pink);
+                margin-bottom: 10px;
+            }
+            a {
                 height: 100%;
-                transition: 0.5s;
-                fill: var(--pink-gradient);
-                margin-right: 20px;
-                &:hover {
-                    transform: translateY(10px);
-                    cursor: pointer;
+                svg {
+                    height: 100%;
+                    transition: 0.5s;
+                    fill: var(--pink-gradient);
+                    margin-right: 20px;
+                    &:hover {
+                        transform: translateY(10px);
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            :last-child {
+                svg {
+                    margin: 0;
                 }
             }
         }

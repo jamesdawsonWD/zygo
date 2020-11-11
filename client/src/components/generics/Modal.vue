@@ -5,7 +5,7 @@
                 <div class="modal-container">
                     <Hex class="hex-background-image" />
                     <div class="modal-header">
-                        <h2 name="header"></h2>
+                        <h2 name="header">ALPHA SIGNUP</h2>
                         <Cross class="close-cross" @click="$emit('close')" />
                     </div>
 
@@ -66,7 +66,6 @@ export default {
 }
 .modal-container {
     min-width: 300px;
-    max-height: 90vh;
     width: 50%;
     padding: 20px 50px;
     background: var(--pink-gradient);
@@ -77,7 +76,8 @@ export default {
     font-family: Helvetica, Arial, sans-serif;
     overflow: hidden;
     position: relative;
-
+    display: flex;
+    flex-direction: column;
     .hex-background-image {
         left: -350px;
         top: -200px;
@@ -90,11 +90,16 @@ export default {
     margin: 35px 0;
     color: #42b983;
     position: relative;
+    h2 {
+        text-align: center;
+        color: var(--offset-white-pink);
+    }
     .close-cross {
         height: 30px;
         fill: var(--dark-pink);
         position: absolute;
         right: 0;
+        top: 0;
         z-index: 20;
         &:hover {
             cursor: pointer;
