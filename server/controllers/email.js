@@ -30,26 +30,24 @@ exports.send = async (req, res) => {
     readFile(path.join(__dirname, '../../templates', `${template}.hbs`), 'utf8')
         .then((file) => {
             const template = hbs.compile(file);
-            return template(req.body);
-        })
-        .then((compiledTemplate) => {
-            console.log(
-                process.env.SMTP_PORT,
-                process.env.SMTP_SERVER,
-                process.env.SMTP_USERNAME,
-                process.env.SMTP_PASSWORD
+            const compiledTemplate = template(req.body);
+
+            transporter.sendMail(
+                {
+                    from: '"SpaceDX" <official@space-dx.com>', // sender address
+                    to, // list of receivers
+                    subject,
+                    text: '', //TODO: extract text only from html template
+                    html: compiledTemplate,
+                },
+                function () {
+                    res.status(201).send({
+                        code: 201,
+                        status: 'success',
+                        message: 'Template successfully created',
+                    });
+                }
             );
-            transporter.sendMail({
-                from: '"SpaceDX" <official@space-dx.com>', // sender address
-                to, // list of receivers
-                subject,
-                text: '', //TODO: extract text only from html template
-                html: compiledTemplate,
-            });
-            res.status(201).send({ code: 201, status: 'success', message: 'Template successfully created' });
         })
-        // .then(() => createModel(req.body, Email))
-        // .then(saveTemplate)
-        .then(() => {})
         .catch((err) => console.log(err));
 };
