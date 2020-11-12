@@ -6,12 +6,6 @@ const path = require('path');
 const { Email } = require('./../models/email');
 
 /**
- * Helper funcitons
- */
-const saveTemplate = (item) => item.save();
-const createModel = (body, schema) => new schema(body);
-
-/**
  * Endpoints
  */
 exports.send = async (req, res) => {
