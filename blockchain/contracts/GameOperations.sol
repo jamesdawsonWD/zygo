@@ -5,7 +5,7 @@ pragma experimental ABIEncoderV2;
 
 import {GameStorage} from './GameStorage.sol';
 import {SafeMath} from '@openzeppelin/contracts/math/SafeMath.sol';
-import {Initializable} from '@openzeppelin/upgrades-core/contracts/Initializable.sol';
+import {Initializable} from '@openzeppelin/upgrades/contracts/Initializable.sol';
 import {Types} from './lib/Types.sol';
 import {Discovery} from './Discovery.sol';
 import {ITreasury} from './interfaces/ITreasury.sol';

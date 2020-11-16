@@ -1,11 +1,12 @@
 import { takeSnapshot, revertSnapshot } from '../_utils/evm';
-import { generate, trigger } from '../_helpers/gameEvents';
-import { getMasterFleetPosition } from '../_helpers/gameStorage';
+import { addGameEvent, generateGameEvent, triggerGameEvent, newTestEvent } from '../_helpers/gameEvents';
+import { getTotalGameEvents } from '../_helpers/gameStorage';
+import { rawEventsExist } from '../_utils/base';
 import truffleAssert from 'truffle-assertions';
 export default function() {
     contract('GameOperations#Move', async accounts => {
         // Accounts
-        const [owner, UserA, UserB, UserC, UserD] = accounts;
+        const [Owner, UserA, UserB, UserC, UserD] = accounts;
 
         // State snapshotting
         let snapshotId;
@@ -16,34 +17,28 @@ export default function() {
             await revertSnapshot(web3, snapshotId);
         });
 
+        let TestEventA;
+        let TestEventB;
+        let TestEventC;
+        let totalEventsBefore;
         // Setup
-        before(async () => {});
+        before(async () => {
+            TestEventA = await newTestEvent();
+            TestEventB = await newTestEvent();
+            TestEventC = await newTestEvent();
+
+            totalEventsBefore = await getTotalGameEvents(Owner);
+        });
 
         //
         // Deposit
         //
 
-        it('should generate a uint between 0 and the totalNumber of gameEvents ', async () => {
-            await generate(pos1, UserA);
-            const actualPos = await getMasterFleetPosition(UserA);
-            assert.equal(pos1.toString(), actualPos.toString());
-        });
-
-        it('should fail if out of bounds', async () => {
-            await truffleAssert.fails(
-                userMove(outOfBounds, UserA),
-                truffleAssert.ErrorType.revert,
-                'Position must be within set limits of the known universe'
-            );
-        });
-
-        it('should fail if attempting to move to same position', async () => {
-            await userMove(pos1, UserA);
-            await truffleAssert.fails(
-                userMove(pos1, UserA),
-                truffleAssert.ErrorType.revert,
-                'You cannot move to your current location'
-            );
+        it('should add a new GameEvent correctly', async () => {
+            const tx = await addGameEvent(TestEventA, Owner);
+            console.log(tx.receipt.rawLogs);
+            const results = rawEventsExist(['Initialize(uint256)', 'Start(uint256,address,bool)'], tx);
+            console.log(JSON.stringify(results.events[1].args));
         });
     });
 }

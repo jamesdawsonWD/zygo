@@ -15,3 +15,28 @@ export const hasEqualValues = (a, b) => {
     }
     return true;
 };
+
+export const rawEventsExist = (signatures, tx) => {
+    const results = {
+        passed: true,
+        events: []
+    };
+    for (let signature of signatures) {
+        const hash = web3.utils.keccak256(signature);
+        const event = tx.receipt.rawLogs.find(log => log.topics[0] == hash);
+
+        if (typeof event === 'object' && event !== null) {
+            const argTypes = signature.replace(/(^.*\(|\).*$)/g, '').split(',');
+            results.events.push({
+                signature,
+                args: event.topics.slice(1).map((topic, index) => {
+                    console.log(topic, index);
+                    return web3.eth.abi.decodeParameter(argTypes[index], topic);
+                })
+            });
+        } else if (results.passed) {
+            results.passed = false;
+        }
+    }
+    return results;
+};

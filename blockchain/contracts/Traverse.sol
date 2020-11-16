@@ -3,7 +3,7 @@
 pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
-import {Initializable} from '@openzeppelin/upgrades-core/contracts/Initializable.sol';
+import {Initializable} from '@openzeppelin/upgrades/contracts/Initializable.sol';
 import {Types} from './lib/Types.sol';
 import {GameStorage} from './GameStorage.sol';
 import {GameEvents} from './GameEvents.sol';

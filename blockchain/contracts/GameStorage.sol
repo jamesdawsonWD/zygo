@@ -4,7 +4,7 @@ pragma experimental ABIEncoderV2;
 import {SafeMath} from '@openzeppelin/contracts/math/SafeMath.sol';
 import {Random} from './Random.sol';
 import {Types} from './lib/Types.sol';
-import {Initializable} from '@openzeppelin/upgrades-core/contracts/Initializable.sol';
+import {Initializable} from '@openzeppelin/upgrades/contracts/Initializable.sol';
 import {Constants} from './Constants.sol';
 import {Ownable} from '@openzeppelin/contracts/access/Ownable.sol';
 

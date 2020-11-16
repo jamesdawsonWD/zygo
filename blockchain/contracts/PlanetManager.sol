@@ -8,7 +8,7 @@ import {GameStorage} from './GameStorage.sol';
 import {IPlanets} from './interfaces/IPlanets.sol';
 import {ISolar} from './interfaces/ISolar.sol';
 import {SafeMath} from '@openzeppelin/contracts/math/SafeMath.sol';
-import {Initializable} from '@openzeppelin/upgrades-core/contracts/Initializable.sol';
+import {Initializable} from '@openzeppelin/upgrades/contracts/Initializable.sol';
 
 contract PlanetManager is Ownable, Initializable {
     using SafeMath for uint256;

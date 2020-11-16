@@ -3,7 +3,7 @@
 pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
-import {Initializable} from '@openzeppelin/upgrades-core/contracts/Initializable.sol';
+import {Initializable} from '@openzeppelin/upgrades/contracts/Initializable.sol';
 import {Types} from './lib/Types.sol';
 import {ITreasury} from './interfaces/ITreasury.sol';
 import {GameStorage} from './GameStorage.sol';
@@ -13,6 +13,8 @@ import {Random} from './Random.sol';
 contract GameEvents is Initializable, Random {
     GameStorage GS;
     ITreasury TS;
+
+    event AddGameEvent(uint256 _eventId, address _address);
 
     /**
      *   Initialize - init function
@@ -40,6 +42,7 @@ contract GameEvents is Initializable, Random {
         GS.setGameEventIdToAddress(id, gameEvent);
         IGameEvent(gameEvent).initialize(id);
         GS.setTotalGameEvents(id);
+        emit AddGameEvent(id, gameEvent);
     }
 
     function trigger(address user) public {

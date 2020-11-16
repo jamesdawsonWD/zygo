@@ -11,3 +11,4 @@ export const PlanetC = artifacts.require('Planet');
 export const PlanetManagerC = artifacts.require('PlanetManager');
 export const TraverseC = artifacts.require('Traverse');
 export const GameEventsC = artifacts.require('GameEvents');
+export const TestGameEventC = artifacts.require('GE_DiscoverPlanet.sol');

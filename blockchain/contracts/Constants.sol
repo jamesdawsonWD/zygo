@@ -43,7 +43,7 @@ contract Constants is BaseStorage {
     // Total Ships & Technology
     uint16 constant TOTAL_SAT_ITEMS = 18;
 
-    uint16 constant TOTAL_GAME_EVENTS = 14;
+    uint16 constant TOTAL_GAME_EVENTS = 0;
 
     // Bonus Variables
     uint256 constant DEFENSE_BONUS = 100000;
