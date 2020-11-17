@@ -16,6 +16,10 @@ export async function addGameEvent(gameEvent, from) {
     const GameEvents = await GameEventsC.deployed();
     return await GameEvents.add(gameEvent, { from });
 }
+export async function updateGameEvent(gameEventId, gameEvent, from) {
+    const GameEvents = await GameEventsC.deployed();
+    return await GameEvents.update(gameEventId, gameEvent, { from });
+}
 
 export async function newTestEvent() {
     const GameEvent = await TestGameEventC.new();

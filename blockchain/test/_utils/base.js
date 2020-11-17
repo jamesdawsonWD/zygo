@@ -30,7 +30,6 @@ export const rawEventsExist = (signatures, tx) => {
             results.events.push({
                 signature,
                 args: event.topics.slice(1).map((topic, index) => {
-                    console.log(topic, index);
                     return web3.eth.abi.decodeParameter(argTypes[index], topic);
                 })
             });

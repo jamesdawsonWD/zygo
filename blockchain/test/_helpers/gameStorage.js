@@ -88,9 +88,9 @@ export async function getUserAddressToGameEvent(from) {
     const GameStorage = await GameStorageC.deployed();
     return await GameStorage.getUserAddressToGameEvent(from, { from });
 }
-export async function setUserAddressToGameEvent(gameEvent, from) {
+export async function setUserAddressToGameEvent(user, gameEvent, from) {
     const GameStorage = await GameStorageC.deployed();
-    await GameStorage.setUserAddressToGameEvent(from, gameEvent, { from });
+    await GameStorage.setUserAddressToGameEvent(user, gameEvent, { from });
 }
 export async function getGameEventIdToAddress(gameEvent, from) {
     const GameStorage = await GameStorageC.deployed();
