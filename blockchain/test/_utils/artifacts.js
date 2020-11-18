@@ -10,9 +10,13 @@ export const ConstantsC = artifacts.require('Constants.sol');
 export const PlanetC = artifacts.require('Planet');
 export const PlanetManagerC = artifacts.require('PlanetManager');
 export const TraverseC = artifacts.require('Traverse');
-export const GameEventsC = artifacts.require('GameEvents');
-export const TestGameEventC = artifacts.require('GE_DiscoverPlanet.sol');
+export const GameEventsManagerC = artifacts.require('GameEventsManager');
+export const TestGameEventC = artifacts.require('GE_TestEvent.sol');
 
 // GameEvents
 
 export const GE_DiscoverPlanetC = artifacts.require('GE_DiscoverPlanet.sol');
+export const GE_DiscoverMediumYieldPlanetC = artifacts.require('GE_DiscoverMediumYieldPlanet.sol');
+export const GE_DiscoverHighYieldPlanetC = artifacts.require('GE_DiscoverHighYieldPlanet.sol');
+export const GE_DiscoverInsaneYieldPlanetC = artifacts.require('GE_Discover_1_F_Destroyer.sol');
+export const GE_Discover_1_F_DestroyerC = artifacts.require('GE_Discover_1_F_Destroyer.sol');

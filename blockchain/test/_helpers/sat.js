@@ -17,10 +17,9 @@ export async function satBalanceOfBatch(accounts, ids, from) {
         from
     });
 }
-export async function balanceOf(account, id, from) {
+export async function satBalanceOf(account, id, from) {
     const Sat = await TestSatC.deployed();
-    console.log(Sat);
-    await Sat.balanceOf(account, id, {
+    return await Sat.balanceOf(account, id, {
         from
     });
 }

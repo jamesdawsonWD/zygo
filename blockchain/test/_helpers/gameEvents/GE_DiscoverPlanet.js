@@ -4,7 +4,7 @@ export async function DiscoverPlanetAddress() {
     const DiscoverPlanet = await GE_DiscoverPlanetC.deployed();
     return DiscoverPlanet.address;
 }
-export async function DiscoverPlanetStart() {
+export async function DiscoverPlanetStart(user, from) {
     const DiscoverPlanet = await GE_DiscoverPlanetC.deployed();
-    return DiscoverPlanet.address;
+    return DiscoverPlanet.start(user, { from });
 }

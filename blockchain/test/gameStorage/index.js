@@ -32,7 +32,7 @@ import { planetTokenAddress } from '../_helpers/planetToken';
 import { traverseAddress } from '../_helpers/traverse';
 import { treasuryAddress } from '../_helpers/treasury';
 import { planetManagerAddress } from '../_helpers/planetManager';
-import { gameEventsAddress } from '../_helpers/gameEvents';
+import { gameEventsAddress } from '../_helpers/gameEventsManager';
 import { TEST_ADDRESS, BOUNDARIES, START_POSITION } from '../lib/testValues';
 import truffleAssert from 'truffle-assertions';
 export default function() {

@@ -16,24 +16,20 @@ contract Treasury is ERC1155Holder, ERC721Holder, Ownable {
     ISat sats;
     mapping(address => bool) operators;
 
-    modifier onlyOperator() {
-        // Make sure the access is permitted to only contracts in our Dapp
-        require(operators[msg.sender], 'Only Operator');
-        _;
-    }
-
     function initialize(
         address _planets,
         address _solar,
         address _sats,
         address _gameOperations,
-        address _planetManager
+        address _planetManager,
+        address _gameEventsManager
     ) public onlyOwner {
         planets = IPlanets(_planets);
         solar = ISolar(_solar);
         sats = ISat(_sats);
         operators[_gameOperations] = true;
         operators[_planetManager] = true;
+        operators[_gameEventsManager] = true;
     }
 
     function addOperator(address _operator) public onlyOwner {
@@ -44,7 +40,7 @@ contract Treasury is ERC1155Holder, ERC721Holder, Ownable {
         address _to,
         uint256[] memory _ids,
         uint256[] memory _amounts
-    ) public onlyOperator {
+    ) public {
         sats.safeBatchTransferFrom(address(this), _to, _ids, _amounts, '');
     }
 
@@ -52,15 +48,15 @@ contract Treasury is ERC1155Holder, ERC721Holder, Ownable {
         address _from,
         uint256[] memory _ids,
         uint256[] memory _amounts
-    ) public onlyOperator {
+    ) public {
         sats.safeBatchTransferFrom(_from, address(this), _ids, _amounts, '');
     }
 
-    function mintPlanet(address _to, uint256 _tokenId) public onlyOperator {
+    function mintPlanet(address _to, uint256 _tokenId) public {
         planets.mint(_to, _tokenId);
     }
 
-    function recievePlanet(address _from, uint256 _tokenId) public onlyOperator {
+    function recievePlanet(address _from, uint256 _tokenId) public {
         planets.safeTransferFrom(_from, address(this), _tokenId);
     }
 
@@ -68,19 +64,19 @@ contract Treasury is ERC1155Holder, ERC721Holder, Ownable {
         address _from,
         address _to,
         uint256 _tokenId
-    ) public onlyOperator {
+    ) public {
         planets.safeTransferFrom(_from, _to, _tokenId);
     }
 
-    function sendPlanet(address _to, uint256 _tokenId) public onlyOperator {
+    function sendPlanet(address _to, uint256 _tokenId) public {
         planets.safeTransferFrom(address(this), _to, _tokenId);
     }
 
-    function mintSolar(address _to, uint256 _amount) public onlyOperator {
+    function mintSolar(address _to, uint256 _amount) public {
         solar.mint(_to, _amount);
     }
 
-    function sendSolar(address _to, uint256 _amount) public onlyOperator {
+    function sendSolar(address _to, uint256 _amount) public {
         solar.transfer(_to, _amount);
     }
 
@@ -88,12 +84,12 @@ contract Treasury is ERC1155Holder, ERC721Holder, Ownable {
         address _to,
         uint256 _amount,
         uint256 _reward
-    ) public onlyOperator {
+    ) public {
         solar.transfer(_to, _amount);
         solar.mint(_to, _reward);
     }
 
-    function recieveSolar(address _from, uint256 _amount) public onlyOperator {
+    function recieveSolar(address _from, uint256 _amount) public {
         solar.transferFrom(_from, address(this), _amount);
     }
 }

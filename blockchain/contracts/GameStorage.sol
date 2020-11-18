@@ -88,7 +88,7 @@ contract GameStorage is Random, Constants, Ownable {
         tokenIdToProxyAddress[token] = _address;
     }
 
-    function incrementTotalPlanets() public onlyOperator returns (uint256) {
+    function incrementTotalPlanets() public returns (uint256) {
         totalPlanets += 1;
         return totalPlanets;
     }

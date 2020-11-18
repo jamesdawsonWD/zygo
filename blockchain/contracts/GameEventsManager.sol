@@ -10,11 +10,13 @@ import {GameStorage} from './GameStorage.sol';
 import {IGameEvent} from './interfaces/IGameEvent.sol';
 import {Random} from './Random.sol';
 
-contract GameEvents is Initializable, Random {
+contract GameEventsManager is Initializable, Random {
     GameStorage GS;
     ITreasury TS;
 
     event AddGameEvent(uint256 _eventId, address _address);
+    event LogCreatePlanet(uint256 indexed _eventId, address indexed _reciever);
+    event LogGiveSats(uint256 indexed _eventId, address indexed _reciever);
 
     /**
      *   Initialize - init function
@@ -39,14 +41,14 @@ contract GameEvents is Initializable, Random {
      */
     function add(address gameEvent) public {
         uint256 id = GS.getTotalGameEvents() + 1;
-        IGameEvent(gameEvent).initialize(id);
+        IGameEvent(gameEvent).initialize(id, address(this));
         GS.setGameEventIdToAddress(id, gameEvent);
         GS.setTotalGameEvents(id);
         emit AddGameEvent(id, gameEvent);
     }
 
     function update(uint256 gameEventId, address gameEvent) public {
-        IGameEvent(gameEvent).initialize(gameEventId);
+        IGameEvent(gameEvent).initialize(gameEventId, address(this));
         GS.setGameEventIdToAddress(gameEventId, gameEvent);
         emit AddGameEvent(gameEventId, gameEvent);
     }
@@ -58,17 +60,26 @@ contract GameEvents is Initializable, Random {
         IGameEvent(_address).start(user);
     }
 
-    function createPlanet(address to, uint256 yield) public {
+    function createPlanet(
+        uint256 yieldLow,
+        uint256 yieldHigh,
+        address to,
+        uint256 eventId
+    ) public {
+        uint256 yield = randomrange(yieldLow, yieldHigh);
         uint256 _id = GS.incrementTotalPlanets();
         GS.setTokenIdToYield(_id, yield);
         TS.mintPlanet(to, _id);
+        emit LogCreatePlanet(eventId, to);
     }
 
     function giveSats(
         address to,
         uint256[] memory ids,
-        uint256[] memory amounts
+        uint256[] memory amounts,
+        uint256 eventId
     ) public {
+        emit LogGiveSats(eventId, to);
         TS.sendSats(to, ids, amounts);
     }
 

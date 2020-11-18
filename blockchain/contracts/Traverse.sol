@@ -6,7 +6,7 @@ pragma experimental ABIEncoderV2;
 import {Initializable} from '@openzeppelin/upgrades/contracts/Initializable.sol';
 import {Types} from './lib/Types.sol';
 import {GameStorage} from './GameStorage.sol';
-import {GameEvents} from './GameEvents.sol';
+import {GameEventsManager} from './GameEventsManager.sol';
 
 /**
  * @title Operation
@@ -16,7 +16,7 @@ import {GameEvents} from './GameEvents.sol';
  */
 contract Traverse is Initializable {
     GameStorage GS;
-    GameEvents GE;
+    GameEventsManager GE;
 
     // ============ Events ============
     event LogMove(uint8 quadrant, uint8 district, uint8 sector, uint256 star);
@@ -27,7 +27,7 @@ contract Traverse is Initializable {
      */
     function initialize(address _gameStorage) public initializer {
         GS = GameStorage(_gameStorage);
-        GE = GameEvents(GS.getGameEventsAddress());
+        GE = GameEventsManager(GS.getGameEventsAddress());
     }
 
     /**
@@ -55,7 +55,7 @@ contract Traverse is Initializable {
 
         require(!Types.positionIsEqual(to, from), 'You cannot move to your current location');
 
-        // Create and store the next event in store for the user in a private mapping
+        // Create and store the next event for the user in a private mapping
         GS.setUserAddressToGameEvent(msg.sender, GE.generate());
 
         GS.setMasterFleetPosition(msg.sender, to);
