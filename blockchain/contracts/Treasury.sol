@@ -20,14 +20,12 @@ contract Treasury is ERC1155Holder, ERC721Holder, Ownable {
         address _planets,
         address _solar,
         address _sats,
-        address _gameOperations,
         address _planetManager,
         address _gameEventsManager
     ) public onlyOwner {
         planets = IPlanets(_planets);
         solar = ISolar(_solar);
         sats = ISat(_sats);
-        operators[_gameOperations] = true;
         operators[_planetManager] = true;
         operators[_gameEventsManager] = true;
     }

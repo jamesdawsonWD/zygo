@@ -1,0 +1,37 @@
+{
+  "manifestVersion": "3.1",
+  "impls": {
+    "f25894ceaab21949dd339273c668e77b31658d2ce08b1683cf390d9099f294ec": {
+      "address": "0x864CAB4542df2425e47Cb70625d3e1FAA49162B9",
+      "txHash": "0xe73d0ea6e4a2a8d64fb8410be8aa816abb78fc4c1c73d1f0c24bcdd76232fa6a",
+      "layout": {
+        "storage": [
+          {
+            "contract": "GE_Discover_1_F_Destroyer",
+            "label": "eventId",
+            "type": "t_uint256",
+            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_Discover_1_F_Destroyer.sol:8"
+          },
+          {
+            "contract": "GE_Discover_1_F_Destroyer",
+            "label": "gameEventsManager",
+            "type": "t_contract(IGameEventsManager)4995",
+            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_Discover_1_F_Destroyer.sol:9"
+          }
+        ],
+        "types": {
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_contract(IGameEventsManager)4995": {
+            "label": "contract IGameEventsManager"
+          }
+        }
+      }
+    }
+  },
+  "admin": {
+    "address": "0x804ec69a95e6059f538722FDd02ab8EE1d75Ad34",
+    "txHash": "0xdf878bedfa1a242a1349e19906825f7d875d46f0f5c356dc3f006449392ffa7a"
+  }
+}

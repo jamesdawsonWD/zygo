@@ -18,7 +18,6 @@ contract GameStorage is Random, Constants, Ownable {
         address _treasury,
         address _traverse,
         address _planetManager,
-        address _gameOperations,
         address _gameEvents
     ) public {
         solar = _solar;
@@ -29,7 +28,6 @@ contract GameStorage is Random, Constants, Ownable {
         planetManager = _planetManager;
         gameEvents = _gameEvents;
         resetConstants();
-        addOperator(_gameOperations);
     }
 
     function addOperator(address _operator) public onlyOwner {

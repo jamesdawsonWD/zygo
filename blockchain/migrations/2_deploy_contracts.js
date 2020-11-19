@@ -13,21 +13,24 @@ const TypesLib = artifacts.require('Types');
 const PlanetManager = artifacts.require('PlanetManager');
 const Planet = artifacts.require('Planet');
 const TestShipsAndTechnology = artifacts.require('TestShipsAndTechnology.sol');
-const TestGameOperations = artifacts.require('TestGameOperations.sol');
 const TestTreasury = artifacts.require('TestTreasury.sol');
 const GameEventsManager = artifacts.require('GameEventsManager.sol');
 const GE_DiscoverPlanet = artifacts.require('GE_DiscoverPlanet');
 const GE_Discover_1_F_Destroyer = artifacts.require('GE_Discover_1_F_Destroyer.sol');
 const Traverse = artifacts.require('Traverse.sol');
-
+const PROXY_GE_Discover_1_F_Destroyer = artifacts.require('PROXY_GE_Discover_1_F_Destroyer');
+// Proxies
 async function deployBaseProtocol(deployer, network, accounts) {
     const Sat = TestShipsAndTechnology;
-    const GameOperations = TestGameOperations;
     const Treasury = TestTreasury;
 
     // GameEvents
     await deployer.deploy(GE_DiscoverPlanet);
-    await deployer.deploy(GE_Discover_1_F_Destroyer);
+    // await deployer.deploy(GE_Discover_1_F_Destroyer);
+    const PROXY_GE_Discover_1_F_Destroyer = await deployProxy(GE_Discover_1_F_Destroyer, [], {
+        deployer,
+        initializer: false
+    });
 
     // Library
     await deployer.deploy(TypesLib);
@@ -47,6 +50,8 @@ async function deployBaseProtocol(deployer, network, accounts) {
 
     // Storage
     await deployer.deploy(GameStorage);
+    // Proxies
+    // await deployer.deploy(PROXY_GE_Discover_1_F_Destroyer);
 
     const [GameStorageD, TreasuryD, GameEventsManagerD, TraverseD, PlanetManagerD] = await Promise.all([
         GameStorage.deployed(),
@@ -62,14 +67,12 @@ async function deployBaseProtocol(deployer, network, accounts) {
         Treasury.address,
         Traverse.address,
         PlanetManager.address,
-        GameOperations.address,
         GameEventsManager.address
     );
     await TreasuryD.initialize(
         PlanetsToken.address,
         Solar.address,
         Sat.address,
-        GameOperations.address,
         PlanetManager.address,
         GameEventsManager.address
     );
@@ -79,7 +82,7 @@ async function deployBaseProtocol(deployer, network, accounts) {
     await GameEventsManagerD.initialize(GameStorage.address);
     await Promise.all([
         GameEventsManagerD.add(GE_DiscoverPlanet.address),
-        GameEventsManagerD.add(GE_Discover_1_F_Destroyer.address)
+        GameEventsManagerD.add(PROXY_GE_Discover_1_F_Destroyer.address)
     ]);
 }
 
