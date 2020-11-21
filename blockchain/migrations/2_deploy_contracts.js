@@ -12,26 +12,28 @@ const GameStorage = artifacts.require('GameStorage');
 const TypesLib = artifacts.require('Types');
 const PlanetManager = artifacts.require('PlanetManager');
 const Planet = artifacts.require('Planet');
+
+// Testing
 const TestShipsAndTechnology = artifacts.require('TestShipsAndTechnology.sol');
 const TestTreasury = artifacts.require('TestTreasury.sol');
+const TestPlanetTokens = artifacts.require('TestPlanetTokens.sol');
+
+// GameEvents
 const GameEventsManager = artifacts.require('GameEventsManager.sol');
 const GE_DiscoverPlanet = artifacts.require('GE_DiscoverPlanet');
 const GE_Discover_1_F_Destroyer = artifacts.require('GE_Discover_1_F_Destroyer.sol');
+const GameEventsStorage = artifacts.require('GameEventsStorage.sol');
+
+// Travel
 const Traverse = artifacts.require('Traverse.sol');
-const PROXY_GE_Discover_1_F_Destroyer = artifacts.require('PROXY_GE_Discover_1_F_Destroyer');
-// Proxies
+
+// Random
+const Random = artifacts.require('Random.sol');
+
 async function deployBaseProtocol(deployer, network, accounts) {
     const Sat = TestShipsAndTechnology;
     const Treasury = TestTreasury;
-
-    // GameEvents
-    await deployer.deploy(GE_DiscoverPlanet);
-    // await deployer.deploy(GE_Discover_1_F_Destroyer);
-    const PROXY_GE_Discover_1_F_Destroyer = await deployProxy(GE_Discover_1_F_Destroyer, [], {
-        deployer,
-        initializer: false
-    });
-
+    const PlanetsToken = TestPlanetTokens;
     // Library
     await deployer.deploy(TypesLib);
 
@@ -42,21 +44,49 @@ async function deployBaseProtocol(deployer, network, accounts) {
     await deployer.deploy(PlanetsToken, Treasury.address);
     await deployer.deploy(Planet);
     await deployer.deploy(Traverse);
-    await deployer.deploy(GameEventsManager);
     await deployer.deploy(PlanetManager);
+    await deployer.deploy(GameEventsStorage);
 
     // Links
     await Promise.all([deployer.link(TypesLib, GameStorage)]);
 
     // Storage
     await deployer.deploy(GameStorage);
-    // Proxies
-    // await deployer.deploy(PROXY_GE_Discover_1_F_Destroyer);
 
-    const [GameStorageD, TreasuryD, GameEventsManagerD, TraverseD, PlanetManagerD] = await Promise.all([
+    const [PROXY_Random] = await Promise.all([
+        deployProxy(Random, [], {
+            deployer
+        })
+    ]);
+    // Proxies
+    const [
+        PROXY_GE_Discover_1_F_Destroyer,
+        PROXY_GE_DiscoverPlanet,
+        PROXY_GamEventsManager,
+        PROXY_Traverse
+    ] = await Promise.all([
+        deployProxy(GE_Discover_1_F_Destroyer, [], {
+            deployer,
+            initializer: false
+        }),
+        deployProxy(GE_DiscoverPlanet, [], {
+            deployer,
+            initializer: false
+        }),
+        deployProxy(GameEventsManager, [], {
+            deployer,
+            initializer: false
+        }),
+        deployProxy(Traverse, [], {
+            deployer,
+            initializer: false,
+            unsafeAllowCustomTypes: true
+        })
+    ]);
+
+    const [GameStorageD, TreasuryD, TraverseD, PlanetManagerD] = await Promise.all([
         GameStorage.deployed(),
         Treasury.deployed(),
-        GameEventsManager.deployed(),
         Traverse.deployed(),
         PlanetManager.deployed()
     ]);
@@ -65,24 +95,30 @@ async function deployBaseProtocol(deployer, network, accounts) {
         Sat.address,
         PlanetsToken.address,
         Treasury.address,
-        Traverse.address,
+        PROXY_Traverse.address,
         PlanetManager.address,
-        GameEventsManager.address
+        PROXY_GamEventsManager.address
     );
     await TreasuryD.initialize(
         PlanetsToken.address,
         Solar.address,
         Sat.address,
         PlanetManager.address,
-        GameEventsManager.address
+        PROXY_GamEventsManager.address
     );
 
-    await PlanetManagerD.initialize(GameStorage.address);
-    await TraverseD.initialize(GameStorage.address);
-    await GameEventsManagerD.initialize(GameStorage.address);
+    await PlanetManagerD.initialize(GameStorage.address, Planet.address);
+    await PROXY_Traverse.initialize(GameStorage.address, PROXY_GamEventsManager.address);
+    await PROXY_GamEventsManager.initialize(
+        GameStorage.address,
+        GameEventsStorage.address,
+        PROXY_Random.address,
+        PROXY_Traverse.address
+    );
+
     await Promise.all([
-        GameEventsManagerD.add(GE_DiscoverPlanet.address),
-        GameEventsManagerD.add(PROXY_GE_Discover_1_F_Destroyer.address)
+        PROXY_GamEventsManager.add(PROXY_GE_DiscoverPlanet.address),
+        PROXY_GamEventsManager.add(PROXY_GE_Discover_1_F_Destroyer.address)
     ]);
 }
 

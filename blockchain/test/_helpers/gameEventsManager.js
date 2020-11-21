@@ -1,7 +1,10 @@
-import { GameEventsManagerC } from '../_utils/artifacts';
-import { TestGameEventC } from '../_utils/artifacts';
+import { GameEventsManagerC, TestGameEventC, GameEventsStorageC } from '../_utils/artifacts';
+import { deployProxy, upgradeProxy } from '@openzeppelin/truffle-upgrades';
+import { gameStorageAddress } from './gameStorage';
+
 export async function gameEventsManagerAddress() {
-    const GameEventsManager = await GameEventsManagerC.deployed();
+    const GameEventsStorage = await GameEventsStorageC.deployed();
+
     return GameEventsManager.address;
 }
 export async function generateGameEvent(from) {
@@ -21,7 +24,9 @@ export async function updateGameEvent(gameEventId, gameEvent, from) {
     return await GameEventsManager.update(gameEventId, gameEvent, { from });
 }
 
-export async function newTestEvent() {
-    const GameEvent = await TestGameEventC.new();
+export async function newTestEventProxy() {
+    const GameEvent = await deployProxy(TestGameEventC, [], {
+        initializer: false
+    });
     return GameEvent.address;
 }

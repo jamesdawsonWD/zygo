@@ -25,9 +25,9 @@ contract Traverse is Initializable {
      *   Initialize - init function
      *   @param _gameStorage - the address of the games eternal storage
      */
-    function initialize(address _gameStorage) public initializer {
+    function initialize(address _gameStorage, address _gameEventsManager) public initializer {
         GS = GameStorage(_gameStorage);
-        GE = GameEventsManager(GS.getGameEventsAddress());
+        GE = GameEventsManager(_gameEventsManager);
     }
 
     /**

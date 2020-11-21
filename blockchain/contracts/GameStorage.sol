@@ -2,13 +2,12 @@ pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
 import {SafeMath} from '@openzeppelin/contracts/math/SafeMath.sol';
-import {Random} from './Random.sol';
 import {Types} from './lib/Types.sol';
 import {Initializable} from '@openzeppelin/upgrades/contracts/Initializable.sol';
 import {Constants} from './Constants.sol';
 import {Ownable} from '@openzeppelin/contracts/access/Ownable.sol';
 
-contract GameStorage is Random, Constants, Ownable {
+contract GameStorage is Constants, Ownable {
     using SafeMath for uint256;
 
     function initialize(
@@ -67,6 +66,15 @@ contract GameStorage is Random, Constants, Ownable {
 
     function getGameEventsAddress() public view returns (address) {
         return gameEvents;
+    }
+
+    //************** PROXY ACCESS *********************/
+    function setProxyAccessAddress(address proxy, address requestor) public {
+        proxyAccessAddresses[proxy] = requestor;
+    }
+
+    function getProxyAccessAddress(address proxy) public returns (address) {
+        proxyAccessAddresses[proxy];
     }
 
     //************** PLANET MANAGER *********************/
@@ -159,24 +167,6 @@ contract GameStorage is Random, Constants, Ownable {
     }
 
     //************** BATTLING *********************/
-    function getAiFleetInfo(Types.SystemType systemType) public returns (uint256 offense, uint256 defense) {
-        if (systemType == Types.SystemType.AlienFleetAggressive) {
-            uint8 min = easyAiRange.low;
-            uint8 max = easyAiRange.high;
-            offense = randomrange(min, max);
-            defense = randomrange(min, max);
-        } else if (systemType == Types.SystemType.AdvancedAlienFleetAggressive) {
-            uint8 min = mediumAiRange.low;
-            uint8 max = mediumAiRange.high;
-            offense = randomrange(min, max);
-            defense = randomrange(min, max);
-        } else if (systemType == Types.SystemType.AncientFleetAggressive) {
-            uint8 min = insaneAiRange.low;
-            uint8 max = insaneAiRange.high;
-            offense = randomrange(min, max);
-            defense = randomrange(min, max);
-        }
-    }
 
     function getTotalSats() public view returns (uint256) {
         return totalSats;

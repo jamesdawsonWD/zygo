@@ -4,7 +4,7 @@ pragma experimental ABIEncoderV2;
 import {Planets} from '../Planets.sol';
 
 /* solium-disable-next-line */
-contract TestPlanets is Planets {
+contract TestPlanetTokens is Planets {
     function testMint(address _to, uint256 _tokenId) public {
         _safeMint(_to, _tokenId);
     }

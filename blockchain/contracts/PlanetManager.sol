@@ -16,24 +16,22 @@ contract PlanetManager is Ownable, Initializable {
     IPlanets planets;
     ISolar solar;
     GameStorage gs;
-    address planetImplementation;
-    event ProxyCreated(address proxy);
-
+    address public planetImplementation;
+    event ProxyCreated(address proxy, uint256 tokenId);
     modifier onlyPlanet() {
         require(gs.getProxyAddressToTokenId(msg.sender) != 0, 'Only planets');
         _;
     }
 
-    function initialize(address _gameStorage) public initializer {
+    function initialize(address _gameStorage, address _impl) public initializer {
         gs = GameStorage(_gameStorage);
         ts = ITreasury(gs.getTreasuryAddress());
-        planetImplementation = gs.getPlanetImplementation();
+        planetImplementation = _impl;
         solar = ISolar(gs.getSolarAddress());
         planets = IPlanets(gs.getPlanetsAddress());
     }
 
     function createPlanet(uint256 tokenId) public returns (address) {
-        emit ProxyCreated(planetImplementation);
         bytes memory _data = abi.encodeWithSignature(
             'initialize(address,uint256,uint256)',
             address(gs),
@@ -42,6 +40,7 @@ contract PlanetManager is Ownable, Initializable {
         );
         address proxy = deployMinimal(planetImplementation, _data);
         gs.setProxyAddressToTokenId(tokenId, proxy);
+        emit ProxyCreated(proxy, tokenId);
         return proxy;
     }
 
@@ -71,7 +70,6 @@ contract PlanetManager is Ownable, Initializable {
             proxy := create(0, clone, 0x37)
         }
 
-        emit ProxyCreated(address(proxy));
         if (_data.length > 0) {
             (bool success, ) = proxy.call(_data);
             require(success);

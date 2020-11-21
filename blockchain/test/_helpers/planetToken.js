@@ -4,9 +4,13 @@ export async function planetTokenAddress() {
     const PlanetToken = await PlanetTokenC.deployed();
     return PlanetToken.address;
 }
-export async function pintPlanetToken(to, tokenId, from) {
+export async function mintPlanetToken(to, tokenId, from) {
     const PlanetToken = await PlanetTokenC.deployed();
     return await PlanetToken.mint(to, tokenId, { from });
+}
+export async function testMintPlanetToken(to, tokenId, from) {
+    const PlanetToken = await PlanetTokenC.deployed();
+    return await PlanetToken.testMint(to, tokenId, { from });
 }
 export async function planetTokenOwnerOf(tokenId, from) {
     const PlanetToken = await PlanetTokenC.deployed();

@@ -14,6 +14,7 @@ contract BaseStorage {
     mapping(uint256 => mapping(uint256 => mapping(uint256 => mapping(uint256 => Types.SystemType))))
         internal positionToSystemType;
 
+    mapping(address => address) proxyAccessAddresses;
     address internal solar;
     address internal planetManager;
     address internal planets;

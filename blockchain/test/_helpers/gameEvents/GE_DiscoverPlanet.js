@@ -1,4 +1,5 @@
 import { GE_DiscoverPlanetC } from '../../_utils/artifacts';
+import { deployProxy, upgradeProxy } from '@openzeppelin/truffle-upgrades';
 
 export async function DiscoverPlanetAddress() {
     const DiscoverPlanet = await GE_DiscoverPlanetC.deployed();

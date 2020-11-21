@@ -1,5 +1,9 @@
 import { GameStorageC } from '../_utils/artifacts';
 
+export async function gameStorageAddress(from) {
+    const GameStorage = await GameStorageC.deployed();
+    return GameStorage.address;
+}
 /**************** Addresses ***********************/
 export async function getSolarAddress(from) {
     const GameStorage = await GameStorageC.deployed();

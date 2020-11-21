@@ -1,5 +1,8 @@
 import { takeSnapshot, revertSnapshot } from '../_utils/evm';
-import { addGameEvent, updateGameEvent, triggerGameEvent, newTestEvent } from '../_helpers/gameEventsManager';
+import { addGameEvent, triggerGameEvent, newTestEventProxy } from '../_helpers/gameEventsManager';
+import { gameStorageAddress } from '../_helpers/gameStorage';
+import { deployProxy } from '@openzeppelin/truffle-upgrades';
+import { RandomC, GameEventsManagerC, GameEventsStorageC } from '../_utils/artifacts';
 import {
     getTotalGameEvents,
     getGameEventIdToAddress,
@@ -28,13 +31,25 @@ export default function() {
         let TestEventB;
         let TestEventC;
         let totalEventsBefore;
+        let ProxyGameEventsManager;
         // Setup
         before(async () => {
-            TestEventA = await newTestEvent();
-            TestEventB = await newTestEvent();
-            TestEventC = await newTestEvent();
+            TestEventA = await newTestEventProxy();
+            TestEventB = await newTestEventProxy();
+            TestEventC = await newTestEventProxy();
+
+            const gameEventStorage = GameEventsStorageC.deployed();
 
             totalEventsBefore = await getTotalGameEvents(Owner);
+
+            const Random = await RandomC.deployed();
+            ProxyGameEventsManager = await deployProxy(
+                GameEventsManagerC,
+                [gameStorageAddress(), gameEventStorage.address, Random.address, Owner],
+                {
+                    initializer: false
+                }
+            );
         });
 
         // It should pass
@@ -52,11 +67,11 @@ export default function() {
             assert.equal(new BigNumber(total).toNumber(), new BigNumber(totalEventsBefore).toNumber() + 1);
         });
         it('should trigger a single GameEvent correctly', async () => {
-            await addGameEvent(TestEventA, Owner);
+            await ProxyGameEventsManager.add(TestEventA, { from: Owner });
             const gameEventId = new BigNumber(totalEventsBefore).toNumber() + 1;
             await setUserAddressToGameEvent(UserA, gameEventId, Owner);
 
-            const tx = await triggerGameEvent(UserA, Owner);
+            const tx = await ProxyGameEventsManager.trigger(UserA, { from: Owner });
             const results = rawEventsExist(['Start(uint256,address)'], tx);
             assert.ok(results.passed);
         });
@@ -91,22 +106,6 @@ export default function() {
             assert.ok(resultsC.passed);
             assert.equal(eventAddressC, TestEventA);
 
-            assert.equal(new BigNumber(total).toNumber(), new BigNumber(totalEventsBefore).toNumber() + 1);
-        });
-
-        it('should update an existing gameEvent to a new gameEvent', async () => {
-            await addGameEvent(TestEventA, Owner);
-            const gameEventId = new BigNumber(totalEventsBefore).toNumber() + 1;
-            const tx = await updateGameEvent(gameEventId, TestEventB, Owner);
-            const total = await getTotalGameEvents(Owner);
-            const eventAddress = await getGameEventIdToAddress(gameEventId, Owner);
-            const results = rawEventsExist(['Initialize(uint256)'], tx);
-            assert.equal(
-                results.events[0].args[0],
-                gameEventId,
-                'EventId must match the eventId in the Initialize event'
-            );
-            assert.equal(eventAddress, TestEventB, 'Set address must match');
             assert.equal(new BigNumber(total).toNumber(), new BigNumber(totalEventsBefore).toNumber() + 1);
         });
     });

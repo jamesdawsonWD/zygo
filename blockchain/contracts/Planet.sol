@@ -32,8 +32,8 @@ contract Planet is ERC1155Holder, Initializable {
 
     function initialize(
         address _gameStorage,
-        uint256 _yield,
-        uint256 _tokenId
+        uint256 _tokenId,
+        uint256 _yield
     ) public {
         tokenId = _tokenId;
         yield = _yield;
