@@ -1,3 +1,6 @@
+pragma solidity 0.6.12;
+pragma experimental ABIEncoderV2;
+
 import {ERC1155Holder} from '@openzeppelin/contracts/token/ERC1155/ERC1155Holder.sol';
 import {ISolar} from './interfaces/ISolar.sol';
 import {ISat} from './interfaces/ISat.sol';

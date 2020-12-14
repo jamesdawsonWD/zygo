@@ -9,7 +9,7 @@ export async function gameEventsManagerAddress() {
 }
 export async function generateGameEvent(from) {
     const GameEventsManager = await GameEventsManagerC.deployed();
-    return await GameEventsManager.generate({ from });
+    return await GameEventsManager.generate.call({ from });
 }
 export async function triggerGameEvent(user, from) {
     const GameEventsManager = await GameEventsManagerC.deployed();

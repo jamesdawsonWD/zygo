@@ -3,10 +3,10 @@ import { ActionTree, ActionContext } from 'vuex';
 import { RootState, Network } from '../types';
 import Web3 from 'web3';
 import Treasury from '@/../build/contracts/TestTreasury.json';
-import GameOperations from '@/../build/contracts/TestGameOperations.json';
+import Traverse from '@/../build/contracts/Traverse.json';
 import Solar from '@/../build/contracts/SolarToken.json';
 import Sat from '@/../build/contracts/TestShipsAndTechnology.json';
-import FHR from '@/../build/contracts/FederalHarvestingRights.json';
+import FHR from '@/../build/contracts/Planets.json';
 import GameStorage from '@/../build/contracts/GameStorage.json';
 import Planet from '@/../build/contracts/Planet.json';
 

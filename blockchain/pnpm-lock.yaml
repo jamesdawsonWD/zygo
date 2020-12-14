@@ -11,7 +11,7 @@ dependencies:
 devDependencies:
   '@babel/runtime': 7.12.5
   '@openzeppelin/contracts': 3.2.0
-  '@openzeppelin/truffle-upgrades': 1.2.3_truffle@5.1.53
+  '@openzeppelin/truffle-upgrades': 1.2.5
   '@typescript-eslint/eslint-plugin': 4.7.0_44dbabe4697e7c66a57d75fc37a41ec3
   '@typescript-eslint/parser': 4.7.0_eslint@6.8.0+typescript@3.9.7
   babel-polyfill: 6.26.0
@@ -266,18 +266,17 @@ packages:
     dev: true
     resolution:
       integrity: sha512-bUOmkSoPkjnUyMiKo6RYnb0VHBk5D9KKDAgNLzF41aqAM3TeE0yGdFF5dVRcV60pZdJLlyFT/jjXIZCWyyEzAQ==
-  /@openzeppelin/truffle-upgrades/1.2.3_truffle@5.1.53:
+  /@openzeppelin/truffle-upgrades/1.2.5:
     dependencies:
       '@openzeppelin/upgrades-core': 1.3.1
       '@truffle/contract': 4.2.30
       solidity-ast: 0.4.13
-      truffle: 5.1.53
     dev: true
     hasBin: true
     peerDependencies:
       truffle: ^5.1.35
     resolution:
-      integrity: sha512-fl184TyOuMDiprfX4VgXKufKXyw7q0NrreXrlRyeo0vWtSVnpIMbV5rxEQ0SL82T5d4U8p8l8zymHVPQ626sDA==
+      integrity: sha512-gBMreQdjnMWkdczzi3XC/+HolCdF67TxoR9TKKtBuPjy+AXPJ+nxP9eYdOKtISQsi10bPj5AghiGYc2D7CfdlA==
   /@openzeppelin/upgrades-core/1.3.1:
     dependencies:
       bn.js: 5.1.3
@@ -567,7 +566,7 @@ packages:
       integrity: sha512-6u3x/iIN5fyj8pib5QTUDmIOUiwAGhaqdSTXdqCu6v9zo2BEwdCqgEJd1uXDh3DBmPRDfiZ/ge8oUPy7LerpHg==
   /@types/bn.js/4.11.6:
     dependencies:
-      '@types/node': 12.19.4
+      '@types/node': 14.14.7
     resolution:
       integrity: sha512-pqr857jrp2kPuO9uRjZ3PwnJTjoQy+fcdxvBTvHm6dkmEL9q+hDD/2j/0ELOBPtPnS8LjCX0gI9nbl8lVkadpg==
   /@types/cbor/2.0.0:
@@ -3299,7 +3298,7 @@ packages:
       integrity: sha512-bfttrr3/7gG4E02HoWTDUcDDslN003OlOoBxk9virpAZQ1ja/jDgwkWB8QfJF7ojuEowrqy+lzp9VcJG7/k5bQ==
   /eth-lib/0.2.7:
     dependencies:
-      bn.js: 4.11.8
+      bn.js: 4.11.9
       elliptic: 6.5.3
       xhr-request-promise: 0.1.3
     resolution:
@@ -4502,6 +4501,7 @@ packages:
     resolution:
       integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
   /highlight.js/9.18.3:
+    deprecated: Version no longer supported. Upgrade to @latest
     dev: true
     resolution:
       integrity: sha512-zBZAmhSupHIl5sITeMqIJnYCDfAEc3Gdkqj65wC1lpI468MMQeeQkhcIAvk+RylAkxrCcI9xy9piHiXeQ1BdzQ==
@@ -9650,7 +9650,7 @@ packages:
 specifiers:
   '@babel/runtime': ^7.9.2
   '@openzeppelin/contracts': ^3.1.0
-  '@openzeppelin/truffle-upgrades': ^1.1.0
+  '@openzeppelin/truffle-upgrades': ^1.2.5
   '@openzeppelin/upgrades': ^2.8.0
   '@truffle/hdwallet-provider': ^1.1.1
   '@typescript-eslint/eslint-plugin': ^4.5.0

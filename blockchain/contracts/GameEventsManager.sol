@@ -18,7 +18,7 @@ contract GameEventsManager is Initializable {
     IRandom RAND;
     address traverse;
     event AddGameEvent(uint256 _eventId, address _address);
-    event LogCreatePlanet(uint256 indexed _eventId, address indexed _reciever);
+    event LogCreatePlanet(uint256 _eventId, address _reciever);
     event LogGiveSats(uint256 indexed _eventId, address indexed _reciever);
 
     modifier isEvent(uint256 eventId) {
@@ -44,8 +44,8 @@ contract GameEventsManager is Initializable {
         GS = GameStorage(_gameStorage);
         GES = IGameEventsStorage(_gameEventsStorage);
         RAND = IRandom(_random);
-        traverse = _traverse;
         TS = ITreasury(GS.getTreasuryAddress());
+        traverse = _traverse;
     }
 
     /**
@@ -55,6 +55,7 @@ contract GameEventsManager is Initializable {
     function generate() public returns (uint256) {
         // TODO: Add weighted discoverery of events
         return RAND.randomrange(1, GS.getTotalGameEvents());
+        // return 1;
     }
 
     /**
@@ -81,7 +82,7 @@ contract GameEventsManager is Initializable {
         uint256 yieldHigh,
         address to,
         uint256 eventId
-    ) public isEvent(eventId) {
+    ) public {
         uint256 yield = RAND.randomrange(yieldLow, yieldHigh);
         uint256 _id = GS.incrementTotalPlanets();
         GS.setTokenIdToYield(_id, yield);
@@ -94,7 +95,7 @@ contract GameEventsManager is Initializable {
         uint256[] memory ids,
         uint256[] memory amounts,
         uint256 eventId
-    ) public isEvent(eventId) {
+    ) public {
         emit LogGiveSats(eventId, to);
         TS.sendSats(to, ids, amounts);
     }
@@ -104,7 +105,7 @@ contract GameEventsManager is Initializable {
         uint256[] memory ids,
         uint256[] memory amounts,
         uint256 eventId
-    ) public isEvent(eventId) {
+    ) public {
         TS.recieveSats(from, ids, amounts);
     }
 
@@ -112,7 +113,7 @@ contract GameEventsManager is Initializable {
         address to,
         uint256 amount,
         uint256 eventId
-    ) public isEvent(eventId) {
+    ) public {
         TS.sendSolar(to, amount);
     }
 
@@ -120,7 +121,7 @@ contract GameEventsManager is Initializable {
         address from,
         uint256 amount,
         uint256 eventId
-    ) public isEvent(eventId) {
+    ) public {
         TS.recieveSolar(from, amount);
     }
 }

@@ -1,189 +1,104 @@
 {
   "manifestVersion": "3.1",
   "impls": {
-    "f25894ceaab21949dd339273c668e77b31658d2ce08b1683cf390d9099f294ec": {
-      "address": "0x864CAB4542df2425e47Cb70625d3e1FAA49162B9",
-      "txHash": "0xe73d0ea6e4a2a8d64fb8410be8aa816abb78fc4c1c73d1f0c24bcdd76232fa6a",
+    "6bed20a993c4e81a55be16096d539d3d80367a29879e477ca1d014459050e8f1": {
+      "address": "0x2Ad3aC11ae7120c40958F5d04254E16E9b482664",
+      "txHash": "0xd3210599274f41153f87960c477ee2dc0e7137a15d423ae9d70a9f66694c4aaa",
       "layout": {
         "storage": [
           {
-            "contract": "GE_Discover_1_F_Destroyer",
-            "label": "eventId",
-            "type": "t_uint256",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_Discover_1_F_Destroyer.sol:8"
+            "contract": "Initializable",
+            "label": "initialized",
+            "type": "t_bool",
+            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:21"
           },
           {
-            "contract": "GE_Discover_1_F_Destroyer",
-            "label": "gameEventsManager",
-            "type": "t_contract(IGameEventsManager)4995",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_Discover_1_F_Destroyer.sol:9"
+            "contract": "Initializable",
+            "label": "initializing",
+            "type": "t_bool",
+            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:26"
+          },
+          {
+            "contract": "Initializable",
+            "label": "______gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:61"
+          },
+          {
+            "contract": "Random",
+            "label": "owner",
+            "type": "t_address",
+            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\Random.sol:14"
           }
         ],
         "types": {
-          "t_uint256": {
-            "label": "uint256"
+          "t_address": {
+            "label": "address"
           },
-          "t_contract(IGameEventsManager)4995": {
-            "label": "contract IGameEventsManager"
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
           }
         }
       }
     },
-    "f2ab2dbe24d46e5ab4972cbf49cbdd22f9d5b1e96cad46be9401588d87019a12": {
-      "address": "0x032a39525F5fF587AddABC7f78950BB414AB5cc1",
-      "txHash": "0xbe1487cf22d14270ea8fe87391ca99ef21b5a90eac62076d54609d2ca619b770",
+    "a205bf2338a4523378b10ab0f1cb1af68bcc94ead4cd6f68a48cbb4f004d6e91": {
+      "address": "0x6C2E54B2B005ac88F1ce8C7bDf838FB095596A70",
+      "txHash": "0x30f8fdfd44dc39c094aa139d224b3e719526388afea101a37f64a84d15ccb2b4",
       "layout": {
         "storage": [
           {
-            "contract": "GE_DiscoverPlanet",
-            "label": "yieldHigh",
-            "type": "t_uint256",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_DiscoverPlanet.sol:8"
+            "contract": "Initializable",
+            "label": "initialized",
+            "type": "t_bool",
+            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:21"
           },
           {
-            "contract": "GE_DiscoverPlanet",
-            "label": "yieldLow",
-            "type": "t_uint256",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_DiscoverPlanet.sol:9"
+            "contract": "Initializable",
+            "label": "initializing",
+            "type": "t_bool",
+            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:26"
           },
           {
-            "contract": "GE_DiscoverPlanet",
-            "label": "eventId",
-            "type": "t_uint256",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_DiscoverPlanet.sol:11"
+            "contract": "Initializable",
+            "label": "______gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:61"
           },
           {
-            "contract": "GE_DiscoverPlanet",
-            "label": "gameEventsManager",
-            "type": "t_contract(IGameEventsManager)4965",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_DiscoverPlanet.sol:12"
+            "contract": "Traverse",
+            "label": "GS",
+            "type": "t_contract(GameStorage)2479",
+            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\Traverse.sol:18"
+          },
+          {
+            "contract": "Traverse",
+            "label": "GE",
+            "type": "t_contract(GameEventsManager)1492",
+            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\Traverse.sol:19"
           }
         ],
         "types": {
-          "t_uint256": {
-            "label": "uint256"
+          "t_contract(GameStorage)2479": {
+            "label": "contract GameStorage"
           },
-          "t_contract(IGameEventsManager)4965": {
-            "label": "contract IGameEventsManager"
+          "t_contract(GameEventsManager)1492": {
+            "label": "contract GameEventsManager"
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
           }
         }
       }
     },
-    "d3e3c3546b8627ed2be541f9acf3efb1a78b214e18c049705134ec4500b97b9e": {
-      "address": "0xBbF55940C0322CD25b2b04EE788Bc2ec6bCE764d",
-      "txHash": "0xb5ecd6fd22ef08ba499a4cdf5e423263058d6b19c83547d8b9d36c9b2e23b869",
-      "layout": {
-        "storage": [
-          {
-            "contract": "GE_TestEvent",
-            "label": "eventId",
-            "type": "t_uint256",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_TestEvent.sol:8"
-          },
-          {
-            "contract": "GE_TestEvent",
-            "label": "gameEventsManager",
-            "type": "t_contract(IGameEventsManager)4965",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_TestEvent.sol:9"
-          }
-        ],
-        "types": {
-          "t_uint256": {
-            "label": "uint256"
-          },
-          "t_contract(IGameEventsManager)4965": {
-            "label": "contract IGameEventsManager"
-          }
-        }
-      }
-    },
-    "067ad5dd24f860fbb3b5356e8e86eb0819bb9e2113fe7fc5b8e40818fc09f671": {
-      "address": "0x87e540BE815752333fC4a2ed9Be4946767aBCab7",
-      "txHash": "0x417c4dfae4abc6ddcb28114759cffd929ded06b6734d6175f4c0922a40a95528",
-      "layout": {
-        "storage": [
-          {
-            "contract": "GE_Discover_1_F_Destroyer",
-            "label": "gameEventsManager",
-            "type": "t_contract(IGameEventsManager)5791",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_Discover_1_F_Destroyer.sol:9"
-          },
-          {
-            "contract": "GE_Discover_1_F_Destroyer",
-            "label": "gameEventsStorage",
-            "type": "t_contract(IGameEventsStorage)5969",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_Discover_1_F_Destroyer.sol:10"
-          }
-        ],
-        "types": {
-          "t_contract(IGameEventsManager)5791": {
-            "label": "contract IGameEventsManager"
-          },
-          "t_contract(IGameEventsStorage)5969": {
-            "label": "contract IGameEventsStorage"
-          }
-        }
-      }
-    },
-    "7ffd36051cf6a98037bb797978fa6608f3b1101b40273fb845c12cc6f4bf1533": {
-      "address": "0x93e2F9f2369a714370266B96e19f9d340957bC4a",
-      "txHash": "0x58e01d9199384de8ad254db84c60593a6ae56022d8defbad39552304f2fc1b39",
-      "layout": {
-        "storage": [
-          {
-            "contract": "GE_DiscoverPlanet",
-            "label": "gameEventsManager",
-            "type": "t_contract(IGameEventsManager)5791",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_DiscoverPlanet.sol:9"
-          },
-          {
-            "contract": "GE_DiscoverPlanet",
-            "label": "gameEventsStorage",
-            "type": "t_contract(IGameEventsStorage)5969",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_DiscoverPlanet.sol:10"
-          }
-        ],
-        "types": {
-          "t_contract(IGameEventsManager)5791": {
-            "label": "contract IGameEventsManager"
-          },
-          "t_contract(IGameEventsStorage)5969": {
-            "label": "contract IGameEventsStorage"
-          }
-        }
-      }
-    },
-    "5c1d23470cbdfe51cb74caf5a9212215850cfef6804da8e5a595fdbb46773753": {
-      "address": "0xF30270EFf0A206e2B3126Ee988ab2036046151A4",
-      "txHash": "0x71c340f6dfd85bebbcc2c79e419dd430f6a4cfa00f1c84a25a03726ed27da8c2",
-      "layout": {
-        "storage": [
-          {
-            "contract": "GE_TestEvent",
-            "label": "gameEventsManager",
-            "type": "t_contract(IGameEventsManager)5791",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_TestEvent.sol:9"
-          },
-          {
-            "contract": "GE_TestEvent",
-            "label": "gameEventsStorage",
-            "type": "t_contract(IGameEventsStorage)5969",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_TestEvent.sol:10"
-          }
-        ],
-        "types": {
-          "t_contract(IGameEventsManager)5791": {
-            "label": "contract IGameEventsManager"
-          },
-          "t_contract(IGameEventsStorage)5969": {
-            "label": "contract IGameEventsStorage"
-          }
-        }
-      }
-    },
-    "f0f76a58bda7b19c2f11a1ca034398f0c29a0f2b2eb46e95940be1490f3b4857": {
-      "address": "0x4c2fC2163695C451b8d06dA010F9FEdE2Ba0c7CC",
-      "txHash": "0xbc57298640904165c9ebf2cbe1c2fac214e6d4d6b3e7a29c23353a60ac098b8e",
+    "65bd23e9588f1c175031bb396eb548de6b796d782e590fd948c23c9984d249ab": {
+      "address": "0xb7A65f49eeA89b66611A9c3F89FEd8544B888C53",
+      "txHash": "0x0c683a3874af2c86d42d31f03e477b68753f62dd0c5b0af1038ff74ae706525d",
       "layout": {
         "storage": [
           {
@@ -207,153 +122,46 @@
           {
             "contract": "GameEventsManager",
             "label": "GS",
-            "type": "t_contract(GameStorage)2770",
+            "type": "t_contract(GameStorage)2479",
             "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:15"
           },
           {
             "contract": "GameEventsManager",
             "label": "GES",
-            "type": "t_contract(IGameEventsStorage)5919",
+            "type": "t_contract(IGameEventsStorage)5711",
             "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:16"
           },
           {
             "contract": "GameEventsManager",
             "label": "TS",
-            "type": "t_contract(ITreasury)6221",
+            "type": "t_contract(ITreasury)6013",
             "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:17"
           },
           {
             "contract": "GameEventsManager",
             "label": "RAND",
-            "type": "t_contract(IRandom)5958",
+            "type": "t_contract(IRandom)5750",
             "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:18"
+          },
+          {
+            "contract": "GameEventsManager",
+            "label": "traverse",
+            "type": "t_address",
+            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:19"
           }
         ],
         "types": {
-          "t_contract(GameStorage)2770": {
+          "t_contract(GameStorage)2479": {
             "label": "contract GameStorage"
           },
-          "t_contract(IGameEventsStorage)5919": {
+          "t_contract(IGameEventsStorage)5711": {
             "label": "contract IGameEventsStorage"
           },
-          "t_contract(ITreasury)6221": {
+          "t_contract(ITreasury)6013": {
             "label": "contract ITreasury"
           },
-          "t_contract(IRandom)5958": {
+          "t_contract(IRandom)5750": {
             "label": "contract IRandom"
-          },
-          "t_bool": {
-            "label": "bool"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]"
-          }
-        }
-      }
-    },
-    "b1d9593a5621cbc4966f435865d8216f9abe354f1cac76e3808514dcc2639d79": {
-      "address": "0xDbFad6a7B1dCB2F584c1ccF3d919342b530C6c0A",
-      "txHash": "0x0fcb3fa3843514cd2d1bf8a1e1838098286313f15f579e4fd898262eb81de404",
-      "layout": {
-        "storage": [
-          {
-            "contract": "Initializable",
-            "label": "initialized",
-            "type": "t_bool",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:21"
-          },
-          {
-            "contract": "Initializable",
-            "label": "initializing",
-            "type": "t_bool",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:26"
-          },
-          {
-            "contract": "Initializable",
-            "label": "______gap",
-            "type": "t_array(t_uint256)50_storage",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:61"
-          },
-          {
-            "contract": "Random",
-            "label": "seed",
-            "type": "t_uint256",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\Random.sol:14"
-          },
-          {
-            "contract": "Random",
-            "label": "nonce",
-            "type": "t_uint256",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\Random.sol:15"
-          },
-          {
-            "contract": "Random",
-            "label": "owner",
-            "type": "t_address",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\Random.sol:16"
-          }
-        ],
-        "types": {
-          "t_uint256": {
-            "label": "uint256"
-          },
-          "t_address": {
-            "label": "address"
-          },
-          "t_bool": {
-            "label": "bool"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]"
-          }
-        }
-      }
-    },
-    "6e3c29b6616bc457c3b44f279ce2b3a0dcc71241f9f3cd09efb6bd406b2bb301": {
-      "address": "0x81FE962A1A48F254a26bF26F02b0e8cCe0e43F38",
-      "txHash": "0x94befda4567e0375cf0b70f319441e3dc843370baf513914d716895c2b8c6ad1",
-      "layout": {
-        "storage": [
-          {
-            "contract": "Initializable",
-            "label": "initialized",
-            "type": "t_bool",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:21"
-          },
-          {
-            "contract": "Initializable",
-            "label": "initializing",
-            "type": "t_bool",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:26"
-          },
-          {
-            "contract": "Initializable",
-            "label": "______gap",
-            "type": "t_array(t_uint256)50_storage",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:61"
-          },
-          {
-            "contract": "Random",
-            "label": "seed",
-            "type": "t_uint256",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\Random.sol:14"
-          },
-          {
-            "contract": "Random",
-            "label": "nonce",
-            "type": "t_uint256",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\Random.sol:15"
-          },
-          {
-            "contract": "Random",
-            "label": "owner",
-            "type": "t_address",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\Random.sol:16"
-          }
-        ],
-        "types": {
-          "t_uint256": {
-            "label": "uint256"
           },
           "t_address": {
             "label": "address"
@@ -368,64 +176,200 @@
       }
     },
     "fad86ed47562ff01ff144db411f2c9050a34d277c5e5a99dafe1f521b1d8385c": {
-      "address": "0xFA48ae6cFf36d876E0A700Ed45910c5095465DD4",
-      "txHash": "0x550285c26445ace9a5df32c0ce539f24deef132ee89a4a5db38150811a14d8ce",
+      "address": "0x2A6bF4D9c6E49DC97198B16f065971c6dEAC7118",
+      "txHash": "0x4320961ca6a0df9a40eeb2af8ab7aa108ff8d599713c6456fd8d1a404fe01f76",
       "layout": {
         "storage": [
           {
             "contract": "GE_DiscoverPlanet",
             "label": "gameEventsManager",
-            "type": "t_contract(IGameEventsManager)5567",
+            "type": "t_contract(IGameEventsManager)5533",
             "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_DiscoverPlanet.sol:9"
           },
           {
             "contract": "GE_DiscoverPlanet",
             "label": "gameEventsStorage",
-            "type": "t_contract(IGameEventsStorage)5745",
+            "type": "t_contract(IGameEventsStorage)5711",
             "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_DiscoverPlanet.sol:10"
           }
         ],
         "types": {
-          "t_contract(IGameEventsManager)5567": {
+          "t_contract(IGameEventsManager)5533": {
             "label": "contract IGameEventsManager"
           },
-          "t_contract(IGameEventsStorage)5745": {
+          "t_contract(IGameEventsStorage)5711": {
             "label": "contract IGameEventsStorage"
           }
         }
       }
     },
     "2f526e5e519cd48dbf169e89b138f00cf77483c5247160fa2c7a707b68acf835": {
-      "address": "0x16A750fdCF4Ff8f5a457Eb8d82a34b56E8412135",
-      "txHash": "0x14c86a7a5d980cfa43a080141bd99837c8749468896fe704953a3429af9b5f9c",
+      "address": "0x2347C7E250D8E4882Ed02A6894049f5A695DaEa5",
+      "txHash": "0x5a0534c4cda408c1d57b7c3bb97367448ef85875ca7bf23c89512f3960ec72a6",
       "layout": {
         "storage": [
           {
             "contract": "GE_Discover_1_F_Destroyer",
             "label": "gameEventsManager",
-            "type": "t_contract(IGameEventsManager)5567",
+            "type": "t_contract(IGameEventsManager)5533",
             "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_Discover_1_F_Destroyer.sol:9"
           },
           {
             "contract": "GE_Discover_1_F_Destroyer",
             "label": "gameEventsStorage",
-            "type": "t_contract(IGameEventsStorage)5745",
+            "type": "t_contract(IGameEventsStorage)5711",
             "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_Discover_1_F_Destroyer.sol:10"
           }
         ],
         "types": {
-          "t_contract(IGameEventsManager)5567": {
+          "t_contract(IGameEventsManager)5533": {
             "label": "contract IGameEventsManager"
           },
-          "t_contract(IGameEventsStorage)5745": {
+          "t_contract(IGameEventsStorage)5711": {
             "label": "contract IGameEventsStorage"
           }
         }
       }
     },
-    "309d28168be6c3d4a11381b7157c58447f0fded335eafa8d89c8ca3171e135c6": {
-      "address": "0xcb20fDDeE1DBe04f4EC0EDAbd9Ff867C60E2aeaf",
-      "txHash": "0xdefab75fa3a2af80d48190aebf573a484f4a426de544ec065a2eacfaa37f5084",
+    "76676c1b1cc066f0c4e672f03ec0621f6294d218741e96b9d00cb719208effd3": {
+      "address": "0x39bf582e8296180FC15011235473FB0214f0080b",
+      "txHash": "0xad0a0d2257e52c43f262794f3a0c8516eaff72d5e9995622320496ca8d52111d",
+      "layout": {
+        "storage": [
+          {
+            "contract": "GE_DiscoverHighYieldPlanet",
+            "label": "gameEventsManager",
+            "type": "t_contract(IGameEventsManager)5533",
+            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_DiscoverHighYieldPlanet.sol:9"
+          },
+          {
+            "contract": "GE_DiscoverHighYieldPlanet",
+            "label": "gameEventsStorage",
+            "type": "t_contract(IGameEventsStorage)5711",
+            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_DiscoverHighYieldPlanet.sol:10"
+          }
+        ],
+        "types": {
+          "t_contract(IGameEventsManager)5533": {
+            "label": "contract IGameEventsManager"
+          },
+          "t_contract(IGameEventsStorage)5711": {
+            "label": "contract IGameEventsStorage"
+          }
+        }
+      }
+    },
+    "c6639be02edb943e16c0bcd31f427cca3557bd360ff0c6014dcf2fa2623baaf7": {
+      "address": "0xB769FFaeC9Af94c43e148Ab3F422e8808AE3Ae2F",
+      "txHash": "0x3fe446b1eb301f4bd651ae1fdb11677c002713bb1bd2ed00682c4909bc193e94",
+      "layout": {
+        "storage": [
+          {
+            "contract": "GE_DiscoverMediumYieldPlanet",
+            "label": "gameEventsManager",
+            "type": "t_contract(IGameEventsManager)5533",
+            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_DiscoverMediumYieldPlanet.sol:9"
+          },
+          {
+            "contract": "GE_DiscoverMediumYieldPlanet",
+            "label": "gameEventsStorage",
+            "type": "t_contract(IGameEventsStorage)5711",
+            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_DiscoverMediumYieldPlanet.sol:10"
+          }
+        ],
+        "types": {
+          "t_contract(IGameEventsManager)5533": {
+            "label": "contract IGameEventsManager"
+          },
+          "t_contract(IGameEventsStorage)5711": {
+            "label": "contract IGameEventsStorage"
+          }
+        }
+      }
+    },
+    "5424c6f9a83d3e2ccff34107f952a33bbba73ceb3e41e6de7f723e4eafd67a33": {
+      "address": "0x0d29eCB612227A07C1424059868d5De47D767cFe",
+      "txHash": "0x1c37860d4f8d26630a1ff7ebe201dc3acff358ebd4b832dace4abe4b35903f52",
+      "layout": {
+        "storage": [
+          {
+            "contract": "GE_DiscoverInsaneYieldPlanet",
+            "label": "gameEventsManager",
+            "type": "t_contract(IGameEventsManager)5533",
+            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_DiscoverInsaneYieldPlanet.sol:9"
+          },
+          {
+            "contract": "GE_DiscoverInsaneYieldPlanet",
+            "label": "gameEventsStorage",
+            "type": "t_contract(IGameEventsStorage)5711",
+            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_DiscoverInsaneYieldPlanet.sol:10"
+          }
+        ],
+        "types": {
+          "t_contract(IGameEventsManager)5533": {
+            "label": "contract IGameEventsManager"
+          },
+          "t_contract(IGameEventsStorage)5711": {
+            "label": "contract IGameEventsStorage"
+          }
+        }
+      }
+    },
+    "3eb5ba7aecebda8543835797e1ddbb0bd34704508b3f1a1862042147639e1f3d": {
+      "address": "0xB469D7708E38DBA2DDF620d63F65Cc2BcbaCD447",
+      "txHash": "0xd17d79819575bcba85a0f63f23b1631ba72dcce9f105e2fa896a2f4d70246427",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "initialized",
+            "type": "t_bool",
+            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:21"
+          },
+          {
+            "contract": "Initializable",
+            "label": "initializing",
+            "type": "t_bool",
+            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:26"
+          },
+          {
+            "contract": "Initializable",
+            "label": "______gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:61"
+          },
+          {
+            "contract": "Traverse",
+            "label": "GS",
+            "type": "t_contract(GameStorage)2479",
+            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\Traverse.sol:18"
+          },
+          {
+            "contract": "Traverse",
+            "label": "GE",
+            "type": "t_contract(GameEventsManager)1492",
+            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\Traverse.sol:19"
+          }
+        ],
+        "types": {
+          "t_contract(GameStorage)2479": {
+            "label": "contract GameStorage"
+          },
+          "t_contract(GameEventsManager)1492": {
+            "label": "contract GameEventsManager"
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          }
+        }
+      }
+    },
+    "67c6f10aea3b42224b532fac782b3035a8141c057f7ec1b03709d34b8e4af456": {
+      "address": "0xB73397B3F334e64cC618e8B0F50cF6F252D70017",
+      "txHash": "0xcc2ad94ebf6f853f4cfc73dc03740ba1168fcf01ef4e78c62969b71de5d2f77a",
       "layout": {
         "storage": [
           {
@@ -449,25 +393,25 @@
           {
             "contract": "GameEventsManager",
             "label": "GS",
-            "type": "t_contract(GameStorage)2496",
+            "type": "t_contract(GameStorage)2477",
             "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:15"
           },
           {
             "contract": "GameEventsManager",
             "label": "GES",
-            "type": "t_contract(IGameEventsStorage)5745",
+            "type": "t_contract(IGameEventsStorage)5709",
             "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:16"
           },
           {
             "contract": "GameEventsManager",
             "label": "TS",
-            "type": "t_contract(ITreasury)6047",
+            "type": "t_contract(ITreasury)6011",
             "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:17"
           },
           {
             "contract": "GameEventsManager",
             "label": "RAND",
-            "type": "t_contract(IRandom)5784",
+            "type": "t_contract(IRandom)5748",
             "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:18"
           },
           {
@@ -478,16 +422,16 @@
           }
         ],
         "types": {
-          "t_contract(GameStorage)2496": {
+          "t_contract(GameStorage)2477": {
             "label": "contract GameStorage"
           },
-          "t_contract(IGameEventsStorage)5745": {
+          "t_contract(IGameEventsStorage)5709": {
             "label": "contract IGameEventsStorage"
           },
-          "t_contract(ITreasury)6047": {
+          "t_contract(ITreasury)6011": {
             "label": "contract ITreasury"
           },
-          "t_contract(IRandom)5784": {
+          "t_contract(IRandom)5748": {
             "label": "contract IRandom"
           },
           "t_address": {
@@ -502,61 +446,9 @@
         }
       }
     },
-    "a205bf2338a4523378b10ab0f1cb1af68bcc94ead4cd6f68a48cbb4f004d6e91": {
-      "address": "0x5Ac43147a6af1BbD4d7589Bce719e16d74a052B9",
-      "txHash": "0x3b1dcbd3e3400e5ea69a170456da10198938645fbdf8a1a2fd3c8a92ee50e8ff",
-      "layout": {
-        "storage": [
-          {
-            "contract": "Initializable",
-            "label": "initialized",
-            "type": "t_bool",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:21"
-          },
-          {
-            "contract": "Initializable",
-            "label": "initializing",
-            "type": "t_bool",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:26"
-          },
-          {
-            "contract": "Initializable",
-            "label": "______gap",
-            "type": "t_array(t_uint256)50_storage",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:61"
-          },
-          {
-            "contract": "Traverse",
-            "label": "GS",
-            "type": "t_contract(GameStorage)2496",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\Traverse.sol:18"
-          },
-          {
-            "contract": "Traverse",
-            "label": "GE",
-            "type": "t_contract(GameEventsManager)1509",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\Traverse.sol:19"
-          }
-        ],
-        "types": {
-          "t_contract(GameStorage)2496": {
-            "label": "contract GameStorage"
-          },
-          "t_contract(GameEventsManager)1509": {
-            "label": "contract GameEventsManager"
-          },
-          "t_bool": {
-            "label": "bool"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]"
-          }
-        }
-      }
-    },
-    "5fee9bf7596f8ef974026bc831463971365d1e79fc7b7fadacf40ee9443cd59c": {
-      "address": "0xf51593B50906E8d8E913e26a3CF63f3eA889F9dD",
-      "txHash": "0xb55d6e1b0672c0212e942f9f58eaa5b28c6d43b23fa646f3eec93dd963da6609",
+    "e7093af388717fe1687facd04702d8f81a13ff31b56de51a3412c7d8c49a4d14": {
+      "address": "0x777fbdd2dffa9d73e391c8a7F9C7563EE5977cF8",
+      "txHash": "0xfafa54fe1c38a39672ec2bf1adcc94ac75326d6c4f51611c256330f148c7810a",
       "layout": {
         "storage": [
           {
@@ -580,25 +472,25 @@
           {
             "contract": "GameEventsManager",
             "label": "GS",
-            "type": "t_contract(GameStorage)2494",
+            "type": "t_contract(GameStorage)2473",
             "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:15"
           },
           {
             "contract": "GameEventsManager",
             "label": "GES",
-            "type": "t_contract(IGameEventsStorage)5743",
+            "type": "t_contract(IGameEventsStorage)5705",
             "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:16"
           },
           {
             "contract": "GameEventsManager",
             "label": "TS",
-            "type": "t_contract(ITreasury)6045",
+            "type": "t_contract(ITreasury)6007",
             "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:17"
           },
           {
             "contract": "GameEventsManager",
             "label": "RAND",
-            "type": "t_contract(IRandom)5782",
+            "type": "t_contract(IRandom)5744",
             "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:18"
           },
           {
@@ -609,16 +501,16 @@
           }
         ],
         "types": {
-          "t_contract(GameStorage)2494": {
+          "t_contract(GameStorage)2473": {
             "label": "contract GameStorage"
           },
-          "t_contract(IGameEventsStorage)5743": {
+          "t_contract(IGameEventsStorage)5705": {
             "label": "contract IGameEventsStorage"
           },
-          "t_contract(ITreasury)6045": {
+          "t_contract(ITreasury)6007": {
             "label": "contract ITreasury"
           },
-          "t_contract(IRandom)5782": {
+          "t_contract(IRandom)5744": {
             "label": "contract IRandom"
           },
           "t_address": {
@@ -634,374 +526,36 @@
       }
     },
     "189b673d461c71f1ee78958c5e46b0b3ba2458b35e903268c19d2fb099ec65bc": {
-      "address": "0x6e31A34e3A1Bce073EadF558D42E745340816299",
-      "txHash": "0x55984c3357ea5d57ba6dba26eb2e0606900c9e25ba327627988cbf6ba644fba3",
+      "address": "0x43DE500D0DcA2cA8a66892F0b8bB2Cba8825583C",
+      "txHash": "0x06f90c92b141f71dda4bc08901c067a628f3cc63800ce404314237b614e4943f",
       "layout": {
         "storage": [
           {
             "contract": "GE_TestEvent",
             "label": "gameEventsManager",
-            "type": "t_contract(IGameEventsManager)5555",
+            "type": "t_contract(IGameEventsManager)5533",
             "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_TestEvent.sol:9"
           },
           {
             "contract": "GE_TestEvent",
             "label": "gameEventsStorage",
-            "type": "t_contract(IGameEventsStorage)5733",
+            "type": "t_contract(IGameEventsStorage)5711",
             "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\gameEvents\\GE_TestEvent.sol:10"
           }
         ],
         "types": {
-          "t_contract(IGameEventsManager)5555": {
+          "t_contract(IGameEventsManager)5533": {
             "label": "contract IGameEventsManager"
           },
-          "t_contract(IGameEventsStorage)5733": {
+          "t_contract(IGameEventsStorage)5711": {
             "label": "contract IGameEventsStorage"
-          }
-        }
-      }
-    },
-    "f94896f24ad419b23ff0b1469fc820e3231b439a4cec7b0a0a2b8036bccd6236": {
-      "address": "0x8946e621d664f24900E3b129B97eFc5638e971AD",
-      "txHash": "0x4dcb2bb0415244ae8dceca153ae87527564d90bfa0da4ae27fa7c96131379078",
-      "layout": {
-        "storage": [
-          {
-            "contract": "Initializable",
-            "label": "initialized",
-            "type": "t_bool",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:21"
-          },
-          {
-            "contract": "Initializable",
-            "label": "initializing",
-            "type": "t_bool",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:26"
-          },
-          {
-            "contract": "Initializable",
-            "label": "______gap",
-            "type": "t_array(t_uint256)50_storage",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:61"
-          },
-          {
-            "contract": "GameEventsManager",
-            "label": "GS",
-            "type": "t_contract(GameStorage)2488",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:15"
-          },
-          {
-            "contract": "GameEventsManager",
-            "label": "GES",
-            "type": "t_contract(IGameEventsStorage)5737",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:16"
-          },
-          {
-            "contract": "GameEventsManager",
-            "label": "TS",
-            "type": "t_contract(ITreasury)6039",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:17"
-          },
-          {
-            "contract": "GameEventsManager",
-            "label": "RAND",
-            "type": "t_contract(IRandom)5776",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:18"
-          },
-          {
-            "contract": "GameEventsManager",
-            "label": "traverse",
-            "type": "t_address",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:19"
-          }
-        ],
-        "types": {
-          "t_contract(GameStorage)2488": {
-            "label": "contract GameStorage"
-          },
-          "t_contract(IGameEventsStorage)5737": {
-            "label": "contract IGameEventsStorage"
-          },
-          "t_contract(ITreasury)6039": {
-            "label": "contract ITreasury"
-          },
-          "t_contract(IRandom)5776": {
-            "label": "contract IRandom"
-          },
-          "t_address": {
-            "label": "address"
-          },
-          "t_bool": {
-            "label": "bool"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]"
-          }
-        }
-      }
-    },
-    "01ee9eeee7e1d7bc23214aa67e1423ee1b153c80999c076edf1794e669a17fd2": {
-      "address": "0x8Edb67A9c8fce3A94B2B45d2D0649cdCfef53Eb1",
-      "txHash": "0x2d00ef8fcf692b8ff07d63c787a978caa621f192924767f9c3aa3a05fda7c4ad",
-      "layout": {
-        "storage": [
-          {
-            "contract": "Initializable",
-            "label": "initialized",
-            "type": "t_bool",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:21"
-          },
-          {
-            "contract": "Initializable",
-            "label": "initializing",
-            "type": "t_bool",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:26"
-          },
-          {
-            "contract": "Initializable",
-            "label": "______gap",
-            "type": "t_array(t_uint256)50_storage",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:61"
-          },
-          {
-            "contract": "Random",
-            "label": "seed",
-            "type": "t_uint256",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\Random.sol:14"
-          },
-          {
-            "contract": "Random",
-            "label": "nonce",
-            "type": "t_uint256",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\Random.sol:15"
-          },
-          {
-            "contract": "Random",
-            "label": "owner",
-            "type": "t_address",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\Random.sol:16"
-          }
-        ],
-        "types": {
-          "t_uint256": {
-            "label": "uint256"
-          },
-          "t_address": {
-            "label": "address"
-          },
-          "t_bool": {
-            "label": "bool"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]"
-          }
-        }
-      }
-    },
-    "f1feec9cc5736974f45dbca9c05f7dde1e5922f34f267115ed0f5714c36de76a": {
-      "address": "0xFa80C4e0c8e0d12f5d1cfc73122d5E2bDa9a7fdD",
-      "txHash": "0x85f1c8ef72865df9826693352442cf34ed6c824a1c57dcb111f2ebcb40c5c629",
-      "layout": {
-        "storage": [
-          {
-            "contract": "Initializable",
-            "label": "initialized",
-            "type": "t_bool",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:21"
-          },
-          {
-            "contract": "Initializable",
-            "label": "initializing",
-            "type": "t_bool",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:26"
-          },
-          {
-            "contract": "Initializable",
-            "label": "______gap",
-            "type": "t_array(t_uint256)50_storage",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:61"
-          },
-          {
-            "contract": "GameEventsManager",
-            "label": "GS",
-            "type": "t_contract(GameStorage)2494",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:15"
-          },
-          {
-            "contract": "GameEventsManager",
-            "label": "GES",
-            "type": "t_contract(IGameEventsStorage)5743",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:16"
-          },
-          {
-            "contract": "GameEventsManager",
-            "label": "TS",
-            "type": "t_contract(ITreasury)6045",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:17"
-          },
-          {
-            "contract": "GameEventsManager",
-            "label": "RAND",
-            "type": "t_contract(IRandom)5782",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:18"
-          },
-          {
-            "contract": "GameEventsManager",
-            "label": "traverse",
-            "type": "t_address",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:19"
-          }
-        ],
-        "types": {
-          "t_contract(GameStorage)2494": {
-            "label": "contract GameStorage"
-          },
-          "t_contract(IGameEventsStorage)5743": {
-            "label": "contract IGameEventsStorage"
-          },
-          "t_contract(ITreasury)6045": {
-            "label": "contract ITreasury"
-          },
-          "t_contract(IRandom)5782": {
-            "label": "contract IRandom"
-          },
-          "t_address": {
-            "label": "address"
-          },
-          "t_bool": {
-            "label": "bool"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]"
-          }
-        }
-      }
-    },
-    "6bed20a993c4e81a55be16096d539d3d80367a29879e477ca1d014459050e8f1": {
-      "address": "0x180A6c9c5dbD5EC09807f2Fb5552aBF83Fa9c365",
-      "txHash": "0xf7c9fb012b98ce7f3f4fd38b86b23724f7171b62e3579fd8cbb9302bf7228fc2",
-      "layout": {
-        "storage": [
-          {
-            "contract": "Initializable",
-            "label": "initialized",
-            "type": "t_bool",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:21"
-          },
-          {
-            "contract": "Initializable",
-            "label": "initializing",
-            "type": "t_bool",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:26"
-          },
-          {
-            "contract": "Initializable",
-            "label": "______gap",
-            "type": "t_array(t_uint256)50_storage",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:61"
-          },
-          {
-            "contract": "Random",
-            "label": "owner",
-            "type": "t_address",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\Random.sol:14"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address"
-          },
-          "t_bool": {
-            "label": "bool"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]"
-          }
-        }
-      }
-    },
-    "17404ca5a97e1f53bc07be361d921d286d188473e29436ab35d62e0a0e9e9301": {
-      "address": "0x5523252d78D7eC8E3149D5aE818BdfCA63ae3353",
-      "txHash": "0x1df7f9101e2139aa7813965b72f451c109ae23e7ee94e2129090bb59fd1ba601",
-      "layout": {
-        "storage": [
-          {
-            "contract": "Initializable",
-            "label": "initialized",
-            "type": "t_bool",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:21"
-          },
-          {
-            "contract": "Initializable",
-            "label": "initializing",
-            "type": "t_bool",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:26"
-          },
-          {
-            "contract": "Initializable",
-            "label": "______gap",
-            "type": "t_array(t_uint256)50_storage",
-            "src": "..\\@openzeppelin\\upgrades\\contracts\\Initializable.sol:61"
-          },
-          {
-            "contract": "GameEventsManager",
-            "label": "GS",
-            "type": "t_contract(GameStorage)2494",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:15"
-          },
-          {
-            "contract": "GameEventsManager",
-            "label": "GES",
-            "type": "t_contract(IGameEventsStorage)5726",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:16"
-          },
-          {
-            "contract": "GameEventsManager",
-            "label": "TS",
-            "type": "t_contract(ITreasury)6028",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:17"
-          },
-          {
-            "contract": "GameEventsManager",
-            "label": "RAND",
-            "type": "t_contract(IRandom)5765",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:18"
-          },
-          {
-            "contract": "GameEventsManager",
-            "label": "traverse",
-            "type": "t_address",
-            "src": "..\\..\\..\\..\\..\\..\\C\\Users\\James\\projects\\spacedx\\blockchain\\contracts\\GameEventsManager.sol:19"
-          }
-        ],
-        "types": {
-          "t_contract(GameStorage)2494": {
-            "label": "contract GameStorage"
-          },
-          "t_contract(IGameEventsStorage)5726": {
-            "label": "contract IGameEventsStorage"
-          },
-          "t_contract(ITreasury)6028": {
-            "label": "contract ITreasury"
-          },
-          "t_contract(IRandom)5765": {
-            "label": "contract IRandom"
-          },
-          "t_address": {
-            "label": "address"
-          },
-          "t_bool": {
-            "label": "bool"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]"
           }
         }
       }
     }
   },
   "admin": {
-    "address": "0x804ec69a95e6059f538722FDd02ab8EE1d75Ad34",
-    "txHash": "0xdf878bedfa1a242a1349e19906825f7d875d46f0f5c356dc3f006449392ffa7a"
+    "address": "0x343c02E3762149887E9C6088CAFb49Ffa353c543",
+    "txHash": "0x14a03c65e3da598c5ecac5571b90646ef1bb4318f552c73da51516fd9d271684"
   }
 }
