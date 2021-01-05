@@ -1,5 +1,5 @@
-import { StarPosition } from './types';
-import { TransactionReceipt, Log, EventLog } from 'web3/types';
+import { SyntheticTokens } from './types';
+import TransactionReceipt from 'web3/types';
 export interface RootState {
     version: string;
 }
@@ -11,13 +11,9 @@ export interface Network {
     web3Ready: boolean;
     web3: any;
     contracts: {
-        solar: any;
-        fhr: any;
-        sat: any;
-        gameOperations: any;
-        gameStorage: any;
-        treasury: any;
-        planets: { [key: string]: any };
+        EMPs: { [key: string]: any };
+        syntheticTokens: { [key: string]: any };
+        signoToken: any;
     };
     ethReady: boolean;
     userAddress: string;
@@ -68,7 +64,19 @@ export interface StarPosition {
     district: number;
     star: number;
 }
-export interface GameOperations { }
+export interface EMPS {
+    empToTokenAddresses: {
+        [key: string]: string;
+    }
+}
+export interface SyntheticTokens {
+    [key: string]: SyntheticTokenInfo;
+}
+
+export interface SyntheticTokenInfo {
+    symbol: string;
+    name: string;
+}
 export interface TreasuryOperations { }
 export interface SolarOperations {
     balance: number;

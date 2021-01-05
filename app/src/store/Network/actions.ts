@@ -2,14 +2,9 @@ import { state } from './index';
 import { ActionTree, ActionContext } from 'vuex';
 import { RootState, Network } from '../types';
 import Web3 from 'web3';
-import Treasury from '@/../build/contracts/TestTreasury.json';
-import Traverse from '@/../build/contracts/Traverse.json';
-import Solar from '@/../build/contracts/SolarToken.json';
-import Sat from '@/../build/contracts/TestShipsAndTechnology.json';
-import FHR from '@/../build/contracts/Planets.json';
-import GameStorage from '@/../build/contracts/GameStorage.json';
-import Planet from '@/../build/contracts/Planet.json';
-
+import EMP from '@/../../blockchain/build/contracts/ExpiringMultiParty.json';
+import SyntheticToken from '@/../../blockchain/build/contracts/SyntheticToken.json';
+import SignoToken from '@/../../blockchain/build/contracts/SignoToken.json';
 export const actions: ActionTree<Network, RootState> = {
     setupWeb3(context: ActionContext<Network, RootState>) {
         let web3;
@@ -47,57 +42,33 @@ export const actions: ActionTree<Network, RootState> = {
         const address = context.dispatch('getAddress');
         await Promise.all([setupWeb3, network, address]);
 
-        await context.dispatch('setupGameStorage');
-        await context.dispatch('setupTreasury');
-        await context.dispatch('setupGameOperations');
-        await context.dispatch('setupTreasury');
-        await context.dispatch('setupSolar');
-        await context.dispatch('setupSat');
-        await context.dispatch('setupFhr');
+        await context.dispatch('NETWORK_setupSignoToken', { address: '0x5c812A6D3e775CA2c5527d8Bf67abea1eb2e1d57' });
     },
 
-    async setupGameOperations(context: ActionContext<Network, RootState>) {
-        const { Web3, NetworkId } = context.getters;
-        const networks: Networks = GameOperations.networks;
-        const master = new Web3.eth.Contract(GameOperations.abi, networks[NetworkId].address);
-        context.commit('SET_GAMEOPERATIONS', master);
-    },
-    async setupGameStorage(context: ActionContext<Network, RootState>) {
-        const { Web3, NetworkId } = context.getters;
-        const networks: Networks = GameStorage.networks;
-        const storage = new Web3.eth.Contract(GameStorage.abi, networks[NetworkId].address);
-        console.log(storage);
-        context.commit('SET_GAMESTORAGE', storage);
-    },
-    async setupTreasury(context: ActionContext<Network, RootState>) {
-        const { Web3, NetworkId } = context.getters;
-        const networks: Networks = Treasury.networks;
-        const treasury = new Web3.eth.Contract(Treasury.abi, networks[NetworkId].address);
-        context.commit('SET_TREASURY', treasury);
-    },
+    // async setupGameOperations(context: ActionContext<Network, RootState>) {
+    //     const { Web3, NetworkId } = context.getters;
+    //     const networks: Networks = GameOperations.networks;
+    //     const master = new Web3.eth.Contract(GameOperations.abi, networks[NetworkId].address);
+    //     context.commit('SET_GAMEOPERATIONS', master);
+    // },
 
-    async setupSolar(context: ActionContext<Network, RootState>) {
+    async NETWORK_setupEMP(context: ActionContext<Network, RootState>, payload: { address: string }) {
         const { Web3, NetworkId } = context.getters;
-        const networks: Networks = Solar.networks;
-        const solar = new Web3.eth.Contract(Solar.abi, networks[NetworkId].address);
-        context.commit('SET_SOLAR_CONTRACT', solar);
+        const EMP_CONTRACT = new Web3.eth.Contract(EMP.abi, payload.address);
+        await context.commit('ADD_EMP', { EMP_CONTRACT, address: payload.address });
     },
-    async setupSat(context: ActionContext<Network, RootState>) {
+    async NETWORK_setupSyntheticToken(context: ActionContext<Network, RootState>, payload: { address: string }) {
         const { Web3, NetworkId } = context.getters;
-        const networks: Networks = Sat.networks;
-        const sat = new Web3.eth.Contract(Sat.abi, networks[NetworkId].address);
-        context.commit('SET_SAT_CONTRACT', sat);
+        const SYNTHETIC_TOKEN_CONTRACT = new Web3.eth.Contract(SyntheticToken.abi, payload.address);
+        await context.commit('ADD_SYNTHETIC_TOKEN_CONTRACT', { SYNTHETIC_TOKEN_CONTRACT, address: payload.address });
+        await context.dispatch('ST_name', { tokenAddress: payload.address })
+        await context.dispatch('ST_symbol', { tokenAddress: payload.address })
     },
-    async setupFhr(context: ActionContext<Network, RootState>) {
+    async NETWORK_setupSignoToken(context: ActionContext<Network, RootState>, payload: { address: string }) {
         const { Web3, NetworkId } = context.getters;
-        const networks: Networks = FHR.networks;
-        const fhr = new Web3.eth.Contract(FHR.abi, networks[NetworkId].address);
-        context.commit('SET_FHR_CONTRACT', fhr);
-    },
-    async NETWORK_setupPlanet(context: ActionContext<Network, RootState>, payload: string) {
-        const { Web3, NetworkId } = context.getters;
-        const planet = new Web3.eth.Contract(Planet.abi, payload);
-        context.commit('ADD_VISITED_PLANET', { planet, address: payload });
+        const SIGNO_TOKEN_CONTRACT = new Web3.eth.Contract(SignoToken.abi, payload.address);
+        await context.commit('ADD_SIGNO_TOKEN_CONTRACT', { SIGNO_TOKEN_CONTRACT, address: payload.address });
+
     }
 };
 

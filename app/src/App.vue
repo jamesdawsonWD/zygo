@@ -1,13 +1,6 @@
 <template>
     <div id="app">
-        <div id="nav">
-            <Logo class="logo" />
-            <div>
-                <router-link to="/"><Map class="nav-icon"/></router-link>
-                <router-link to="/fleetManager"><Fleet class="nav-icon"/></router-link>
-            </div>
-        </div>
-        <Background class="background" />
+        <Header />
         <router-view />
         <Modal v-if="ShowModal" @close="UIM_closeModal" />
     </div>
@@ -15,11 +8,8 @@
 <script lang="ts">
 import { mapActions } from 'vuex';
 import { mapGetters } from 'vuex';
-import Logo from '@/assets/svg/logo.svg';
-import Map from '@/assets/svg/map-nav.svg';
-import Background from '@/assets/svg/background.svg';
-import Fleet from '@/assets/svg/fleet-nav.svg';
 import Modal from '@/components/generics/Modal.vue';
+import Header from '@/components/Header.vue';
 // import Button from '@/components/generics/Button.vue';
 export default {
     name: 'App',
@@ -29,14 +19,20 @@ export default {
     components: {
         // DepositForm,
         Modal,
-        Logo,
-        Map,
-        Background,
-        Fleet
+        Header
         // Button
     },
     methods: {
-        ...mapActions(['bootstrapContracts', 'GS_retrieveBoundaries', 'UIM_closeModal'])
+        ...mapActions([
+            'bootstrapContracts',
+            'NETWORK_setupEMP',
+            'EMP_getTokenAddress',
+            'UIM_closeModal',
+            'ST_balanceOf',
+            'ST_symbol',
+            'ST_name',
+            'NETWORK_setupSyntheticToken'
+        ])
         // depositAmount: function(deposit: Deposit) {
         //     this.deposit(deposit);
         // }
@@ -44,8 +40,16 @@ export default {
 
     async mounted() {
         await this.bootstrapContracts();
-        await this.GS_retrieveBoundaries();
-
+        await this.NETWORK_setupEMP({ address: '0x65bbb1fec96f75002672195cf13c13e2a27cb415' });
+        const tokenAddress = await this.EMP_getTokenAddress({
+            empAddress: '0x65bbb1fec96f75002672195cf13c13e2a27cb415'
+        });
+        await this.NETWORK_setupSyntheticToken({
+            address: tokenAddress
+        });
+        await this.ST_balanceOf({ tokenAddress });
+        await this.ST_symbol({ tokenAddress });
+        await this.ST_name({ tokenAddress });
         // await this.getBalance();
         // await this.getTsunoBalance();
         // await this.getDateUnlocked();
@@ -60,6 +64,12 @@ export default {
     text-align: center;
     color: #2c3e50;
     height: 100vh;
+    background-color: var(--background-color);
+    overflow: scroll;
+    overflow-x: hidden;
+    /* Increase/decrease this value for cross-browser compatibility */
+    box-sizing: content-box;
+    /* So the width will be 100% + 17px */
 }
 
 .background {
@@ -69,42 +79,4 @@ export default {
     width: 102vw;
     z-index: -100;
 }
-
-#nav {
-    padding: 15px;
-    height: 150px;
-    width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    top: 0;
-
-    div > * {
-        margin-right: 100px;
-
-        .nav-icon {
-            height: 100px;
-            transition: 0.5s;
-            &:hover {
-                transform: translateY(10px);
-            }
-        }
-    }
-    .logo {
-        margin-left: 90px;
-        top: 10px;
-        height: 100px;
-    }
-    a {
-        font-weight: bold;
-        color: #2c3e50;
-
-        &.router-link-exact-active {
-            color: #42b983;
-        }
-    }
-}
 </style>
-- cors 2.8.5 - express 4.17.1 - handlebars 4.7.6 - moment 2.29.1 - mongodb 2.2.36 - mongoose 4.13.21 -
-mongoose-paginate 5.0.3 - mongoose-timestamps 0.0.1 - mongoose-unique-validator 1.0.6 - nodemailer 6.4.15
-devDependencies: - dotenv 8.2.0 - nodemon 2.0.6 monogodb

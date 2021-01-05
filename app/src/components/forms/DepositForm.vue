@@ -11,7 +11,6 @@
 <script>
 export default {
     name: 'DepositForm',
-
     methods: {
         submit: function(e) {
             const deposit = {

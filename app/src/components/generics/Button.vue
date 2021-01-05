@@ -1,6 +1,6 @@
 <template>
     <button class="button" :class="buttonStyle" @click="submit">
-        <h2>{{ title }}</h2>
+        {{ title }}
     </button>
 </template>
 
@@ -18,14 +18,16 @@ export default {
 
 <style scoped lang="scss">
 .button {
-    margin: 25px 5px;
-    max-width: 300px;
+    margin: 40px 0 10px 0;
+    width: 100%;
     border: none;
     padding: 15px;
-    border-radius: 15px;
-    background: rgb(239, 239, 239);
+    border-radius: 12px;
+    background: var(--button-color);
+    transition: 0.2s;
+    font-size: var(--md-font);
+    font-weight: 700;
     &:hover {
-        background: darken(rgb(239, 239, 239), 10%);
         cursor: pointer;
     }
 }
@@ -39,10 +41,9 @@ export default {
 }
 
 .primary {
-    background: #2edbcd;
+    background: var(--button-color);
     color: white;
     &:hover {
-        background: darken(#2edbcd, 10%);
     }
 }
 </style>

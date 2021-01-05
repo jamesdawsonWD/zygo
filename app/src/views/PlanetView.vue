@@ -34,8 +34,6 @@
 import { mapActions } from 'vuex';
 import { mapGetters } from 'vuex';
 import Button from '@/components/generics/Button.vue';
-import Planet1 from '@/assets/svg/planet1.svg';
-import Galaxy from '@/assets/svg/galaxy.svg';
 
 export default {
     name: 'PlanetView',
@@ -48,9 +46,7 @@ export default {
         ])
     },
     components: {
-        Button,
-        Planet1,
-        Galaxy
+        Button
     },
     methods: {
         ...mapActions(['GO_move'])

@@ -1,26 +1,20 @@
 <template>
     <div class="mapView">
-        <div class="coordinates">
-            <h2>Star Coordinates</h2>
-            <h3>Quadrant: {{ starPosition.quadrant }}</h3>
-            <h3>Sector: {{ starPosition.sector }}</h3>
-            <h3>District: {{ starPosition.district }}</h3>
-            <h3>Star: {{ starPosition.star }}</h3>
-        </div>
-        <div v-if="mapView == 'quadrant'" class="quadrant-map">
-            <Galaxy class="map galaxy-svg" />
-            <Quadrants class="map quadrants" />
-            <QuadrantsHighlighted v-on:click="quadrantSelected($event)" class="map quadrants-highlights" />
-        </div>
-        <div v-if="mapView == 'sector'" class="map sector-map">
-            <Hex20 class="sectors" v-on:click="sectorSelected($event)" />
-        </div>
-        <div v-if="mapView == 'district'" v-on:click="districtSelected($event)" class="map sector-map">
-            <Districts class="sectors" />
-        </div>
-        <div v-if="mapView == 'stars'" class="map star-map">
-            <Stars class="stars" v-on:click="starSelected($event)" />
-        </div>
+        <Panels>
+            <div slot="panelA">
+                <Button
+                    title="Create"
+                    @clicked="
+                        EMP_create({
+                            numTokens: '11',
+                            collateralAmount: '0.002',
+                            tokenAddress: '0x65bbb1fec96f75002672195cf13c13e2a27cb415'
+                        })
+                    "
+                    buttonStyle="primary"
+                ></Button>
+            </div>
+        </Panels>
     </div>
 </template>
 
@@ -29,12 +23,9 @@
 // import HelloWorld from '@/components/HelloWorld.vue';
 import { mapActions } from 'vuex';
 import { mapGetters } from 'vuex';
-import Quadrants from '@/assets/svg/quadrants.svg';
-import Stars from '@/assets/svg/stars.svg';
-import Galaxy from '@/assets/svg/galaxy.svg';
-import Districts from '@/assets/svg/districts.svg';
-import QuadrantsHighlighted from '@/assets/svg/quadrants-highlight.svg';
-import Hex20 from '@/assets/svg/20hex.svg';
+import Button from '@/components/generics/Button.vue';
+import Panels from '@/components/generics/PaneledBox.vue';
+
 // import Button from '@/components/generics/Button.vue';
 export default {
     name: 'MapView',
@@ -42,15 +33,10 @@ export default {
         ...mapGetters(['GS_getBoundaries'])
     },
     components: {
-        Quadrants,
-        QuadrantsHighlighted,
-        Hex20,
-        Districts,
-        Stars,
-        Galaxy
         // DepositForm,
         // Modal,
-        // Button
+        Button,
+        Panels
     },
     data(): void {
         return {
@@ -67,26 +53,7 @@ export default {
         // depositAmount: function(deposit: Deposit) {
         //     this.deposit(deposit);
         // }
-        ...mapActions(['GS_retrieveStarSystemType', 'UIM_setLocalStarPosition']),
-        quadrantSelected(e): void {
-            this.starPosition.quadrant = e.path[0].id;
-            this.mapView = 'sector';
-        },
-        sectorSelected(e): void {
-            this.starPosition.sector = e.path[0].id;
-            this.mapView = 'district';
-        },
-        districtSelected(e): void {
-            this.starPosition.district = e.path[0].id;
-            this.mapView = 'stars';
-        },
-        starSelected(e): void {
-            this.starPosition.star = e.path[0].id;
-            this.mapView = 'stars';
-            this.GS_retrieveStarSystemType(this.starPosition)
-                .then(() => this.UIM_setLocalStarPosition(this.starPosition))
-                .then(() => this.$router.push('/planet'));
-        }
+        ...mapActions(['EMP_create'])
     },
 
     async mounted() {

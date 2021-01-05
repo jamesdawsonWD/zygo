@@ -17,7 +17,7 @@
  * phrase from a file you've .gitignored so it doesn't accidentally become public.
  *
  */
-
+require('dotenv').config();
 // Importing babel to be able to use ES6 imports
 require('babel-register')({
     presets: [
@@ -37,6 +37,7 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 const MNEMONIC = process.env.MNEMONIC;
 const INFURA_KEY = process.env.INFURA_KEY;
 
+console.log(MNEMONIC, INFURA_KEY);
 const needsInfura =
     process.env.npm_config_argv &&
     (process.env.npm_config_argv.includes('rinkeby') || process.env.npm_config_argv.includes('live'));
@@ -80,6 +81,13 @@ module.exports = {
             },
             network_id: '*',
             gas: 4600000
+        },
+        kovan: {
+            provider: function() {
+                return new HDWalletProvider(MNEMONIC, 'https://kovan.infura.io/v3/' + INFURA_KEY);
+            },
+            network_id: '*',
+            gasPrice: 70000000000
         },
 
         live: {

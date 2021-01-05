@@ -9,17 +9,7 @@
                         </h2>
                     </div>
 
-                    <div class="modal-body">
-                        <DeployPlanetModal
-                            v-if="Modal.type == 'deploy-planet'"
-                            :tokenId="Modal.data.tokenId"
-                        ></DeployPlanetModal>
-                        <PlanetModal
-                            v-if="Modal.type == 'planet'"
-                            :tokenId="Modal.data.tokenId"
-                            :proxyAddress="Modal.data.proxyAddress"
-                        ></PlanetModal>
-                    </div>
+                    <div class="modal-body"></div>
 
                     <div class="modal-footer">
                         <slot name="footer">
@@ -36,15 +26,11 @@
 import { mapGetters } from 'vuex';
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import DepositForm from '@/components/forms/DepositForm.vue';
-import DeployPlanetModal from '@/components/modalViews/DeployPlanetModal.vue';
-import PlanetModal from '@/components/modalViews/PlanetModal.vue';
 import Button from '@/components/generics/Button.vue';
 
 @Component({
     components: {
         DepositForm,
-        DeployPlanetModal,
-        PlanetModal,
         Button
     },
     computed: {
@@ -84,7 +70,7 @@ export default class Modal extends Vue {
     width: 70%;
     margin: 0px auto;
     padding: 20px 30px;
-    background-color: var(--main-white);
+    background-color: var(--main-font);
     border-radius: 2px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
     transition: all 0.3s ease;

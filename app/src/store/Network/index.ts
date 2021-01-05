@@ -13,15 +13,13 @@ export const state: Network = {
     userAddress: addressZero,
     web3Ready: false,
     contracts: {
-        solar: null,
-        fhr: null,
-        sat: null,
-        gameStorage: null,
-        gameOperations: null,
-        treasury: null,
-        planets: {
+        EMPs: {
 
-        }
+        },
+        syntheticTokens: {
+
+        },
+        signoToken: null,
     },
     web3: null,
     ethReady: false,
