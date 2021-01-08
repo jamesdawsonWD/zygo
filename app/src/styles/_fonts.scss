@@ -97,3 +97,8 @@ $DS_Bold_Italic: 'Davis Sans Bold Italic';
 
     font-style: italic;
 }
+
+
+html {
+    @include DS_Regular;
+}

@@ -33,3 +33,9 @@ Vue.filter('secondsToDays', function (seconds: number) {
     }
     return seconds / (24 * 3600);
 });
+Vue.filter('shortAddress', function (address: string) {
+    if (!address) {
+        return '';
+    }
+    return address.substring(0, 6) + '...' + address.substring(address.length - 4, address.length + 1);
+});

@@ -31,7 +31,7 @@ input {
         font-size: var(--md-font);
         color: var(--main-font);
         border: 1px solid var(--sub-foreground-color);
-        @include DS_Light;
+        @include DS_Medium;
 
         &:active,
         &:focus {

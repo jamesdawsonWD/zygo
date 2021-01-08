@@ -31,17 +31,13 @@ export const actions: ActionTree<Network, RootState> = {
             currentBlock
         });
     },
-    async getAddress(context: ActionContext<Network, RootState>) {
+    async setAddress(context: ActionContext<Network, RootState>, payload: { address: string }) {
         const { Web3 } = context.getters;
-        const accounts = await Web3.eth.getAccounts();
-        context.commit('SET_ADDRESS', accounts[0]);
+        context.commit('SET_ADDRESS', payload.address);
     },
-    async bootstrapContracts(context: ActionContext<Network, RootState>, payload) {
-        const setupWeb3 = context.dispatch('setupWeb3');
-        const network = context.dispatch('getNetworkData');
-        const address = context.dispatch('getAddress');
-        await Promise.all([setupWeb3, network, address]);
-
+    async bootstrapContracts(context: ActionContext<Network, RootState>) {
+        await context.dispatch('setupWeb3');
+        await context.dispatch('getNetworkData');
         await context.dispatch('NETWORK_setupSignoToken', { address: '0x5c812A6D3e775CA2c5527d8Bf67abea1eb2e1d57' });
     },
 

@@ -27,6 +27,7 @@ export default {
     transition: 0.2s;
     font-size: var(--md-font);
     font-weight: 700;
+    outline: none;
     &:hover {
         cursor: pointer;
     }

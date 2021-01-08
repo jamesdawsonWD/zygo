@@ -1,6 +1,6 @@
 <template>
     <div class="box">
-        <div class="names">
+        <div v-if="boxName" class="names">
             <div class="panelB">
                 {{ boxName }}
             </div>

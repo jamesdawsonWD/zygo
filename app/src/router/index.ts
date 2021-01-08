@@ -1,9 +1,11 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import Trade from '../views/Trade.vue';
-import FleetManagerView from '../views/FleetManagerView.vue';
+import Governance from '../views/Governance.vue';
 import MarketView from '../views/MarketView.vue';
 import Mint from '../views/Mint.vue';
+import Pool from '../views/Pool.vue';
+import Stake from '../views/Stake.vue';
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -13,9 +15,9 @@ const routes: Array<RouteConfig> = [
         component: Trade
     },
     {
-        path: '/fleetManager',
-        name: 'FleetManagerView',
-        component: FleetManagerView
+        path: '/governance',
+        name: 'Governance',
+        component: Governance
     },
     {
         path: '/mint',
@@ -23,10 +25,16 @@ const routes: Array<RouteConfig> = [
         component: Mint
     },
     {
-        path: '/market',
-        name: 'MarketView',
-        component: MarketView
+        path: '/stake',
+        name: 'Stake',
+        component: Stake
+    },
+    {
+        path: '/pool',
+        name: 'Pool',
+        component: Pool
     }
+
 ];
 
 const router = new VueRouter({

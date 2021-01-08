@@ -11,16 +11,16 @@
                         <div class="symbol">{{ item[1].symbol }}</div>
                         <div class="name">{{ item[1].name }}</div>
                     </div>
-                    <div class="price">{{ item[1].price }} USDT</div>
+                    <div class="price">{{ item[1].price }} {{ currency }}</div>
                 </article>
             </div>
         </div>
         <div :class="{ shadow: dropDownActive }" class="form-row">
             <label>{{ label }}</label>
             <span @click="flipDropdown" class="currency"
-                ><DownCaret class="caret" />{{ selected.symbol }}</span
-            >
-            <input :id="inputId" :placeholder="placeHolder" />
+                ><DownCaret class="caret" />{{ selected.symbol }}
+            </span>
+            <input v-model="assetInput" :id="inputId" :placeholder="placeHolder" />
         </div>
     </div>
 </template>
@@ -45,8 +45,14 @@ import Search from '@/assets/svg/search.svg';
             // selected: this.$store.getters['ST_getAll'][Object.keys(this.$store.getters['ST_getAll'])[0]]
             //     .symbol,
             dropDownActive: false,
+            assetInput: '',
             search: ''
         };
+    },
+    watch: {
+        assetInput: function(input) {
+            this.$emit('amountEntered', input);
+        }
     },
     computed: {
         ...mapGetters(['ST_getAll']),
@@ -70,7 +76,7 @@ import Search from '@/assets/svg/search.svg';
         select(index, item): void {
             this.selected = item[1];
             this.dropDownActive = false;
-            this.$emit('assetSelected', item);
+            this.$emit('assetSelected', this.selected);
         }
     }
 })
@@ -79,6 +85,8 @@ export default class StandardInput extends Vue {
 }
 </script>
 <style scoped lang="scss">
+@import '@/styles';
+
 .shadow {
     -webkit-box-shadow: -1px 10px 5px -4px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: -1px 10px 5px -4px rgba(0, 0, 0, 0.15);
@@ -98,6 +106,7 @@ export default class StandardInput extends Vue {
         align-items: center;
         justify-content: center;
         font-weight: 700;
+        @include DS_Bold;
         &:hover {
             cursor: pointer;
         }

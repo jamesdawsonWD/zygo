@@ -1,21 +1,22 @@
 <template>
-    <transition name="modal">
-        <div class="modal-mask">
+    <transition name="modal" appear>
+        <div class="modal-mask" @click="checkClick">
             <div class="modal-wrapper">
-                <div class="modal-container">
-                    <div class="modal-header">
-                        <h2 name="header">
-                            {{ Modal.content }}
-                        </h2>
-                    </div>
-
-                    <div class="modal-body"></div>
-
-                    <div class="modal-footer">
-                        <slot name="footer">
-                            <Button title="Close" @clicked="$emit('close')"> </Button>
-                        </slot>
-                    </div>
+                <div class="modal-container" ref="container">
+                    <StakePopup v-if="Modal.content == 'stake'" />
+                    <SigStakePopup v-if="Modal.content == 'sigStake'" />
+                    <PollPopup
+                        v-if="Modal.content == 'poll'"
+                        :key="Modal.data.id"
+                        :title="Modal.data.title"
+                        :yesVotes="Modal.data.yes"
+                        :noVotes="Modal.data.no"
+                        :status="Modal.data.status"
+                        :finishDate="Modal.data.finishDate"
+                        :description="Modal.data.description"
+                        :votes="Modal.data.votes"
+                        :link="Modal.data.link"
+                    />
                 </div>
             </div>
         </div>
@@ -23,18 +24,43 @@
 </template>
 
 <script lang="ts">
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import DepositForm from '@/components/forms/DepositForm.vue';
 import Button from '@/components/generics/Button.vue';
-
+import Box from '@/components/generics/Modal.vue';
+import StakePopup from '@/components/generics/StakePopup.vue';
+import SigStakePopup from '@/components/generics/SigStakePopup.vue';
+import PollPopup from '@/components/generics/PollPopup.vue';
 @Component({
     components: {
         DepositForm,
-        Button
+        Button,
+        StakePopup,
+        PollPopup,
+        SigStakePopup
     },
     computed: {
         ...mapGetters(['Modal'])
+    },
+    methods: {
+        ...mapActions(['UIM_closeModal']),
+        checkClick(event) {
+            console.log(event);
+            const modalRect = this.$refs['container'].getBoundingClientRect();
+            const mousePos = {
+                x: event.x,
+                y: event.y
+            };
+
+            if (
+                mousePos.x <= modalRect.x ||
+                mousePos.x >= modalRect.x + modalRect.width ||
+                mousePos.y <= modalRect.y ||
+                mousePos.y >= modalRect.y + modalRect.height
+            )
+                this.UIM_closeModal();
+        }
     }
 })
 export default class Modal extends Vue {
@@ -51,7 +77,7 @@ export default class Modal extends Vue {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     display: table;
     transition: opacity 0.3s ease;
 
@@ -66,11 +92,9 @@ export default class Modal extends Vue {
 }
 .modal-container {
     min-width: 300px;
-    height: 90vh;
-    width: 70%;
+    width: 600px;
     margin: 0px auto;
-    padding: 20px 30px;
-    background-color: var(--main-font);
+    background-color: var(--foreground-color);
     border-radius: 2px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
     transition: all 0.3s ease;
@@ -90,19 +114,20 @@ export default class Modal extends Vue {
 }
 .modal-default-button {
     float: right;
-} /* * The following styles are
-auto-applied to elements with * transition="modal" when their visibility is
-toggled * by Vue.js. * * You can easily play with the modal transition by
-editing * these styles. */
+}
 .modal-enter {
     opacity: 0;
 }
+.modal-enter-active {
+    opacity: 1;
+}
+
 .modal-leave-active {
     opacity: 0;
 }
-.modal-enter .modal-container,
+
 .modal-leave-active .modal-container {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
+    -webkit-transform: translateY(1000px);
+    transform: translateY(1000px);
 }
 </style>

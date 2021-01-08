@@ -2,7 +2,12 @@
     <div class="form-row">
         <label>{{ label }}</label>
         <span class="currency">{{ currency }}</span>
-        <input :id="inputId" :placeholder="placeHolder" />
+        <input
+            :id="inputId"
+            @input="$emit('update:model', $event)"
+            :placeholder="placeHolder"
+            :value="model"
+        />
     </div>
 </template>
 
@@ -24,13 +29,15 @@ import Button from '@/components/generics/Button.vue';
     computed: {
         ...mapGetters(['PLANET_getTokenIdToProxy'])
     },
-    props: ['tokenId', 'label', 'inputId', 'placeHolder', 'currency']
+    props: ['tokenId', 'label', 'inputId', 'placeHolder', 'currency', 'model']
 })
 export default class StandardInput extends Vue {
     @Prop() private amount!: number;
 }
 </script>
 <style scoped lang="scss">
+@import '@/styles';
+
 .currency {
     position: absolute;
     font-size: var(--md-font);
@@ -42,6 +49,6 @@ export default class StandardInput extends Vue {
     align-items: center;
     justify-content: center;
     pointer-events: none;
-    font-weight: 700;
+    @include DS_Bold;
 }
 </style>

@@ -25,7 +25,9 @@
                     id="fromUSDT"
                     placeHolder="0.000"
                     currency="%"
+                    :model.sync="collateral"
                 />
+                <CollateralSlider @collateralSelected="setCollateral" />
                 <ActionInfo :actionInfo="actionInfo" />
                 <Button
                     title="TRADE"
@@ -53,6 +55,7 @@ import StandardCurrencyInput from '@/components/forms/StandardCurrencyInput.vue'
 import SelectCurrencyInput from '@/components/forms/SelectCurrencyInput.vue';
 import DownArrow from '@/assets/svg/down-arrow.svg';
 import ActionInfo from '@/components/generics/ActionInfo.vue';
+import CollateralSlider from '@/components/generics/CollateralSlider.vue';
 import Box from '@/components/generics/Box.vue';
 
 // import Button from '@/components/generics/Button.vue';
@@ -105,6 +108,7 @@ export default {
                     value: '22.31'
                 }
             ],
+            collateral: '',
             exampleTokens
         };
     },
@@ -115,6 +119,9 @@ export default {
         ...mapActions(['EMP_create']),
         setActiveAsset(item) {
             this.activeAsset = item;
+        },
+        setCollateral(value) {
+            this.collateral = value;
         }
     },
     components: {
@@ -125,7 +132,8 @@ export default {
         SelectCurrencyInput,
         DownArrow,
         ActionInfo,
-        Box
+        Box,
+        CollateralSlider
     }
 };
 </script>

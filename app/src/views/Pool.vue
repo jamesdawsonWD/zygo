@@ -1,11 +1,9 @@
 <template>
-    <div class="trade">
-        <Panels namePanelA="Buy" namePanelB="Sell">
+    <div class="pool">
+        <Panels namePanelA="Provide" namePanelB="Withdraw">
             <form class="buy-form" slot="panelA">
-                <StandardCurrencyInput label="From" id="fromUSDT" placeHolder="0.000" currency="USDT" />
-                <DownArrow class="arrow" />
                 <SelectCurrencyInput
-                    label="To"
+                    label="Asset"
                     id="toToken"
                     placeHolder="0.000"
                     placeholderCurrency="USDT"
@@ -13,7 +11,8 @@
                     @amountEntered="setToAmount"
                     :tokens="exampleTokens"
                 />
-                <ChartView :assetInfo="activeAsset" />
+                <Plus class="plus" />
+                <StandardCurrencyInput label="USDT" id="fromUSDT" placeHolder="0.000" currency="USDT" />
                 <ActionInfo v-if="trade.from.amount != 0 || trade.to.amount != 0" :actionInfo="actionInfo" />
                 <Button
                     title="TRADE"
@@ -30,7 +29,7 @@
             <div slot="panelB">
                 <form class="buy-form" slot="panelA">
                     <SelectCurrencyInput
-                        label="From"
+                        label="LP"
                         id="toToken"
                         placeHolder="0.000"
                         placeholderCurrency="USDT"
@@ -40,7 +39,6 @@
                     />
                     <DownArrow class="arrow" />
                     <StandardCurrencyInput label="To" id="fromUSDT" placeHolder="0.000" currency="USDT" />
-                    <ChartView :assetInfo="activeAsset" />
                     <ActionInfo
                         v-if="trade.from.amount != 0 || trade.to.amount != 0"
                         :actionInfo="actionInfo"
@@ -72,12 +70,12 @@ import Panels from '@/components/generics/PaneledBox.vue';
 import StandardCurrencyInput from '@/components/forms/StandardCurrencyInput.vue';
 import SelectCurrencyInput from '@/components/forms/SelectCurrencyInput.vue';
 import DownArrow from '@/assets/svg/down-arrow.svg';
-import ChartView from '@/components/charts/ChartView.vue';
+import Plus from '@/assets/svg/plus.svg';
 import ActionInfo from '@/components/generics/ActionInfo.vue';
 
 // import Button from '@/components/generics/Button.vue';
 export default {
-    name: 'Trade',
+    name: 'Pool',
     computed: {
         ...mapGetters(['GS_getBoundaries'])
     },
@@ -161,19 +159,29 @@ export default {
         Panels,
         StandardCurrencyInput,
         SelectCurrencyInput,
-        DownArrow,
-        ChartView,
-        ActionInfo
+        Plus,
+        ActionInfo,
+        DownArrow
     }
 };
 </script>
 <style lang="scss">
-.trade {
+.pool {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: start;
     margin-top: 150px;
+}
+
+.plus {
+    margin-top: 15px;
+    margin-bottom: 4px;
+    height: 30px;
+    transform: scale(0.6);
+    path {
+        fill: var(--button-color);
+    }
 }
 
 .arrow {

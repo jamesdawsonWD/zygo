@@ -23,33 +23,17 @@ export default {
         // Button
     },
     methods: {
-        ...mapActions([
-            'bootstrapContracts',
-            'NETWORK_setupEMP',
-            'EMP_getTokenAddress',
-            'UIM_closeModal',
-            'ST_balanceOf',
-            'ST_symbol',
-            'ST_name',
-            'NETWORK_setupSyntheticToken'
-        ])
+        ...mapActions(['setAddress'])
         // depositAmount: function(deposit: Deposit) {
         //     this.deposit(deposit);
         // }
     },
 
     async mounted() {
-        await this.bootstrapContracts();
-        await this.NETWORK_setupEMP({ address: '0x65bbb1fec96f75002672195cf13c13e2a27cb415' });
-        const tokenAddress = await this.EMP_getTokenAddress({
-            empAddress: '0x65bbb1fec96f75002672195cf13c13e2a27cb415'
+        window.ethereum.on('accountsChanged', async accounts => {
+            console.log(accounts[0]);
+            if (accounts[0]) this.setAddress({ address: accounts[0] });
         });
-        await this.NETWORK_setupSyntheticToken({
-            address: tokenAddress
-        });
-        await this.ST_balanceOf({ tokenAddress });
-        await this.ST_symbol({ tokenAddress });
-        await this.ST_name({ tokenAddress });
         // await this.getBalance();
         // await this.getTsunoBalance();
         // await this.getDateUnlocked();
@@ -64,7 +48,7 @@ export default {
     text-align: center;
     color: #2c3e50;
     height: 100vh;
-    background-color: var(--background-color);
+    background-color: var(--bg-color);
     overflow: scroll;
     overflow-x: hidden;
     /* Increase/decrease this value for cross-browser compatibility */

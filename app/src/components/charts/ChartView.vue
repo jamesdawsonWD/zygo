@@ -2,8 +2,8 @@
     <div class="chart-view">
         <div class="action-list">
             <div class="token-stats">
-                <div class="token-name">{{ Object.values(assetInfo)[1].symbol }}</div>
-                <div class="token-price">{{ Object.values(assetInfo)[1].price }} <span>USDT</span></div>
+                <div class="token-name">{{ assetInfo.symbol }}</div>
+                <div class="token-price">{{ assetInfo.price }} <span>USDT</span></div>
                 <div class="token-change"></div>
             </div>
             <div class="button-list">
@@ -82,7 +82,6 @@ export default {
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
         this.fillData();
-        canvas.parentNode.removeChild(canvas);
     },
     methods: {
         // depositAmount: function(deposit: Deposit) {
@@ -462,11 +461,11 @@ export default {
         .token-stats {
             display: flex;
             .token-name {
-                font-size: var(--md-font);
+                font-size: var(--sm-font);
                 margin-right: 10px;
             }
             .token-price {
-                font-size: var(--md-font);
+                font-size: var(--sm-font);
                 color: var(--sub-foreground-color);
 
                 font-weight: 700;
@@ -480,17 +479,17 @@ export default {
 
             button {
                 border-radius: 25px;
-                height: 25px;
-                width: 25px;
+                height: 20px;
+                width: 20px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                border: 2px solid var(--button-color);
+                border: 1px solid var(--button-color);
                 background: none;
                 color: var(--button-color);
                 margin-right: 10px;
                 opacity: 0.5;
-
+                font-size: var(--sm-font);
                 &:hover {
                     cursor: pointer;
                 }

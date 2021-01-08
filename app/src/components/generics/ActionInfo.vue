@@ -20,6 +20,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '@/styles';
 .action-info {
     display: flex;
     flex-direction: column;
@@ -27,6 +28,7 @@ export default {
     background: var(--sub-foreground-color);
     border-radius: 10px;
     margin-top: 25px;
+    transition: 0.5s;
     .info {
         font-size: var(--md-font);
         display: flex;
@@ -46,23 +48,8 @@ export default {
             font-weight: 600;
         }
         .item {
-            font-weight: 700;
+            @include DS_Bold;
         }
-    }
-}
-
-.danger {
-    background: #f43;
-    color: white;
-    &:hover {
-        background: darken(#f43, 33%);
-    }
-}
-
-.primary {
-    background: var(--button-color);
-    color: white;
-    &:hover {
     }
 }
 </style>
