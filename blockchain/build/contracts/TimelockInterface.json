@@ -212,7 +212,7 @@
         "id": 3,
         "nodeType": "ImportDirective",
         "scope": 1285,
-        "sourceUnit": 2851,
+        "sourceUnit": 3863,
         "src": "1803:26:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -315,7 +315,7 @@
                           "referencedDeclaration": 66,
                           "src": "2340:5:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_SignoToken_$2850",
+                            "typeIdentifier": "t_contract$_SignoToken_$3862",
                             "typeString": "contract SignoToken"
                           }
                         },
@@ -326,7 +326,7 @@
                         "lValueRequested": false,
                         "memberName": "totalSupply",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 4021,
+                        "referencedDeclaration": 12232,
                         "src": "2340:17:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -474,7 +474,7 @@
                           "referencedDeclaration": 66,
                           "src": "2665:5:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_SignoToken_$2850",
+                            "typeIdentifier": "t_contract$_SignoToken_$3862",
                             "typeString": "contract SignoToken"
                           }
                         },
@@ -485,7 +485,7 @@
                         "lValueRequested": false,
                         "memberName": "totalSupply",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 4021,
+                        "referencedDeclaration": 12232,
                         "src": "2665:17:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -936,7 +936,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_SignoToken_$2850",
+              "typeIdentifier": "t_contract$_SignoToken_$3862",
               "typeString": "contract SignoToken"
             },
             "typeName": {
@@ -944,10 +944,10 @@
               "id": 65,
               "name": "SignoToken",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2850,
+              "referencedDeclaration": 3862,
               "src": "3486:10:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_SignoToken_$2850",
+                "typeIdentifier": "t_contract$_SignoToken_$3862",
                 "typeString": "contract SignoToken"
               }
             },
@@ -2673,7 +2673,7 @@
                       "referencedDeclaration": 66,
                       "src": "7320:5:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_SignoToken_$2850",
+                        "typeIdentifier": "t_contract$_SignoToken_$3862",
                         "typeString": "contract SignoToken"
                       }
                     },
@@ -2707,10 +2707,10 @@
                         "name": "SignoToken",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2850,
+                        "referencedDeclaration": 3862,
                         "src": "7328:10:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_SignoToken_$2850_$",
+                          "typeIdentifier": "t_type$_t_contract$_SignoToken_$3862_$",
                           "typeString": "type(contract SignoToken)"
                         }
                       },
@@ -2725,13 +2725,13 @@
                       "src": "7328:18:0",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_SignoToken_$2850",
+                        "typeIdentifier": "t_contract$_SignoToken_$3862",
                         "typeString": "contract SignoToken"
                       }
                     },
                     "src": "7320:26:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_SignoToken_$2850",
+                      "typeIdentifier": "t_contract$_SignoToken_$3862",
                       "typeString": "contract SignoToken"
                     }
                   },
@@ -3063,7 +3063,7 @@
                               "referencedDeclaration": 66,
                               "src": "7640:5:0",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_SignoToken_$2850",
+                                "typeIdentifier": "t_contract$_SignoToken_$3862",
                                 "typeString": "contract SignoToken"
                               }
                             },
@@ -3074,7 +3074,7 @@
                             "lValueRequested": false,
                             "memberName": "getPriorVotes",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 2595,
+                            "referencedDeclaration": 3607,
                             "src": "7640:19:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_view$_t_address_$_t_uint256_$returns$_t_uint256_$",
@@ -8914,7 +8914,7 @@
                                 "referencedDeclaration": 66,
                                 "src": "12121:5:0",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_SignoToken_$2850",
+                                  "typeIdentifier": "t_contract$_SignoToken_$3862",
                                   "typeString": "contract SignoToken"
                                 }
                               },
@@ -8925,7 +8925,7 @@
                               "lValueRequested": false,
                               "memberName": "getPriorVotes",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 2595,
+                              "referencedDeclaration": 3607,
                               "src": "12121:19:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_external_view$_t_address_$_t_uint256_$returns$_t_uint256_$",
@@ -13784,7 +13784,7 @@
                         "referencedDeclaration": 66,
                         "src": "15533:5:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SignoToken_$2850",
+                          "typeIdentifier": "t_contract$_SignoToken_$3862",
                           "typeString": "contract SignoToken"
                         }
                       },
@@ -13795,7 +13795,7 @@
                       "lValueRequested": false,
                       "memberName": "getPriorVotes",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2595,
+                      "referencedDeclaration": 3607,
                       "src": "15533:19:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_address_$_t_uint256_$returns$_t_uint256_$",
@@ -17593,7 +17593,7 @@
         "id": 3,
         "nodeType": "ImportDirective",
         "scope": 1285,
-        "sourceUnit": 2851,
+        "sourceUnit": 3863,
         "src": "1803:26:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -17696,7 +17696,7 @@
                           "referencedDeclaration": 66,
                           "src": "2340:5:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_SignoToken_$2850",
+                            "typeIdentifier": "t_contract$_SignoToken_$3862",
                             "typeString": "contract SignoToken"
                           }
                         },
@@ -17707,7 +17707,7 @@
                         "lValueRequested": false,
                         "memberName": "totalSupply",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 4021,
+                        "referencedDeclaration": 12232,
                         "src": "2340:17:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -17855,7 +17855,7 @@
                           "referencedDeclaration": 66,
                           "src": "2665:5:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_SignoToken_$2850",
+                            "typeIdentifier": "t_contract$_SignoToken_$3862",
                             "typeString": "contract SignoToken"
                           }
                         },
@@ -17866,7 +17866,7 @@
                         "lValueRequested": false,
                         "memberName": "totalSupply",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 4021,
+                        "referencedDeclaration": 12232,
                         "src": "2665:17:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -18317,7 +18317,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_SignoToken_$2850",
+              "typeIdentifier": "t_contract$_SignoToken_$3862",
               "typeString": "contract SignoToken"
             },
             "typeName": {
@@ -18325,10 +18325,10 @@
               "id": 65,
               "name": "SignoToken",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2850,
+              "referencedDeclaration": 3862,
               "src": "3486:10:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_SignoToken_$2850",
+                "typeIdentifier": "t_contract$_SignoToken_$3862",
                 "typeString": "contract SignoToken"
               }
             },
@@ -20054,7 +20054,7 @@
                       "referencedDeclaration": 66,
                       "src": "7320:5:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_SignoToken_$2850",
+                        "typeIdentifier": "t_contract$_SignoToken_$3862",
                         "typeString": "contract SignoToken"
                       }
                     },
@@ -20088,10 +20088,10 @@
                         "name": "SignoToken",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2850,
+                        "referencedDeclaration": 3862,
                         "src": "7328:10:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_SignoToken_$2850_$",
+                          "typeIdentifier": "t_type$_t_contract$_SignoToken_$3862_$",
                           "typeString": "type(contract SignoToken)"
                         }
                       },
@@ -20106,13 +20106,13 @@
                       "src": "7328:18:0",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_SignoToken_$2850",
+                        "typeIdentifier": "t_contract$_SignoToken_$3862",
                         "typeString": "contract SignoToken"
                       }
                     },
                     "src": "7320:26:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_SignoToken_$2850",
+                      "typeIdentifier": "t_contract$_SignoToken_$3862",
                       "typeString": "contract SignoToken"
                     }
                   },
@@ -20444,7 +20444,7 @@
                               "referencedDeclaration": 66,
                               "src": "7640:5:0",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_SignoToken_$2850",
+                                "typeIdentifier": "t_contract$_SignoToken_$3862",
                                 "typeString": "contract SignoToken"
                               }
                             },
@@ -20455,7 +20455,7 @@
                             "lValueRequested": false,
                             "memberName": "getPriorVotes",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 2595,
+                            "referencedDeclaration": 3607,
                             "src": "7640:19:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_view$_t_address_$_t_uint256_$returns$_t_uint256_$",
@@ -26295,7 +26295,7 @@
                                 "referencedDeclaration": 66,
                                 "src": "12121:5:0",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_SignoToken_$2850",
+                                  "typeIdentifier": "t_contract$_SignoToken_$3862",
                                   "typeString": "contract SignoToken"
                                 }
                               },
@@ -26306,7 +26306,7 @@
                               "lValueRequested": false,
                               "memberName": "getPriorVotes",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 2595,
+                              "referencedDeclaration": 3607,
                               "src": "12121:19:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_external_view$_t_address_$_t_uint256_$returns$_t_uint256_$",
@@ -31165,7 +31165,7 @@
                         "referencedDeclaration": 66,
                         "src": "15533:5:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SignoToken_$2850",
+                          "typeIdentifier": "t_contract$_SignoToken_$3862",
                           "typeString": "contract SignoToken"
                         }
                       },
@@ -31176,7 +31176,7 @@
                       "lValueRequested": false,
                       "memberName": "getPriorVotes",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2595,
+                      "referencedDeclaration": 3607,
                       "src": "15533:19:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_address_$_t_uint256_$returns$_t_uint256_$",
@@ -34941,7 +34941,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.2",
-  "updatedAt": "2020-12-15T15:38:43.395Z",
+  "updatedAt": "2021-01-18T09:37:28.689Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

@@ -9,12 +9,13 @@
     "deploy": "truffle deploy --reset",
     "deploy-kovan": "truffle deploy --reset --network kovan",
     "migrate-matic": "truffle migrate --network matic",
-    "migrate-kovan": "truffle migrate --network kovan",
+    "migrate-kovan": "truffle migrate --network kovan --reset",
     "console": "truffle console",
     "deploy-matic": "truffle deploy --network matic",
     "preinstall": "npx only-allow pnpm",
     "migrate": "truffle migrate",
-    "ganache": "ganache-cli -a 10 -e 1000 -p 7545"
+    "ganache": "ganache-cli -a 10 -e 1000 -p 7545",
+    "flatten": "truffle-flattener ./contracts/MockERC20.sol > ./flatten.txt"
   },
   "dependencies": {
     "@openzeppelin/upgrades": "^2.8.0",

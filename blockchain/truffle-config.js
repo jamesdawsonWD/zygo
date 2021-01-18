@@ -67,7 +67,8 @@ module.exports = {
             host: '127.0.0.1',
             port: 7545,
             gas: 4600000,
-            network_id: '*' // Match any network id
+            network_id: '*', // Match any network id,
+            skipDryRun: true
         },
         matic: {
             provider: function() {
@@ -112,7 +113,7 @@ module.exports = {
     // Configure your compilers
     compilers: {
         solc: {
-            version: '0.6.12',
+            version: '0.5.16',
             // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
             settings: {
                 // See the solidity docs for advice about optimization and evmVersion

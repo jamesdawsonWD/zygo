@@ -28,7 +28,7 @@ interface IMigratorChef {
     function migrate(IERC20 token) external returns (IERC20);
 }
 
-contract LiquidityPool is Ownable {
+contract SigLPStake is Ownable {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
@@ -60,7 +60,6 @@ contract LiquidityPool is Ownable {
     // The Signo TOKEN!
     SignoToken public signo;
     // Dev address.
-    address public devaddr;
     // Block number when bonus signo period ends.
     uint256 public bonusEndBlock;
     // signo tokens created per block.
@@ -85,13 +84,11 @@ contract LiquidityPool is Ownable {
 
     constructor(
         SignoToken _signo,
-        address _devaddr,
         uint256 _signoPerBlock,
         uint256 _startBlock,
         uint256 _bonusEndBlock
     ) public {
         signo = _signo;
-        devaddr = _devaddr;
         signoPerBlock = _signoPerBlock;
         bonusEndBlock = _bonusEndBlock;
         startBlock = _startBlock;
@@ -199,7 +196,7 @@ contract LiquidityPool is Ownable {
         }
         uint256 multiplier = getMultiplier(pool.lastRewardBlock, block.number);
         uint256 signoReward = multiplier.mul(signoPerBlock).mul(pool.allocPoint).div(totalAllocPoint);
-        signo.mint(devaddr, signoReward.div(10));
+        // signo.mint(devaddr, signoReward.div(10));
         signo.mint(address(this), signoReward);
         pool.accSignoPerShare = pool.accSignoPerShare.add(signoReward.mul(1e12).div(lpSupply));
         pool.lastRewardBlock = block.number;
@@ -261,11 +258,5 @@ contract LiquidityPool is Ownable {
         } else {
             signo.transfer(_to, _amount);
         }
-    }
-
-    // Update dev address by the previous dev.
-    function dev(address _devaddr) public {
-        require(msg.sender == devaddr, 'dev: wut?');
-        devaddr = _devaddr;
     }
 }
