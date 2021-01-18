@@ -13,6 +13,6 @@ module.exports = async function(deployer, _network, accounts) {
     console.log(weth.address, test.address);
     const factory = await Factory.deployed();
     console.log(factory.address);
-    // await factory.createPair(test.address, weth.address, { from: accounts[0], gasLimit: 10000000 });
+    await factory.createPair(test.address, weth.address, { from: accounts[0], gas: 4000000 });
     console.log(await factory.getPair(test.address, weth.address));
 };
