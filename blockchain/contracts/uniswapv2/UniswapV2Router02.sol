@@ -5,7 +5,7 @@ import './libraries/SafeMath.sol';
 import './libraries/TransferHelper.sol';
 import './interfaces/IUniswapV2Router02.sol';
 import './interfaces/IUniswapV2Factory.sol';
-import './interfaces/IERC20.sol';
+import './interfaces/IERC20Uniswap.sol';
 import './interfaces/IWETH.sol';
 
 contract UniswapV2Router02 is IUniswapV2Router02 {
@@ -101,9 +101,9 @@ contract UniswapV2Router02 is IUniswapV2Router02 {
         uint256 deadline
     )
         external
+        payable
         virtual
         override
-        payable
         ensure(deadline)
         returns (
             uint256 amountToken,
@@ -272,9 +272,8 @@ contract UniswapV2Router02 is IUniswapV2Router02 {
             (address input, address output) = (path[i], path[i + 1]);
             (address token0, ) = UniswapV2Library.sortTokens(input, output);
             uint256 amountOut = amounts[i + 1];
-            (uint256 amount0Out, uint256 amount1Out) = input == token0
-                ? (uint256(0), amountOut)
-                : (amountOut, uint256(0));
+            (uint256 amount0Out, uint256 amount1Out) =
+                input == token0 ? (uint256(0), amountOut) : (amountOut, uint256(0));
             address to = i < path.length - 2 ? UniswapV2Library.pairFor(factory, output, path[i + 2]) : _to;
             IUniswapV2Pair(UniswapV2Library.pairFor(factory, input, output)).swap(
                 amount0Out,
@@ -326,7 +325,7 @@ contract UniswapV2Router02 is IUniswapV2Router02 {
         address[] calldata path,
         address to,
         uint256 deadline
-    ) external virtual override payable ensure(deadline) returns (uint256[] memory amounts) {
+    ) external payable virtual override ensure(deadline) returns (uint256[] memory amounts) {
         require(path[0] == WETH, 'UniswapV2Router: INVALID_PATH');
         amounts = UniswapV2Library.getAmountsOut(factory, msg.value, path);
         require(amounts[amounts.length - 1] >= amountOutMin, 'UniswapV2Router: INSUFFICIENT_OUTPUT_AMOUNT');
@@ -382,7 +381,7 @@ contract UniswapV2Router02 is IUniswapV2Router02 {
         address[] calldata path,
         address to,
         uint256 deadline
-    ) external virtual override payable ensure(deadline) returns (uint256[] memory amounts) {
+    ) external payable virtual override ensure(deadline) returns (uint256[] memory amounts) {
         require(path[0] == WETH, 'UniswapV2Router: INVALID_PATH');
         amounts = UniswapV2Library.getAmountsIn(factory, amountOut, path);
         require(amounts[0] <= msg.value, 'UniswapV2Router: EXCESSIVE_INPUT_AMOUNT');
@@ -483,7 +482,7 @@ contract UniswapV2Router02 is IUniswapV2Router02 {
         uint256 amountA,
         uint256 reserveA,
         uint256 reserveB
-    ) public virtual override pure returns (uint256 amountB) {
+    ) public pure virtual override returns (uint256 amountB) {
         return UniswapV2Library.quote(amountA, reserveA, reserveB);
     }
 
@@ -491,7 +490,7 @@ contract UniswapV2Router02 is IUniswapV2Router02 {
         uint256 amountIn,
         uint256 reserveIn,
         uint256 reserveOut
-    ) public virtual override pure returns (uint256 amountOut) {
+    ) public pure virtual override returns (uint256 amountOut) {
         return UniswapV2Library.getAmountOut(amountIn, reserveIn, reserveOut);
     }
 
@@ -499,15 +498,15 @@ contract UniswapV2Router02 is IUniswapV2Router02 {
         uint256 amountOut,
         uint256 reserveIn,
         uint256 reserveOut
-    ) public virtual override pure returns (uint256 amountIn) {
+    ) public pure virtual override returns (uint256 amountIn) {
         return UniswapV2Library.getAmountIn(amountOut, reserveIn, reserveOut);
     }
 
     function getAmountsOut(uint256 amountIn, address[] memory path)
         public
+        view
         virtual
         override
-        view
         returns (uint256[] memory amounts)
     {
         return UniswapV2Library.getAmountsOut(factory, amountIn, path);
@@ -515,9 +514,9 @@ contract UniswapV2Router02 is IUniswapV2Router02 {
 
     function getAmountsIn(uint256 amountOut, address[] memory path)
         public
+        view
         virtual
         override
-        view
         returns (uint256[] memory amounts)
     {
         return UniswapV2Library.getAmountsIn(factory, amountOut, path);

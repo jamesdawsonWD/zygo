@@ -4,9 +4,9 @@
         <span class="currency">{{ currency }}</span>
         <input
             :id="inputId"
-            @input="$emit('update:model', $event)"
+            @input="$emit('update:amount', amount)"
             :placeholder="placeHolder"
-            :value="model"
+            v-model="amount"
         />
     </div>
 </template>
@@ -29,7 +29,7 @@ import Button from '@/components/generics/Button.vue';
     computed: {
         ...mapGetters(['PLANET_getTokenIdToProxy'])
     },
-    props: ['tokenId', 'label', 'inputId', 'placeHolder', 'currency', 'model']
+    props: ['tokenId', 'label', 'inputId', 'placeHolder', 'currency', 'amount']
 })
 export default class StandardInput extends Vue {
     @Prop() private amount!: number;

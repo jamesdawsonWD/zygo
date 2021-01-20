@@ -326,7 +326,7 @@
                         "lValueRequested": false,
                         "memberName": "totalSupply",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 12232,
+                        "referencedDeclaration": 12039,
                         "src": "2340:17:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -485,7 +485,7 @@
                         "lValueRequested": false,
                         "memberName": "totalSupply",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 12232,
+                        "referencedDeclaration": 12039,
                         "src": "2665:17:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -17707,7 +17707,7 @@
                         "lValueRequested": false,
                         "memberName": "totalSupply",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 12232,
+                        "referencedDeclaration": 12039,
                         "src": "2340:17:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -17866,7 +17866,7 @@
                         "lValueRequested": false,
                         "memberName": "totalSupply",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 12232,
+                        "referencedDeclaration": 12039,
                         "src": "2665:17:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -34941,7 +34941,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.2",
-  "updatedAt": "2021-01-18T09:37:28.689Z",
+  "updatedAt": "2021-01-18T15:35:48.791Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

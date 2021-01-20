@@ -60,6 +60,8 @@ export default class PaneledBox extends Vue {}
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import '@/styles';
+
 .panels {
     width: 600px;
     position: relative;
@@ -85,6 +87,7 @@ export default class PaneledBox extends Vue {}
             align-items: center;
             justify-content: center;
             font-size: var(--lg-font);
+            @include DS_Bold;
             font-weight: 700;
             color: var(--main-font);
         }

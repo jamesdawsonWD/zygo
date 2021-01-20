@@ -1,4 +1,3 @@
-import { SyntheticTokens } from './types';
 import TransactionReceipt from 'web3/types';
 export interface RootState {
     version: string;
@@ -13,7 +12,9 @@ export interface Network {
     contracts: {
         EMPs: { [key: string]: any };
         syntheticTokens: { [key: string]: any };
+        swapPairs: { [key: string]: any };
         signoToken: any;
+        swapRouter: any;
     };
     ethReady: boolean;
     userAddress: string;
@@ -43,6 +44,23 @@ export interface StarInfo {
     systemType: number;
 }
 
+export interface SignoToken {
+    balance: string;
+}
+export interface SwapPairs {
+    pairs: {
+        [address: string]: Pair
+    }
+}
+
+export interface Pair {
+    name: string;
+    token0: string;
+    token1: string;
+    price0CumulativeLast: string;
+    price1CumulativeLast: string;
+
+}
 export interface GameStorageOperations {
     currentStarLocation: StarPosition | null;
     satsInfo: SatsInfo;

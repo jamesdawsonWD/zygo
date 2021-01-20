@@ -12,6 +12,7 @@
                     Connect
                 </button>
                 <button v-if="Address != emptyAddress" class="address">{{ Address | shortAddress }}</button>
+                <div>SIG: {{ SIG_getBalance | fromWeiToReadable }}</div>
             </div>
         </div>
     </header>
@@ -41,20 +42,10 @@ import Button from '@/components/generics/Button.vue';
         ]),
         async connectWallet() {
             await this.bootstrapContracts();
-            // await this.NETWORK_setupEMP({ address: '0x65bbb1fec96f75002672195cf13c13e2a27cb415' });
-            // const tokenAddress = await this.EMP_getTokenAddress({
-            //     empAddress: '0x65bbb1fec96f75002672195cf13c13e2a27cb415'
-            // });
-            // await this.NETWORK_setupSyntheticToken({
-            //     address: tokenAddress
-            // });
-            // await this.ST_balanceOf({ tokenAddress });
-            // await this.ST_symbol({ tokenAddress });
-            // await this.ST_name({ tokenAddress });
         }
     },
     computed: {
-        ...mapGetters(['Address'])
+        ...mapGetters(['Address', 'SIG_getBalance'])
     },
     data() {
         return {
@@ -112,7 +103,7 @@ export default class Header extends Vue {
             width: 100px;
             border: none;
             padding: 10px;
-            margin: 0 25px 0 50px;
+            margin: 0 0 0 50px;
             border-radius: 12px;
             background: transparent;
             transition: 0.2s;

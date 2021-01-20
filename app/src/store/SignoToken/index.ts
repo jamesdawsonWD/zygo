@@ -1,8 +1,8 @@
 import { Module } from 'vuex';
-import { RootState, SyntheticTokens } from '../types';
+import { RootState, SignoToken } from '../types';
 
-export const state: SyntheticTokens = {
-
+export const state: SignoToken = {
+    balance: '0'
 };
 
 import { getters } from './getters';
@@ -11,7 +11,7 @@ import { mutations } from './mutations';
 
 const namespaced = false;
 
-export const syntheticTokens: Module<SyntheticTokens, RootState> = {
+export const signoToken: Module<SignoToken, RootState> = {
     namespaced,
     state,
     getters,

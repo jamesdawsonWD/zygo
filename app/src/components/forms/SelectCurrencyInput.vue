@@ -6,7 +6,7 @@
                 <Search v-if="dropDownActive" class="search-icon" />
             </div>
             <div :style="{ opacity: dropDownActive ? '1' : '0' }" class="select-list">
-                <article v-for="(item, index) in filteredTokens" :key="index" @click="select(index, item)">
+                <article v-for="(item, key) in filteredTokens" :key="key" @click="select(key, item)">
                     <div class="item">
                         <div class="symbol">{{ item[1].symbol }}</div>
                         <div class="name">{{ item[1].name }}</div>
@@ -20,7 +20,12 @@
             <span @click="flipDropdown" class="currency"
                 ><DownCaret class="caret" />{{ selected.symbol }}
             </span>
-            <input v-model="assetInput" :id="inputId" :placeholder="placeHolder" />
+            <input
+                v-model="amount"
+                @input="$emit('update:amount', amount)"
+                :id="inputId"
+                :placeholder="placeHolder"
+            />
         </div>
     </div>
 </template>
@@ -68,7 +73,7 @@ import Search from '@/assets/svg/search.svg';
             });
         }
     },
-    props: ['tokenId', 'label', 'inputId', 'placeHolder', 'currency', 'tokens'],
+    props: ['tokenId', 'label', 'inputId', 'placeHolder', 'currency', 'tokens', 'amount'],
     methods: {
         flipDropdown(): void {
             this.dropDownActive = this.dropDownActive ? false : true;
@@ -76,7 +81,8 @@ import Search from '@/assets/svg/search.svg';
         select(index, item): void {
             this.selected = item[1];
             this.dropDownActive = false;
-            this.$emit('assetSelected', this.selected);
+            const key = `${Object.keys(this.tokens)[index]}`;
+            this.$emit('assetSelected', { [key]: this.selected });
         }
     }
 })

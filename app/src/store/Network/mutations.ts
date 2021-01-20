@@ -6,6 +6,7 @@ export const mutations: MutationTree<Network> = {
     SET_NETWORK_DATA: (state: Network, payload: NetworkData) => (state.networkData = payload),
     SET_ADDRESS: (state: Network, payload: string) => (state.userAddress = payload),
     ADD_SIGNO_TOKEN_CONTRACT: (state: Network, payload: { SIGNO_TOKEN_CONTRACT: string }) => (state.contracts.signoToken = payload.SIGNO_TOKEN_CONTRACT),
+    ADD_SWAP_ROUTER_CONTRACT: (state: Network, payload: { SWAP_ROUTER_CONTRACT: string }) => (state.contracts.swapRouter = payload.SWAP_ROUTER_CONTRACT),
     ADD_EMP: (state: Network, payload: { EMP_CONTRACT: any; address: string }) => {
         state.contracts.EMPs = {
             ...state.contracts.EMPs,
@@ -19,6 +20,15 @@ export const mutations: MutationTree<Network> = {
             ...state.contracts.syntheticTokens,
             ...{
                 [payload.address]: payload.SYNTHETIC_TOKEN_CONTRACT
+            }
+        };
+
+    },
+    ADD_PAIR_CONTRACT: (state: Network, payload: { PAIR_CONTRACT: any; address: string }) => {
+        state.contracts.swapPairs = {
+            ...state.contracts.swapPairs,
+            ...{
+                [payload.address]: payload.PAIR_CONTRACT
             }
         };
 

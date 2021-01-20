@@ -19,6 +19,10 @@ export const state: Network = {
         syntheticTokens: {
 
         },
+        swapPairs: {
+
+        },
+        swapRouter: null,
         signoToken: null,
     },
     web3: null,

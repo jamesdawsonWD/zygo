@@ -14,7 +14,7 @@ import Header from '@/components/Header.vue';
 export default {
     name: 'App',
     computed: {
-        ...mapGetters(['ShowModal'])
+        ...mapGetters(['ShowModal', 'SignoToken'])
     },
     components: {
         // DepositForm,
@@ -23,7 +23,7 @@ export default {
         // Button
     },
     methods: {
-        ...mapActions(['setAddress'])
+        ...mapActions(['setAddress', 'SIG_balanceOf', 'bootstrapContracts'])
         // depositAmount: function(deposit: Deposit) {
         //     this.deposit(deposit);
         // }
@@ -32,7 +32,12 @@ export default {
     async mounted() {
         window.ethereum.on('accountsChanged', async accounts => {
             console.log(accounts[0]);
-            if (accounts[0]) this.setAddress({ address: accounts[0] });
+            if (accounts[0]) {
+                console.log(this.SignoToken == null);
+                if (this.SignoToken == null) await this.bootstrapContracts();
+                await this.setAddress({ address: accounts[0] });
+                await this.SIG_balanceOf();
+            }
         });
         // await this.getBalance();
         // await this.getTsunoBalance();

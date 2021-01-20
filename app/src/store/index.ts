@@ -4,6 +4,8 @@ import { network } from './Network';
 import { emps } from './EMPs';
 import { syntheticTokens } from './SyntheticTokens';
 import { userInterfaceManager } from './UserInterfaceManager';
+import { signoToken } from './SignoToken';
+import { swapPairs } from './SwapPairs';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -16,7 +18,9 @@ export default new Vuex.Store({
         network,
         emps,
         syntheticTokens,
-        userInterfaceManager
+        userInterfaceManager,
+        signoToken,
+        swapPairs
     },
     plugins: []
 });

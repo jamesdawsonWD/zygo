@@ -22,6 +22,8 @@ export default class Box extends Vue {}
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import '@/styles';
+
 .box {
     width: 600px;
     position: relative;
@@ -40,11 +42,14 @@ export default class Box extends Vue {}
         justify-content: space-between;
         align-items: center;
         margin-bottom: 10px;
+
         & div {
             width: 100%;
             height: 60px;
             display: flex;
             align-items: center;
+            @include DS_Bold;
+
             justify-content: center;
             font-size: var(--lg-font);
             font-weight: 700;

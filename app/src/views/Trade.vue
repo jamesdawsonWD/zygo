@@ -1,8 +1,14 @@
 <template>
     <div class="trade">
         <Panels namePanelA="Buy" namePanelB="Sell">
-            <form class="buy-form" slot="panelA">
-                <StandardCurrencyInput label="From" id="fromUSDT" placeHolder="0.000" currency="USDT" />
+            <form class="buy-form" slot="panelA" @submit.prevent>
+                <StandardCurrencyInput
+                    label="From"
+                    id="fromUSDT"
+                    placeHolder="0.000"
+                    currency="USDT"
+                    :amount.sync="trade.buy.from.amount"
+                />
                 <DownArrow class="arrow" />
                 <SelectCurrencyInput
                     label="To"
@@ -10,11 +16,44 @@
                     placeHolder="0.000"
                     placeholderCurrency="USDT"
                     @assetSelected="setActiveAsset"
-                    @amountEntered="setToAmount"
                     :tokens="exampleTokens"
+                    :amount.sync="trade.buy.to.amount"
                 />
                 <ChartView :assetInfo="activeAsset" />
-                <ActionInfo v-if="trade.from.amount != 0 || trade.to.amount != 0" :actionInfo="actionInfo" />
+
+                <ActionInfo
+                    v-if="trade.buy.from.amount != 0 || trade.buy.to.amount != 0"
+                    :actionInfo="actionInfo"
+                />
+                <Button
+                    title="TRADE"
+                    @clicked="
+                        PAIR_swap({
+                            amount0: trade.buy.from.amount,
+                            amount1: trade.buy.to.amount,
+                            defaultOrder: true,
+                            address: Object.keys(activeAsset)[0]
+                        })
+                    "
+                    buttonStyle="primary"
+                ></Button>
+            </form>
+            <form class="buy-form" slot="panelB">
+                <SelectCurrencyInput
+                    label="From"
+                    id="toToken"
+                    placeHolder="0.000"
+                    placeholderCurrency="USDT"
+                    @assetSelected="setActiveAsset"
+                    :tokens="exampleTokens"
+                />
+                <DownArrow class="arrow" />
+                <StandardCurrencyInput label="To" id="fromUSDT" placeHolder="0.000" currency="USDT" />
+                <ChartView :assetInfo="activeAsset" />
+                <ActionInfo
+                    v-if="trade.sell.from.amount != 0 || trade.sell.to.amount != 0"
+                    :actionInfo="actionInfo"
+                />
                 <Button
                     title="TRADE"
                     @clicked="
@@ -27,37 +66,6 @@
                     buttonStyle="primary"
                 ></Button>
             </form>
-            <div slot="panelB">
-                <form class="buy-form" slot="panelA">
-                    <SelectCurrencyInput
-                        label="From"
-                        id="toToken"
-                        placeHolder="0.000"
-                        placeholderCurrency="USDT"
-                        @assetSelected="setActiveAsset"
-                        @amountEntered="setFromAmount"
-                        :tokens="exampleTokens"
-                    />
-                    <DownArrow class="arrow" />
-                    <StandardCurrencyInput label="To" id="fromUSDT" placeHolder="0.000" currency="USDT" />
-                    <ChartView :assetInfo="activeAsset" />
-                    <ActionInfo
-                        v-if="trade.from.amount != 0 || trade.to.amount != 0"
-                        :actionInfo="actionInfo"
-                    />
-                    <Button
-                        title="TRADE"
-                        @clicked="
-                            EMP_create({
-                                numTokens: '11',
-                                collateralAmount: '0.002',
-                                tokenAddress: '0x65bbb1fec96f75002672195cf13c13e2a27cb415'
-                            })
-                        "
-                        buttonStyle="primary"
-                    ></Button>
-                </form>
-            </div>
         </Panels>
     </div>
 </template>
@@ -83,34 +91,34 @@ export default {
     },
     data() {
         const exampleTokens = {
-            1: {
+            '0x481dd11D3E4734Eb5ea20076b0E4314Cb94179D9': {
                 symbol: 'uTEST-WETHBTC',
                 name: 'uTEST WETH BTC',
                 price: '234.2'
             },
-            2: {
+            '2': {
                 symbol: 'uBond',
                 name: 'uBond',
                 price: '112'
             },
-            3: {
+            '3': {
                 symbol: 'uBond2',
                 name: 'uBond2',
                 price: '123.9'
             },
-            4: {
+            '4': {
                 symbol: 'uBond3',
                 name: 'uBond3',
                 price: '15.8'
             },
-            5: {
+            '5': {
                 symbol: 'uBond4',
                 name: 'uBond4',
                 price: '221'
             }
         };
         return {
-            activeAsset: exampleTokens[1],
+            activeAsset: exampleTokens[Object.keys(exampleTokens)[0]],
             actionInfo: [
                 {
                     key: 'Recieved Amount',
@@ -125,14 +133,27 @@ export default {
                     value: '22.31'
                 }
             ],
+            amount: '',
             trade: {
-                from: {
-                    amount: '',
-                    asset: ''
+                buy: {
+                    from: {
+                        amount: '',
+                        asset: ''
+                    },
+                    to: {
+                        amount: '',
+                        asset: ''
+                    }
                 },
-                to: {
-                    amount: '',
-                    asset: ''
+                sell: {
+                    from: {
+                        amount: '',
+                        asset: ''
+                    },
+                    to: {
+                        amount: '',
+                        asset: ''
+                    }
                 }
             },
             exampleTokens
@@ -142,16 +163,10 @@ export default {
         // depositAmount: function(deposit: Deposit) {
         //     this.deposit(deposit);
         // }
-        ...mapActions(['EMP_create']),
+        ...mapActions(['EMP_create', 'PAIR_swap']),
         setActiveAsset(item) {
             this.activeAsset = item;
             console.log(item);
-        },
-        setToAmount(amount) {
-            this.trade.to.amount = amount;
-        },
-        setFromAmount(amount) {
-            this.trade.from.amount = amount;
         }
     },
     components: {
