@@ -1,4 +1,4 @@
-pragma solidity 0.6.12;
+pragma solidity 0.7.5;
 
 import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
@@ -8,9 +8,12 @@ import './uniswapv2/libraries/SafeMath.sol';
 contract ZygoToken is ERC20('Zygo', 'ZYGO'), Ownable {
     using SafeMath for uint256;
 
+    event Mint(address _to, uint256 _amount);
+
     function mint(address _to, uint256 _amount) public onlyOwner {
         _mint(_to, _amount);
         _moveDelegates(address(0), _delegates[_to], _amount);
+        emit Mint(_to, _amount);
     }
 
     // Copied and modified from YAM code:

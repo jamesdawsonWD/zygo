@@ -1,51 +1,63 @@
 const Factory = artifacts.require('uniswapv2/UniswapV2Factory.sol');
 const Router = artifacts.require('uniswapv2/UniswapV2Router02.sol');
 const MockERC20 = artifacts.require('MockERC20.sol');
-const ZygoToken = artifacts.require('ZygoToken.sol');
 const IUniswapV2Pair = artifacts.require('IUniswapV2Pair.sol');
+const ZygoToken = artifacts.require('ZygoToken.sol');
+const ZygoProtocol = artifacts.require('ZygoProtocol.sol');
 const SimpleOracle = artifacts.require('SimpleOracle.sol');
+const WETH = artifacts.require('WETH.sol');
+
 module.exports = async function(deployer, _network, accounts) {
+    const UNISWAP_ROUTERV2 = '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D';
+    const UNISWAP_FACTORY = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f';
+    const WETH_ADDRESS = '0xa1C74a9A3e59ffe9bEe7b85Cd6E91C0751289EbD';
+
     await deployer.deploy(ZygoToken);
     const zygo = await ZygoToken.deployed();
     await zygo.mint(accounts[0], web3.utils.toWei('100000', 'ether'));
-    const weth = await MockERC20.new('Wrapped Ether', 'WETH', web3.utils.toWei('100000', 'ether'));
 
-    await deployer.deploy(Factory, accounts[0]);
-    const factory = await Factory.deployed();
-    const wethZygoPairTX = await factory.createPair(weth.address, ZygoToken.address);
+    const factory = await Factory.at(UNISWAP_FACTORY);
+    const router = await Router.at(UNISWAP_ROUTERV2);
+    const weth = await WETH.at(WETH_ADDRESS);
 
-    console.log(wethZygoPairTX.logs[0]);
-    const wethZygoPair = wethZygoPairTX.receipt.logs[0].args.pair;
+    const tx1 = await zygo.approve(router.address, web3.utils.toWei('40000', 'ether'), {
+        from: accounts[0]
+    });
+    await weth.sendTransaction({ from: accounts[0], value: web3.utils.toWei('2', 'ether') });
+    await weth.approve(router.address, web3.utils.toWei('2', 'ether'), {
+        from: accounts[0]
+    });
+    const allowance = await zygo.allowance(accounts[0], router.address, { from: accounts[0] });
+    const wethAllowance = await weth.allowance(accounts[0], router.address, { from: accounts[0] });
 
-    console.log('WETH-ZYGO PAIR: ', wethZygoPair);
-    await deployer.deploy(Router, factory.address, weth.address);
-    const router = await Router.deployed();
+    console.log(allowance.toString(), wethAllowance.toString());
+    console.log(tx1.receipt.logs[0].args.spender == router.address);
+
+    const zygoBal = await zygo.balanceOf(accounts[0]);
+    const wethBal = await weth.balanceOf.call(accounts[0]);
+
+    console.log(zygoBal.toString(), wethBal.toString());
+
     const blockNumber = await web3.eth.getBlockNumber();
     const block = await web3.eth.getBlock(blockNumber);
     const timestamp = block.timestamp + 300;
 
-    await weth.approve(router.address, '2000000000000000000000000');
-    await zygo.approve(router.address, '2000000000000000000000000');
-
-    const tokenA_amount = web3.utils.toBN('200000000000000000000');
-    const tokenB_amount = web3.utils.toBN('200000000000000000000');
-
+    console.log(weth.address, ZygoToken.address);
     const tx = await router.addLiquidity(
         weth.address,
         zygo.address,
-        '4000000000000000000000',
-        '100000000000000000000',
-        '3999999999999990000000',
-        '199999999999999000000',
+        web3.utils.toWei('0.1', 'ether'),
+        web3.utils.toWei('3.5', 'ether'),
+        web3.utils.toWei('0.01', 'ether'),
+        web3.utils.toWei('1.5', 'ether'),
         accounts[0],
         timestamp,
         { gas: 4000000 }
     );
 
-    const wethZygoPairC = await IUniswapV2Pair.at(wethZygoPair);
-    const balance = await wethZygoPairC.balanceOf(accounts[0]);
-
-    console.log(balance.toString());
+    console.log(tx);
+    await deployer.deploy(SimpleOracle, factory.address, weth.address, zygo.address);
+    await deployer.deploy(ZygoProtocol, zygo.address, weth.address, SimpleOracle.address);
 
     // console.log(decoded);
     //     address tokenA,

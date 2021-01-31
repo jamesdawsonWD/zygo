@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-pragma solidity >=0.6.12;
+pragma solidity >=0.7.5;
 
 import './FullMath.sol';
 
@@ -25,6 +25,21 @@ library FixedPoint {
     // decode a UQ144x112 into a uint144 by truncating after the radix point
     function decode144(uq144x112 memory self) internal pure returns (uint144) {
         return uint144(self._x >> RESOLUTION);
+    }
+
+    // encode a uint112 as a UQ112x112
+    function encode(uint112 x) internal pure returns (uq112x112 memory) {
+        return uq112x112(uint224(x) << RESOLUTION);
+    }
+
+    // encodes a uint144 as a UQ144x112
+    function encode144(uint144 x) internal pure returns (uq144x112 memory) {
+        return uq144x112(uint256(x) << RESOLUTION);
+    }
+
+    // decode a UQ112x112 into a uint112 by truncating after the radix point
+    function decode(uq112x112 memory self) internal pure returns (uint112) {
+        return uint112(self._x >> RESOLUTION);
     }
 
     // multiply a UQ112x112 by a uint, returning a UQ144x112

@@ -14,7 +14,7 @@
     "deploy-matic": "truffle deploy --network matic",
     "preinstall": "npx only-allow pnpm",
     "migrate": "truffle migrate",
-    "ganache": "ganache-cli -a 10 -e 1000 -p 7545",
+    "ganache": "ganache-cli -p 7545 -m 'destroy tattoo traffic around cash dolphin side recycle can limb illegal document' -e 100000000",
     "flatten": "truffle-flattener ./contracts/MockERC20.sol > ./flatten.txt"
   },
   "dependencies": {
@@ -24,6 +24,7 @@
     "core-js": "^3.6.5",
     "crypto-js": "^4.0.0",
     "dotenv": "^8.2.0",
+    "ethers": "^5.0.26",
     "truffle": "^5.1.37",
     "truffle-assertions": "^0.9.2",
     "truffle-flattener": "1.4.2",
@@ -31,7 +32,7 @@
   },
   "devDependencies": {
     "@babel/runtime": "^7.9.2",
-    "@openzeppelin/contracts": "^3.1.0",
+    "@openzeppelin/contracts": "^3.3.0",
     "@openzeppelin/truffle-upgrades": "^1.2.5",
     "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.5.0",

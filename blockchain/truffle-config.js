@@ -88,7 +88,9 @@ module.exports = {
                 return new HDWalletProvider(MNEMONIC, 'https://kovan.infura.io/v3/' + INFURA_KEY);
             },
             network_id: '*',
-            gasPrice: 70000000000
+            gasPrice: 10000000000,
+            gas: 2000000,
+            skipDryRun: true
         },
 
         live: {
@@ -100,7 +102,18 @@ module.exports = {
             gasPrice: 20000000000
         }
     },
+    initWeb3: function() {
+        // Is there an injected web3 instance?
+        if (typeof web3 !== 'undefined') {
+            App.web3Provider = web3.currentProvider;
+        } else {
+            // If no injected web3 instance is detected, fall back to Ganache
+            App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
+        }
+        web3 = new Web3(App.web3Provider);
 
+        return App.initContract();
+    },
     // Set default mocha options here, use special reporters etc.
     mocha: {
         reporter: 'eth-gas-reporter',
@@ -113,7 +126,7 @@ module.exports = {
     // Configure your compilers
     compilers: {
         solc: {
-            version: '0.6.12',
+            version: '0.7.5',
             // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
             settings: {
                 // See the solidity docs for advice about optimization and evmVersion

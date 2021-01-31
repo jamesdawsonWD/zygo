@@ -29,46 +29,6 @@
     },
     {
       "inputs": [],
-      "name": "price0Ema",
-      "outputs": [
-        {
-          "components": [
-            {
-              "internalType": "uint224",
-              "name": "_x",
-              "type": "uint224"
-            }
-          ],
-          "internalType": "struct ISimpleOracle.uq112x112",
-          "name": "",
-          "type": "tuple"
-        }
-      ],
-      "stateMutability": "pure",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "price1Ema",
-      "outputs": [
-        {
-          "components": [
-            {
-              "internalType": "uint224",
-              "name": "_x",
-              "type": "uint224"
-            }
-          ],
-          "internalType": "struct ISimpleOracle.uq112x112",
-          "name": "",
-          "type": "tuple"
-        }
-      ],
-      "stateMutability": "pure",
-      "type": "function"
-    },
-    {
-      "inputs": [],
       "name": "price0Average",
       "outputs": [
         {
@@ -108,6 +68,30 @@
       "type": "function"
     },
     {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amountIn",
+          "type": "uint256"
+        }
+      ],
+      "name": "consult",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [],
       "name": "update",
       "outputs": [],
@@ -115,71 +99,70 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"price0Average\",\"outputs\":[{\"components\":[{\"internalType\":\"uint224\",\"name\":\"_x\",\"type\":\"uint224\"}],\"internalType\":\"struct ISimpleOracle.uq112x112\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"price0Ema\",\"outputs\":[{\"components\":[{\"internalType\":\"uint224\",\"name\":\"_x\",\"type\":\"uint224\"}],\"internalType\":\"struct ISimpleOracle.uq112x112\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"price1Average\",\"outputs\":[{\"components\":[{\"internalType\":\"uint224\",\"name\":\"_x\",\"type\":\"uint224\"}],\"internalType\":\"struct ISimpleOracle.uq112x112\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"price1Ema\",\"outputs\":[{\"components\":[{\"internalType\":\"uint224\",\"name\":\"_x\",\"type\":\"uint224\"}],\"internalType\":\"struct ISimpleOracle.uq112x112\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"token0\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"token1\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"update\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/C/Users/James/projects/zygo/blockchain/contracts/uniswapv2/interfaces/ISimpleOracle.sol\":\"ISimpleOracle\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/James/projects/zygo/blockchain/contracts/uniswapv2/interfaces/ISimpleOracle.sol\":{\"keccak256\":\"0xe29043f248ccf1cd5bb34fd1269da97ebdc8616a7c19ee0bd509c52dce3c7b04\",\"urls\":[\"bzz-raw://63bc848e985d8e2c95e7f28498f360362f5eb946974e1cebab310f4aa069adc9\",\"dweb:/ipfs/QmTzTLpqLeKagsaLHQynB129ZQAdYv6fQWY8GsscdfrNmw\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.7.5+commit.eb77ed08\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountIn\",\"type\":\"uint256\"}],\"name\":\"consult\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"price0Average\",\"outputs\":[{\"components\":[{\"internalType\":\"uint224\",\"name\":\"_x\",\"type\":\"uint224\"}],\"internalType\":\"struct ISimpleOracle.uq112x112\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"price1Average\",\"outputs\":[{\"components\":[{\"internalType\":\"uint224\",\"name\":\"_x\",\"type\":\"uint224\"}],\"internalType\":\"struct ISimpleOracle.uq112x112\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"token0\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"token1\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"update\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/C/Users/James/projects/zygo/blockchain/contracts/uniswapv2/interfaces/ISimpleOracle.sol\":\"ISimpleOracle\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/James/projects/zygo/blockchain/contracts/uniswapv2/interfaces/ISimpleOracle.sol\":{\"keccak256\":\"0x7c798b956674931844fa31e7a4e162e1fa5725c5fddc160355b36e9a3f240cd0\",\"urls\":[\"bzz-raw://c496b65be9a4991e7afcd9d027fc8b2c32030832f406f2cff674f349d4f407cd\",\"dweb:/ipfs/QmR2DXc8pMV3YPNAeMAwzGoGxzmziCUqVZzaubDQhSGwXt\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity 0.6.12;\npragma experimental ABIEncoderV2;\n\ninterface ISimpleOracle {\n    struct uq112x112 {\n        uint224 _x;\n    }\n\n    function token0() external pure returns (address);\n\n    function token1() external pure returns (address);\n\n    function price0Ema() external pure returns (uq112x112 memory);\n\n    function price1Ema() external pure returns (uq112x112 memory);\n\n    function price0Average() external pure returns (uq112x112 memory);\n\n    function price1Average() external pure returns (uq112x112 memory);\n\n    function update() external;\n}\n",
+  "source": "pragma solidity 0.7.5;\npragma experimental ABIEncoderV2;\n\ninterface ISimpleOracle {\n    struct uq112x112 {\n        uint224 _x;\n    }\n\n    function token0() external pure returns (address);\n\n    function token1() external pure returns (address);\n\n    function price0Average() external pure returns (uq112x112 memory);\n\n    function price1Average() external pure returns (uq112x112 memory);\n\n    function consult(address token, uint256 amountIn) external view returns (uint256);\n\n    function update() external;\n}\n",
   "sourcePath": "C:\\Users\\James\\projects\\zygo\\blockchain\\contracts\\uniswapv2\\interfaces\\ISimpleOracle.sol",
   "ast": {
     "absolutePath": "/C/Users/James/projects/zygo/blockchain/contracts/uniswapv2/interfaces/ISimpleOracle.sol",
     "exportedSymbols": {
       "ISimpleOracle": [
-        7825
+        9795
       ]
     },
-    "id": 7826,
-    "license": null,
+    "id": 9796,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 7787,
+        "id": 9758,
         "literals": [
           "solidity",
-          "0.6",
-          ".12"
+          "0.7",
+          ".5"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:21"
+        "src": "0:22:36"
       },
       {
-        "id": 7788,
+        "id": 9759,
         "literals": [
           "experimental",
           "ABIEncoderV2"
         ],
         "nodeType": "PragmaDirective",
-        "src": "24:33:21"
+        "src": "23:33:36"
       },
       {
         "abstract": false,
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "interface",
-        "documentation": null,
         "fullyImplemented": false,
-        "id": 7825,
+        "id": 9795,
         "linearizedBaseContracts": [
-          7825
+          9795
         ],
         "name": "ISimpleOracle",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "ISimpleOracle.uq112x112",
-            "id": 7791,
+            "id": 9762,
             "members": [
               {
                 "constant": false,
-                "id": 7790,
+                "id": 9761,
                 "mutability": "mutable",
                 "name": "_x",
                 "nodeType": "VariableDeclaration",
-                "overrides": null,
-                "scope": 7791,
-                "src": "116:10:21",
+                "scope": 9762,
+                "src": "115:10:36",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -187,55 +170,50 @@
                   "typeString": "uint224"
                 },
                 "typeName": {
-                  "id": 7789,
+                  "id": 9760,
                   "name": "uint224",
                   "nodeType": "ElementaryTypeName",
-                  "src": "116:7:21",
+                  "src": "115:7:36",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint224",
                     "typeString": "uint224"
                   }
                 },
-                "value": null,
                 "visibility": "internal"
               }
             ],
             "name": "uq112x112",
             "nodeType": "StructDefinition",
-            "scope": 7825,
-            "src": "89:44:21",
+            "scope": 9795,
+            "src": "88:44:36",
             "visibility": "public"
           },
           {
-            "body": null,
-            "documentation": null,
             "functionSelector": "0dfe1681",
-            "id": 7796,
+            "id": 9767,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "token0",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
-              "id": 7792,
+              "id": 9763,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "154:2:21"
+              "src": "153:2:36"
             },
             "returnParameters": {
-              "id": 7795,
+              "id": 9766,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7794,
+                  "id": 9765,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 7796,
-                  "src": "180:7:21",
+                  "scope": 9767,
+                  "src": "179:7:36",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -243,58 +221,53 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7793,
+                    "id": 9764,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "180:7:21",
+                    "src": "179:7:36",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
-                  "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "179:9:21"
+              "src": "178:9:36"
             },
-            "scope": 7825,
-            "src": "139:50:21",
+            "scope": 9795,
+            "src": "138:50:36",
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "body": null,
-            "documentation": null,
             "functionSelector": "d21220a7",
-            "id": 7801,
+            "id": 9772,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "token1",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
-              "id": 7797,
+              "id": 9768,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "210:2:21"
+              "src": "209:2:36"
             },
             "returnParameters": {
-              "id": 7800,
+              "id": 9771,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7799,
+                  "id": 9770,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 7801,
-                  "src": "236:7:21",
+                  "scope": 9772,
+                  "src": "235:7:36",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -302,361 +275,329 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7798,
+                    "id": 9769,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "236:7:21",
+                    "src": "235:7:36",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
-                  "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "235:9:21"
+              "src": "234:9:36"
             },
-            "scope": 7825,
-            "src": "195:50:21",
+            "scope": 9795,
+            "src": "194:50:36",
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "body": null,
-            "documentation": null,
-            "functionSelector": "3c75159d",
-            "id": 7806,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "price0Ema",
-            "nodeType": "FunctionDefinition",
-            "overrides": null,
-            "parameters": {
-              "id": 7802,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "269:2:21"
-            },
-            "returnParameters": {
-              "id": 7805,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 7804,
-                  "mutability": "mutable",
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 7806,
-                  "src": "295:16:21",
-                  "stateVariable": false,
-                  "storageLocation": "memory",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_uq112x112_$7791_memory_ptr",
-                    "typeString": "struct ISimpleOracle.uq112x112"
-                  },
-                  "typeName": {
-                    "contractScope": null,
-                    "id": 7803,
-                    "name": "uq112x112",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 7791,
-                    "src": "295:9:21",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_uq112x112_$7791_storage_ptr",
-                      "typeString": "struct ISimpleOracle.uq112x112"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "294:18:21"
-            },
-            "scope": 7825,
-            "src": "251:62:21",
-            "stateMutability": "pure",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "body": null,
-            "documentation": null,
-            "functionSelector": "e694f349",
-            "id": 7811,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "price1Ema",
-            "nodeType": "FunctionDefinition",
-            "overrides": null,
-            "parameters": {
-              "id": 7807,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "337:2:21"
-            },
-            "returnParameters": {
-              "id": 7810,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 7809,
-                  "mutability": "mutable",
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 7811,
-                  "src": "363:16:21",
-                  "stateVariable": false,
-                  "storageLocation": "memory",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_uq112x112_$7791_memory_ptr",
-                    "typeString": "struct ISimpleOracle.uq112x112"
-                  },
-                  "typeName": {
-                    "contractScope": null,
-                    "id": 7808,
-                    "name": "uq112x112",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 7791,
-                    "src": "363:9:21",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_uq112x112_$7791_storage_ptr",
-                      "typeString": "struct ISimpleOracle.uq112x112"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "362:18:21"
-            },
-            "scope": 7825,
-            "src": "319:62:21",
-            "stateMutability": "pure",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "body": null,
-            "documentation": null,
             "functionSelector": "a6bb4539",
-            "id": 7816,
+            "id": 9777,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "price0Average",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
-              "id": 7812,
+              "id": 9773,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "409:2:21"
+              "src": "272:2:36"
             },
             "returnParameters": {
-              "id": 7815,
+              "id": 9776,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7814,
+                  "id": 9775,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 7816,
-                  "src": "435:16:21",
+                  "scope": 9777,
+                  "src": "298:16:36",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_uq112x112_$7791_memory_ptr",
+                    "typeIdentifier": "t_struct$_uq112x112_$9762_memory_ptr",
                     "typeString": "struct ISimpleOracle.uq112x112"
                   },
                   "typeName": {
-                    "contractScope": null,
-                    "id": 7813,
+                    "id": 9774,
                     "name": "uq112x112",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 7791,
-                    "src": "435:9:21",
+                    "referencedDeclaration": 9762,
+                    "src": "298:9:36",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_uq112x112_$7791_storage_ptr",
+                      "typeIdentifier": "t_struct$_uq112x112_$9762_storage_ptr",
                       "typeString": "struct ISimpleOracle.uq112x112"
                     }
                   },
-                  "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "434:18:21"
+              "src": "297:18:36"
             },
-            "scope": 7825,
-            "src": "387:66:21",
+            "scope": 9795,
+            "src": "250:66:36",
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "body": null,
-            "documentation": null,
             "functionSelector": "5e6aaf2c",
-            "id": 7821,
+            "id": 9782,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "price1Average",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
-              "id": 7817,
+              "id": 9778,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "481:2:21"
+              "src": "344:2:36"
             },
             "returnParameters": {
-              "id": 7820,
+              "id": 9781,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7819,
+                  "id": 9780,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 7821,
-                  "src": "507:16:21",
+                  "scope": 9782,
+                  "src": "370:16:36",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_uq112x112_$7791_memory_ptr",
+                    "typeIdentifier": "t_struct$_uq112x112_$9762_memory_ptr",
                     "typeString": "struct ISimpleOracle.uq112x112"
                   },
                   "typeName": {
-                    "contractScope": null,
-                    "id": 7818,
+                    "id": 9779,
                     "name": "uq112x112",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 7791,
-                    "src": "507:9:21",
+                    "referencedDeclaration": 9762,
+                    "src": "370:9:36",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_uq112x112_$7791_storage_ptr",
+                      "typeIdentifier": "t_struct$_uq112x112_$9762_storage_ptr",
                       "typeString": "struct ISimpleOracle.uq112x112"
                     }
                   },
-                  "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "506:18:21"
+              "src": "369:18:36"
             },
-            "scope": 7825,
-            "src": "459:66:21",
+            "scope": 9795,
+            "src": "322:66:36",
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "body": null,
-            "documentation": null,
+            "functionSelector": "3ddac953",
+            "id": 9791,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "consult",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9787,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9784,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9791,
+                  "src": "411:13:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9783,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "411:7:36",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9786,
+                  "mutability": "mutable",
+                  "name": "amountIn",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9791,
+                  "src": "426:16:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9785,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "426:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "410:33:36"
+            },
+            "returnParameters": {
+              "id": 9790,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9789,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9791,
+                  "src": "467:7:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9788,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "467:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "466:9:36"
+            },
+            "scope": 9795,
+            "src": "394:82:36",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
             "functionSelector": "a2e62045",
-            "id": 7824,
+            "id": 9794,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "update",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
-              "id": 7822,
+              "id": 9792,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "546:2:21"
+              "src": "497:2:36"
             },
             "returnParameters": {
-              "id": 7823,
+              "id": 9793,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "557:0:21"
+              "src": "508:0:36"
             },
-            "scope": 7825,
-            "src": "531:27:21",
+            "scope": 9795,
+            "src": "482:27:36",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 7826,
-        "src": "59:501:21"
+        "scope": 9796,
+        "src": "58:453:36"
       }
     ],
-    "src": "0:561:21"
+    "src": "0:512:36"
   },
   "legacyAST": {
     "absolutePath": "/C/Users/James/projects/zygo/blockchain/contracts/uniswapv2/interfaces/ISimpleOracle.sol",
     "exportedSymbols": {
       "ISimpleOracle": [
-        7825
+        9795
       ]
     },
-    "id": 7826,
-    "license": null,
+    "id": 9796,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 7787,
+        "id": 9758,
         "literals": [
           "solidity",
-          "0.6",
-          ".12"
+          "0.7",
+          ".5"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:21"
+        "src": "0:22:36"
       },
       {
-        "id": 7788,
+        "id": 9759,
         "literals": [
           "experimental",
           "ABIEncoderV2"
         ],
         "nodeType": "PragmaDirective",
-        "src": "24:33:21"
+        "src": "23:33:36"
       },
       {
         "abstract": false,
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "interface",
-        "documentation": null,
         "fullyImplemented": false,
-        "id": 7825,
+        "id": 9795,
         "linearizedBaseContracts": [
-          7825
+          9795
         ],
         "name": "ISimpleOracle",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "ISimpleOracle.uq112x112",
-            "id": 7791,
+            "id": 9762,
             "members": [
               {
                 "constant": false,
-                "id": 7790,
+                "id": 9761,
                 "mutability": "mutable",
                 "name": "_x",
                 "nodeType": "VariableDeclaration",
-                "overrides": null,
-                "scope": 7791,
-                "src": "116:10:21",
+                "scope": 9762,
+                "src": "115:10:36",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -664,55 +605,50 @@
                   "typeString": "uint224"
                 },
                 "typeName": {
-                  "id": 7789,
+                  "id": 9760,
                   "name": "uint224",
                   "nodeType": "ElementaryTypeName",
-                  "src": "116:7:21",
+                  "src": "115:7:36",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint224",
                     "typeString": "uint224"
                   }
                 },
-                "value": null,
                 "visibility": "internal"
               }
             ],
             "name": "uq112x112",
             "nodeType": "StructDefinition",
-            "scope": 7825,
-            "src": "89:44:21",
+            "scope": 9795,
+            "src": "88:44:36",
             "visibility": "public"
           },
           {
-            "body": null,
-            "documentation": null,
             "functionSelector": "0dfe1681",
-            "id": 7796,
+            "id": 9767,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "token0",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
-              "id": 7792,
+              "id": 9763,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "154:2:21"
+              "src": "153:2:36"
             },
             "returnParameters": {
-              "id": 7795,
+              "id": 9766,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7794,
+                  "id": 9765,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 7796,
-                  "src": "180:7:21",
+                  "scope": 9767,
+                  "src": "179:7:36",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -720,58 +656,53 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7793,
+                    "id": 9764,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "180:7:21",
+                    "src": "179:7:36",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
-                  "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "179:9:21"
+              "src": "178:9:36"
             },
-            "scope": 7825,
-            "src": "139:50:21",
+            "scope": 9795,
+            "src": "138:50:36",
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "body": null,
-            "documentation": null,
             "functionSelector": "d21220a7",
-            "id": 7801,
+            "id": 9772,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "token1",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
-              "id": 7797,
+              "id": 9768,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "210:2:21"
+              "src": "209:2:36"
             },
             "returnParameters": {
-              "id": 7800,
+              "id": 9771,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7799,
+                  "id": 9770,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 7801,
-                  "src": "236:7:21",
+                  "scope": 9772,
+                  "src": "235:7:36",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -779,311 +710,282 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7798,
+                    "id": 9769,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "236:7:21",
+                    "src": "235:7:36",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
-                  "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "235:9:21"
+              "src": "234:9:36"
             },
-            "scope": 7825,
-            "src": "195:50:21",
+            "scope": 9795,
+            "src": "194:50:36",
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "body": null,
-            "documentation": null,
-            "functionSelector": "3c75159d",
-            "id": 7806,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "price0Ema",
-            "nodeType": "FunctionDefinition",
-            "overrides": null,
-            "parameters": {
-              "id": 7802,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "269:2:21"
-            },
-            "returnParameters": {
-              "id": 7805,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 7804,
-                  "mutability": "mutable",
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 7806,
-                  "src": "295:16:21",
-                  "stateVariable": false,
-                  "storageLocation": "memory",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_uq112x112_$7791_memory_ptr",
-                    "typeString": "struct ISimpleOracle.uq112x112"
-                  },
-                  "typeName": {
-                    "contractScope": null,
-                    "id": 7803,
-                    "name": "uq112x112",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 7791,
-                    "src": "295:9:21",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_uq112x112_$7791_storage_ptr",
-                      "typeString": "struct ISimpleOracle.uq112x112"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "294:18:21"
-            },
-            "scope": 7825,
-            "src": "251:62:21",
-            "stateMutability": "pure",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "body": null,
-            "documentation": null,
-            "functionSelector": "e694f349",
-            "id": 7811,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "price1Ema",
-            "nodeType": "FunctionDefinition",
-            "overrides": null,
-            "parameters": {
-              "id": 7807,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "337:2:21"
-            },
-            "returnParameters": {
-              "id": 7810,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 7809,
-                  "mutability": "mutable",
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 7811,
-                  "src": "363:16:21",
-                  "stateVariable": false,
-                  "storageLocation": "memory",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_uq112x112_$7791_memory_ptr",
-                    "typeString": "struct ISimpleOracle.uq112x112"
-                  },
-                  "typeName": {
-                    "contractScope": null,
-                    "id": 7808,
-                    "name": "uq112x112",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 7791,
-                    "src": "363:9:21",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_uq112x112_$7791_storage_ptr",
-                      "typeString": "struct ISimpleOracle.uq112x112"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "362:18:21"
-            },
-            "scope": 7825,
-            "src": "319:62:21",
-            "stateMutability": "pure",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "body": null,
-            "documentation": null,
             "functionSelector": "a6bb4539",
-            "id": 7816,
+            "id": 9777,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "price0Average",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
-              "id": 7812,
+              "id": 9773,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "409:2:21"
+              "src": "272:2:36"
             },
             "returnParameters": {
-              "id": 7815,
+              "id": 9776,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7814,
+                  "id": 9775,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 7816,
-                  "src": "435:16:21",
+                  "scope": 9777,
+                  "src": "298:16:36",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_uq112x112_$7791_memory_ptr",
+                    "typeIdentifier": "t_struct$_uq112x112_$9762_memory_ptr",
                     "typeString": "struct ISimpleOracle.uq112x112"
                   },
                   "typeName": {
-                    "contractScope": null,
-                    "id": 7813,
+                    "id": 9774,
                     "name": "uq112x112",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 7791,
-                    "src": "435:9:21",
+                    "referencedDeclaration": 9762,
+                    "src": "298:9:36",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_uq112x112_$7791_storage_ptr",
+                      "typeIdentifier": "t_struct$_uq112x112_$9762_storage_ptr",
                       "typeString": "struct ISimpleOracle.uq112x112"
                     }
                   },
-                  "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "434:18:21"
+              "src": "297:18:36"
             },
-            "scope": 7825,
-            "src": "387:66:21",
+            "scope": 9795,
+            "src": "250:66:36",
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "body": null,
-            "documentation": null,
             "functionSelector": "5e6aaf2c",
-            "id": 7821,
+            "id": 9782,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "price1Average",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
-              "id": 7817,
+              "id": 9778,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "481:2:21"
+              "src": "344:2:36"
             },
             "returnParameters": {
-              "id": 7820,
+              "id": 9781,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7819,
+                  "id": 9780,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 7821,
-                  "src": "507:16:21",
+                  "scope": 9782,
+                  "src": "370:16:36",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_uq112x112_$7791_memory_ptr",
+                    "typeIdentifier": "t_struct$_uq112x112_$9762_memory_ptr",
                     "typeString": "struct ISimpleOracle.uq112x112"
                   },
                   "typeName": {
-                    "contractScope": null,
-                    "id": 7818,
+                    "id": 9779,
                     "name": "uq112x112",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 7791,
-                    "src": "507:9:21",
+                    "referencedDeclaration": 9762,
+                    "src": "370:9:36",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_uq112x112_$7791_storage_ptr",
+                      "typeIdentifier": "t_struct$_uq112x112_$9762_storage_ptr",
                       "typeString": "struct ISimpleOracle.uq112x112"
                     }
                   },
-                  "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "506:18:21"
+              "src": "369:18:36"
             },
-            "scope": 7825,
-            "src": "459:66:21",
+            "scope": 9795,
+            "src": "322:66:36",
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "body": null,
-            "documentation": null,
+            "functionSelector": "3ddac953",
+            "id": 9791,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "consult",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9787,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9784,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9791,
+                  "src": "411:13:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9783,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "411:7:36",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9786,
+                  "mutability": "mutable",
+                  "name": "amountIn",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9791,
+                  "src": "426:16:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9785,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "426:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "410:33:36"
+            },
+            "returnParameters": {
+              "id": 9790,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9789,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9791,
+                  "src": "467:7:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9788,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "467:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "466:9:36"
+            },
+            "scope": 9795,
+            "src": "394:82:36",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
             "functionSelector": "a2e62045",
-            "id": 7824,
+            "id": 9794,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "update",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
-              "id": 7822,
+              "id": 9792,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "546:2:21"
+              "src": "497:2:36"
             },
             "returnParameters": {
-              "id": 7823,
+              "id": 9793,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "557:0:21"
+              "src": "508:0:36"
             },
-            "scope": 7825,
-            "src": "531:27:21",
+            "scope": 9795,
+            "src": "482:27:36",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 7826,
-        "src": "59:501:21"
+        "scope": 9796,
+        "src": "58:453:36"
       }
     ],
-    "src": "0:561:21"
+    "src": "0:512:36"
   },
   "compiler": {
     "name": "solc",
-    "version": "0.6.12+commit.27d51765.Emscripten.clang"
+    "version": "0.7.5+commit.eb77ed08.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "3.3.2",
-  "updatedAt": "2021-01-20T18:03:53.911Z",
+  "updatedAt": "2021-01-31T13:06:19.733Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

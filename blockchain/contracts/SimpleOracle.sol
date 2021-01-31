@@ -1,4 +1,4 @@
-pragma solidity 0.6.12;
+pragma solidity 0.7.5;
 
 import './uniswapv2/interfaces/IUniswapV2Factory.sol';
 import './uniswapv2/interfaces/IUniswapV2Pair.sol';
@@ -11,7 +11,7 @@ import './uniswapv2/libraries/UniswapV2Library.sol';
 contract SimpleOracle {
     using FixedPoint for *;
 
-    uint256 public constant PERIOD = 1 minutes;
+    uint256 public constant PERIOD = 30 minutes;
 
     IUniswapV2Pair immutable pair;
     address public immutable token0;
@@ -22,10 +22,9 @@ contract SimpleOracle {
     uint32 public blockTimestampLast;
     FixedPoint.uq112x112 public price0Average;
     FixedPoint.uq112x112 public price1Average;
-    FixedPoint.uq112x112 public price0Ema;
-    FixedPoint.uq112x112[] public price0EmaPoints;
-    FixedPoint.uq112x112 public price1Ema;
-    FixedPoint.uq112x112[] public price1EmaPoints;
+    uint256 public pricePoints;
+    uint224 public price0Ema;
+    uint224 public price1Ema;
 
     constructor(
         address factory,
@@ -38,10 +37,11 @@ contract SimpleOracle {
         token1 = _pair.token1();
         price0CumulativeLast = _pair.price0CumulativeLast(); // fetch the current accumulated price value (1 / 0)
         price1CumulativeLast = _pair.price1CumulativeLast(); // fetch the current accumulated price value (0 / 1)
+        pricePoints = 1;
         uint112 reserve0;
         uint112 reserve1;
         (reserve0, reserve1, blockTimestampLast) = _pair.getReserves();
-        require(reserve0 != 0 && reserve1 != 0, 'ExampleOracleSimple: NO_RESERVES'); // ensure that there's liquidity in the pair
+        require(reserve0 != 0 && reserve1 != 0, 'SimpleOracle: NO_RESERVES'); // ensure that there's liquidity in the pair
     }
 
     function update() external {
@@ -50,7 +50,8 @@ contract SimpleOracle {
         uint32 timeElapsed = blockTimestamp - blockTimestampLast; // overflow is desired
 
         // ensure that at least one full period has passed since the last update
-        require(timeElapsed >= PERIOD, 'ExampleOracleSimple: PERIOD_NOT_ELAPSED');
+        require(timeElapsed >= PERIOD, 'SimpleOracle: PERIOD_NOT_ELAPSED');
+        pricePoints = pricePoints + 1;
 
         // overflow is desired, casting never truncates
         // cumulative price is in (uq112x112 price * seconds) units so we simply wrap it after division by time elapsed
@@ -60,17 +61,14 @@ contract SimpleOracle {
         price1Average = FixedPoint.uq112x112(
             uint224((price1Cumulative - price1CumulativeLast) / timeElapsed)
         );
-
-        if (price0EmaPoints.length != 0) {
-            price0Ema = FixedPoint.uq112x112(
-                uint224((price0Average._x - price0Ema._x) * (2 / (price0EmaPoints.length + 1)))
-            );
-        }
-        if (price1EmaPoints.length != 0) {
-            price1Ema = FixedPoint.uq112x112(
-                uint224((price1Average._x - price1Ema._x) * (2 / (price0EmaPoints.length + 1)))
-            );
-        }
+        // price0Ema = uint224(
+        //     ((((consult(token0, 10**18) - price0Ema) * (2 * 10**18)) / (pricePoints + 1) + price0Ema) /
+        //         10**18)
+        // );
+        // price1Ema = uint224(
+        //     ((((consult(token1, 10**18) - price1Ema) * (2 * 10**18)) / (pricePoints + 1) + price1Ema) /
+        //         10**18)
+        // );
 
         price0CumulativeLast = price0Cumulative;
         price1CumulativeLast = price1Cumulative;
@@ -82,7 +80,7 @@ contract SimpleOracle {
         if (token == token0) {
             amountOut = price0Average.mul(amountIn).decode144();
         } else {
-            require(token == token1, 'ExampleOracleSimple: INVALID_TOKEN');
+            require(token == token1, 'SimpleOracle: INVALID_TOKEN');
             amountOut = price1Average.mul(amountIn).decode144();
         }
     }

@@ -3,7 +3,7 @@
 
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.0;
+pragma solidity ^0.7.5;
 
 /*
  * @dev Provides information about the current execution context, including the
@@ -30,7 +30,7 @@ pragma solidity ^0.6.0;
 
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.0;
+pragma solidity ^0.7.5;
 
 /**
  * @dev Interface of the ERC20 standard as defined in the EIP.
@@ -110,7 +110,7 @@ interface IERC20 {
 
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.0;
+pragma solidity ^0.7.5;
 
 /**
  * @dev Wrappers over Solidity's arithmetic operations with added overflow
@@ -416,7 +416,7 @@ library Address {
 
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.0;
+pragma solidity ^0.7.5;
 
 
 
@@ -723,7 +723,7 @@ contract ERC20 is Context, IERC20 {
 
 // File: contracts\MockERC20.sol
 
-pragma solidity 0.6.12;
+pragma solidity 0.7.5;
 
 
 contract MockERC20 is ERC20 {
